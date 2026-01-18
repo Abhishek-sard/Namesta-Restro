@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { User, ChevronDown } from 'lucide-react';
 
 const Navbar = () => {
@@ -9,10 +10,10 @@ const Navbar = () => {
 
           {/* Left Side - Logo */}
           <div className="flex-1 flex justify-start">
-            <a href="/" className="flex items-center">
+            <Link to="/" className="flex items-center">
               {/* Placeholder for Logo - You can replace text with <img /> */}
               <img src="/namesta.jpg" alt="Namesta Logo" className="h-34 w-auto object-contain mt-14" />
-            </a>
+            </Link>
           </div>
 
           {/* Center Navigation */}
@@ -50,7 +51,7 @@ const Navbar = () => {
                 <div className="py-2">
                   <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600">Find a Restaurant</a>
                   <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600">Group Bookings</a>
-                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600">About Us</a>
+                  <Link to="/about" className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600">About Us</Link>
                   <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600">News</a>
                 </div>
               </div>
@@ -64,7 +65,7 @@ const Navbar = () => {
               </button>
               <div className="absolute left-1/2 transform -translate-x-1/2 mt-0 w-48 bg-white border border-gray-100 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 ease-in-out">
                 <div className="py-2">
-                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600">Menu</a>
+                  <Link to="/menu" className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600">Menu</Link>
                   <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600">Catering</a>
                   <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600">Nutrition</a>
                   <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600">Allergen Information</a>

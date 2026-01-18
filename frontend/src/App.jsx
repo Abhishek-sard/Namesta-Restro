@@ -1,16 +1,23 @@
 import { useState } from 'react'
-import Navbar from './Navbar'
-import HeroSlider from './HeroSlider'
-import Footer from './Footer'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar.jsx';
+import Footer from './components/Footer.jsx';
+
 import './App.css'
 
 function App() {
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Navbar />
-      <HeroSlider />
-      <Footer />
-    </div>
+    <Router>
+      <div className="min-h-screen bg-gray-50 flex flex-col">
+        <Navbar />
+        <main className="flex-grow">
+          <Routes>
+         
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </Router>
   )
 }
 
