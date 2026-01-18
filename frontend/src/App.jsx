@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Navbar from './Navbar'
 import HeroSlider from './HeroSlider'
+import Footer from './Footer'
 import './App.css'
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
     <div className="min-h-screen bg-gray-50">
       <Navbar />
       <HeroSlider />
+      <Footer />
     </div>
   )
 }

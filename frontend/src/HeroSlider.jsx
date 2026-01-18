@@ -45,9 +45,14 @@ const HeroSlider = () => {
                 <p className="text-xl md:text-2xl text-white font-medium max-w-2xl drop-shadow-md">
                     Experience authentic flavors and unforgettable moments.
                 </p>
-                <button className="mt-8 bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-10 rounded-full text-lg transition-transform hover:scale-105 shadow-xl">
-                    Book a Table
-                </button>
+                <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mt-8">
+                    <button className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-10 rounded-full text-lg transition-transform hover:scale-105 shadow-xl">
+                        Book a Table
+                    </button>
+                    <button className="bg-white/20 hover:bg-white/30 border-2 border-white text-white font-bold py-3 px-10 rounded-full text-lg transition-transform hover:scale-105 shadow-xl backdrop-blur-sm">
+                        Our Items
+                    </button>
+                </div>
             </div>
 
             {/* Slide Indicators */}
