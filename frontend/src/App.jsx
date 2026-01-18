@@ -3,7 +3,17 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar.jsx';
 import Footer from './components/Footer.jsx';
 
-import './App.css'
+
+import HeroSlider from './pages/Home/HeroSlider.jsx';
+
+
+function HomePage(){
+  return(
+    <>
+    <HeroSlider/>
+    </>
+  )
+}
 
 function App() {
   return (
@@ -12,6 +22,7 @@ function App() {
         <Navbar />
         <main className="flex-grow">
           <Routes>
+            <Route path="/" element={<HomePage />} />
          
           </Routes>
         </main>

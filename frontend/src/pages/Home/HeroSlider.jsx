@@ -40,7 +40,7 @@ const HeroSlider = () => {
             {/* Content Overlay */}
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center z-10 px-4">
                 <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 drop-shadow-lg tracking-wide">
-                    Welcome to Namesta
+                    Welcome to Namaste Restro
                 </h1>
                 <p className="text-xl md:text-2xl text-white font-medium max-w-2xl drop-shadow-md">
                     Experience authentic flavors and unforgettable moments.
