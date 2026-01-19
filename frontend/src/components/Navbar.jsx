@@ -12,7 +12,7 @@ const Navbar = () => {
           <div className="flex-1 flex justify-start">
             <Link to="/" className="flex items-center">
               {/* Placeholder for Logo - You can replace text with <img /> */}
-              <img src="/namesta.jpg" alt="Namesta Logo" className="h-34 w-auto object-contain mt-14" />
+              <img src="/namesta.jpg" alt="Namesta Logo" className="h-20 w-auto object-contain" />
             </Link>
           </div>
 

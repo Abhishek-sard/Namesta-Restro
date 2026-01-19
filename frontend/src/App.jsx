@@ -6,6 +6,7 @@ import Footer from './components/Footer.jsx';
 
 import HeroSlider from './pages/Home/HeroSlider.jsx';
 import Product from './pages/Home/Product.jsx';
+import Symbol from './pages/Home/Symbol.jsx';
 
 
 function HomePage(){
@@ -13,6 +14,7 @@ function HomePage(){
     <>
     <HeroSlider/>
     <Product/>
+    <Symbol/>
     </>
   )
 }
