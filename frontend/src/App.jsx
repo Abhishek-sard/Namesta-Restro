@@ -5,12 +5,14 @@ import Footer from './components/Footer.jsx';
 
 
 import HeroSlider from './pages/Home/HeroSlider.jsx';
+import Product from './pages/Home/Product.jsx';
 
 
 function HomePage(){
   return(
     <>
     <HeroSlider/>
+    <Product/>
     </>
   )
 }
