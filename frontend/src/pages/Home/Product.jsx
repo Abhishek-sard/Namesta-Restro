@@ -32,7 +32,7 @@ const Product = () => {
 
   return (
     <div className="bg-teal-50 min-h-screen flex flex-col items-center justify-center px-4">
-      <h1 className="text-5xl font-bold text-yellow-900 mb-8">
+      <h1 className="text-5xl font-bold text-yellow-900 mb-8 mt-12">
         Our Products
       </h1>
 

@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar.jsx';
 import Footer from './components/Footer.jsx';
@@ -8,6 +7,8 @@ import HeroSlider from './pages/Home/HeroSlider.jsx';
 import Product from './pages/Home/Product.jsx';
 import Symbol from './pages/Home/Symbol.jsx';
 import Taste from './pages/Home/Taste.jsx';
+import Local from './pages/Home/Local.jsx';
+import BannerSection from './pages/Home/BannerSection.jsx';
 
 
 function HomePage(){
@@ -17,6 +18,8 @@ function HomePage(){
     <Product/>
     <Symbol/>
     <Taste/>
+    <Local/>
+    <BannerSection/>
     </>
   )
 }
