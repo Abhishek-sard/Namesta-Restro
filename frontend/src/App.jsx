@@ -10,6 +10,7 @@ import Taste from './pages/Home/Taste.jsx';
 import Local from './pages/Home/Local.jsx';
 import BannerSection from './pages/Home/BannerSection.jsx';
 import SustainabilitySection from './pages/Home/SustainabilitySection.jsx';
+import Join from './pages/Home/Join.jsx';
 
 
 function HomePage(){
@@ -22,6 +23,7 @@ function HomePage(){
     <Local/>
     <BannerSection/>
     <SustainabilitySection/>
+    <Join/>
     </>
   )
 }
