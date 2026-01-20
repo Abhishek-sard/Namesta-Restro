@@ -6,8 +6,8 @@ const Taste = () => {
                 {/* LEFT CONTENT */}
                 <div className="md:w-1/2 text-center md:text-left">
                     <h1 className="text-5xl md:text-6xl font-bold text-yellow-900 font-cursive leading-snug">
-                        All taste, <br />
-                        no regrets
+                        ALL TASTE,NO
+                        REGRETS.
                     </h1>
 
                     <p className="text-gray-900 text-lg mb-2 mt-6 font-cursive">
@@ -27,7 +27,7 @@ const Taste = () => {
                     <img
                         src="/food.jpg"
                         alt="Delicious Food"
-                        className="w-full max-w-sm md:max-w-md rounded-2xl shadow-lg object-cover"
+                        className="w-full h-80 max-w-sm md:max-w-md rounded-2xl shadow-lg object-cover"
                     />
                 </div>
 
