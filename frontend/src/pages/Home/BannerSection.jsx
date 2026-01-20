@@ -10,15 +10,15 @@ const BannerSection = () => {
       {/* CENTER TEXT */}
       <div className="text-center text-white px-6">
         <h1 className="text-4xl md:text-6xl font-bold mb-4 font-cursive">
-        100% Nepali Cuisine
+          100% Nepali Cuisine
         </h1>
         <p className="text-lg md:text-xl font-cursive">
           Fresh • Local • Authentic Nepali Flavors
         </p>
       </div>
 
-      {/* BOTTOM BUTTON */}
-      <div className="absolute bottom-8">
+      {/* BOTTOM LEFT BUTTON */}
+      <div className="absolute bottom-4 left-8 md:left-16">
         <button className="px-8 py-3 bg-white text-orange-600 text-lg font-semibold rounded-xl shadow hover:bg-yellow-200 transition font-cursive">
           SEE MORE
         </button>

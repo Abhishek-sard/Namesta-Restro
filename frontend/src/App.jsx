@@ -9,6 +9,7 @@ import Symbol from './pages/Home/Symbol.jsx';
 import Taste from './pages/Home/Taste.jsx';
 import Local from './pages/Home/Local.jsx';
 import BannerSection from './pages/Home/BannerSection.jsx';
+import SustainabilitySection from './pages/Home/SustainabilitySection.jsx';
 
 
 function HomePage(){
@@ -20,6 +21,7 @@ function HomePage(){
     <Taste/>
     <Local/>
     <BannerSection/>
+    <SustainabilitySection/>
     </>
   )
 }

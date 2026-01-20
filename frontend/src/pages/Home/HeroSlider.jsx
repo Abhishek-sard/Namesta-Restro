@@ -39,10 +39,10 @@ const HeroSlider = () => {
 
             {/* Content Overlay */}
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center z-10 px-4">
-                <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 drop-shadow-lg tracking-wide">
+                <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 drop-shadow-lg tracking-wide font-cursive">
                     Welcome to Namaste Restro
                 </h1>
-                <p className="text-xl md:text-2xl text-white font-medium max-w-2xl drop-shadow-md">
+                <p className="text-xl md:text-2xl text-white font-medium max-w-2xl drop-shadow-md font-cursive">
                     Experience authentic flavors and unforgettable moments.
                 </p>
                 <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mt-8">
