@@ -33,8 +33,11 @@ const Join = () => {
             JOIN OUR TEAM
           </button>
         </div>
+        
 
       </div>
+      <div class="w-275 border-t-4 border-dotted border-gray-400 my-25"></div>
+
     </div>
   );
 };
