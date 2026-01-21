@@ -1,14 +1,14 @@
 const Join = () => {
   return (
-    <div className="bg-white py-20 px-6">
+    <div className="bg-white py-20 px-25">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-10">
 
         {/* LEFT IMAGE */}
         <div className="md:w-1/2 flex justify-center md:justify-start">
           <img
-            src="/restro.jpg"
+            src="/groupworker.jpg"
             alt="Sustainable Nepali Cooking"
-            className="w-full max-w-md rounded-2xl shadow-lg object-cover"
+            className="w-full h-110 max-w-md rounded-2xl shadow-lg object-cover"
           />
         </div>
 
