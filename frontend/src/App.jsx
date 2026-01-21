@@ -13,6 +13,7 @@ import SustainabilitySection from './pages/Home/SustainabilitySection.jsx';
 import Join from './pages/Home/Join.jsx';
 import Hungry from './pages/Home/Hungry.jsx';
 import NepalFlagDivider from './pages/Home/NepalFlagDivider.jsx';
+import Review from './pages/Home/Review.jsx';
 
 
 function HomePage() {
@@ -28,6 +29,7 @@ function HomePage() {
       <Join />
       <Hungry />
       <NepalFlagDivider />
+      <Review/>
     </>
   )
 }
