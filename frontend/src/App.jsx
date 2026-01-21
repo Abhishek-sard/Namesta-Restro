@@ -12,20 +12,22 @@ import BannerSection from './pages/Home/BannerSection.jsx';
 import SustainabilitySection from './pages/Home/SustainabilitySection.jsx';
 import Join from './pages/Home/Join.jsx';
 import Hungry from './pages/Home/Hungry.jsx';
+import NepalFlagDivider from './pages/Home/NepalFlagDivider.jsx';
 
 
-function HomePage(){
-  return(
+function HomePage() {
+  return (
     <>
-    <HeroSlider/>
-    <Product/>
-    <Symbol/>
-    <Taste/>
-    <Local/>
-    <BannerSection/>
-    <SustainabilitySection/>
-    <Join/>
-    <Hungry/>
+      <HeroSlider />
+      <Product />
+      <Symbol />
+      <Taste />
+      <Local />
+      <BannerSection />
+      <SustainabilitySection />
+      <Join />
+      <Hungry />
+      <NepalFlagDivider />
     </>
   )
 }
@@ -38,7 +40,7 @@ function App() {
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<HomePage />} />
-         
+
           </Routes>
         </main>
         <Footer />
