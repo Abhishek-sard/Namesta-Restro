@@ -3,16 +3,12 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const Product = () => {
   const products = [
-    { id: 1, name: "Product 1", description: "This is product 1", price: "$10", image: "namesta.jpg" }, 
-    { id: 2, name: "Product 2", description: "This is product 2", price: "$20", image: "namesta.jpg" },
-    { id: 3, name: "Product 3", description: "This is product 3", price: "$30", image: "namesta.jpg" },
-    { id: 4, name: "Product 4", description: "This is product 4", price: "$40", image: "namesta.jpg" },
-    { id: 5, name: "Product 5", description: "This is product 5", price: "$50", image: "namesta.jpg" },
-    { id: 6, name: "Product 6", description: "This is product 6", price: "$60", image: "namesta.jpg" },
-    { id: 7, name: "Product 7", description: "This is product 7", price: "$70", image: "namesta.jpg" },
-    { id: 8, name: "Product 8", description: "This is product 8", price: "$80", image: "namesta.jpg" },
-    { id: 9, name: "Product 9", description: "This is product 9", price: "$90", image: "namesta.jpg" },
-    { id: 10, name: "Product 10", description: "This is product 10", price: "$100", image: "namesta.jpg" },
+    { id: 1, name: "Steamed Momo", description: "Authentic Nepali steamed dumplings with spicy tomato chutney.", price: "$12.99", image: "/momo.png" },
+    { id: 2, name: "Dal Bhat Tarkari", description: "The soul of Nepali cuisine - rice, lentils, and seasonal vegetable curry.", price: "$18.50", image: "/dalbhat.png" },
+    { id: 3, name: "Himalayan Thukpa", description: "Hearty Tibetan-style noodle soup with fresh vegetables and aromatic spices.", price: "$14.99", image: "/thukpa.png" },
+    { id: 4, name: "Nepali Chow Mein", description: "Spicy stir-fried noodles with crisp vegetables and traditional Nepali zest.", price: "$13.50", image: "/chowmein.png" },
+    { id: 5, name: "Mutton Sekuwa", description: "Traditionally grilled spiced mutton, smoky and tender.", price: "$16.99", image: "/sekuwa.png" },
+    { id: 6, name: "Garlic Butter Naan", description: "Freshly baked clay-oven bread brushed with garlic butter.", price: "$4.50", image: "/naan.png" },
   ];
 
   const itemsPerPage = 4;
@@ -32,7 +28,7 @@ const Product = () => {
 
   return (
     <div className="bg-teal-50 min-h-screen flex flex-col items-center justify-center px-4">
-      <h1 className="text-5xl font-bold text-yellow-900 mb-8 mt-12">
+      <h1 className="text-5xl font-bold text-yellow-900 mb-8 mt-12 font-cursive">
         Our Products
       </h1>
 

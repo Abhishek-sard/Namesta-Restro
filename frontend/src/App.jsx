@@ -11,6 +11,7 @@ import Local from './pages/Home/Local.jsx';
 import BannerSection from './pages/Home/BannerSection.jsx';
 import SustainabilitySection from './pages/Home/SustainabilitySection.jsx';
 import Join from './pages/Home/Join.jsx';
+import Hungry from './pages/Home/Hungry.jsx';
 
 
 function HomePage(){
@@ -24,6 +25,7 @@ function HomePage(){
     <BannerSection/>
     <SustainabilitySection/>
     <Join/>
+    <Hungry/>
     </>
   )
 }
