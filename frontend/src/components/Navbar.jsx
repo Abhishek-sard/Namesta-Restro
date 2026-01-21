@@ -84,7 +84,7 @@ const Navbar = () => {
                   <Link to="/community/membership" className="block px-6 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 border-b border-gray-50 font-semibold">Relish Membership</Link>
                   <Link to="/community/local-matters" className="block px-6 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 border-b border-gray-50 font-semibold">Local Matters</Link>
                   <Link to="/community/careers" className="block px-6 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 border-b border-gray-50 font-semibold">Join Our Team</Link>
-                  <Link to="/community/sourcing" className="block px-6 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 border-b border-gray-50 font-semibold">Australian Sourcing</Link>
+               
                   <Link to="/community/sustainability" className="block px-6 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 font-semibold">Sustainability</Link>
                 </div>
               </div>
@@ -116,7 +116,6 @@ const Navbar = () => {
                 <div className="py-2">
                   <Link to="/menu" className="block px-6 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 border-b border-gray-50 font-semibold">Menu</Link>
                   <Link to="/food/catering" className="block px-6 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 border-b border-gray-50 font-semibold">Catering</Link>
-                  <Link to="/food/nutrition" className="block px-6 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 border-b border-gray-50 font-semibold">Nutrition & Allergen</Link>
                   <Link to="/food/gift-cards" className="block px-6 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 font-semibold">Gift Cards</Link>
                 </div>
               </div>
