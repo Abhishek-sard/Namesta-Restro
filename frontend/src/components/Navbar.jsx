@@ -1,8 +1,19 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { User, ChevronDown } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
+import { User, ChevronDown, LogOut, LayoutDashboard, Settings } from 'lucide-react';
+import { useAuth } from '../context/AuthContext';
 
 const Navbar = () => {
+  const { user, logout, isAdmin } = useAuth();
+  const navigate = useNavigate();
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
+
+  const handleLogout = () => {
+    logout();
+    navigate('/login');
+    setIsUserMenuOpen(false);
+  };
+
   return (
     <nav className="fixed top-0 left-0 w-full shadow-sm z-50 font-sans bg-[linear-gradient(110deg,#ffffff_35%,#9a3412_35%)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
@@ -11,7 +22,6 @@ const Navbar = () => {
           {/* Left Side - Logo */}
           <div className="flex-1 flex justify-start">
             <Link to="/" className="flex items-center">
-              {/* Placeholder for Logo - You can replace text with <img /> */}
               <img src="/namesta.jpg" alt="Namesta Logo" className="h-35 w-auto object-contain mt-16" />
             </Link>
           </div>
@@ -19,12 +29,51 @@ const Navbar = () => {
           {/* Center Navigation */}
           <div className="flex items-center space-x-8">
 
-            {/* Admin Icon */}
-            <button className="text-white hover:text-yellow-300 focus:outline-none transition-colors">
-              <User className="w-6 h-6" />
-            </button>
+            {/* Auth/User Icon Section */}
+            <div className="relative group">
+              <button
+                className="text-white hover:text-yellow-300 focus:outline-none transition-colors p-2"
+                onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
+                onBlur={() => setTimeout(() => setIsUserMenuOpen(false), 200)}
+              >
+                <User className="w-6 h-6" />
+              </button>
 
-            {/* Community Dropdown */}
+              <div className={`absolute right-0 mt-2 w-48 bg-white border border-gray-100 rounded-xl shadow-xl overflow-hidden transition-all duration-200 ${isUserMenuOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'}`}>
+                {user ? (
+                  <div className="py-1">
+                    <div className="px-4 py-3 border-b border-gray-50 bg-gray-50/50">
+                      <p className="text-sm font-bold text-gray-900 truncate">{user.name}</p>
+                      <p className="text-xs text-gray-500 truncate">{user.role}</p>
+                    </div>
+                    {isAdmin() && (
+                      <Link to="/admin" className="flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600">
+                        <LayoutDashboard className="w-4 h-4" />
+                        Admin Dashboard
+                      </Link>
+                    )}
+                    <Link to="/profile" className="flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600">
+                      <Settings className="w-4 h-4" />
+                      Settings
+                    </Link>
+                    <button
+                      onClick={handleLogout}
+                      className="w-full flex items-center gap-2 px-4 py-2 text-sm text-red-600 hover:bg-red-50 text-left"
+                    >
+                      <LogOut className="w-4 h-4" />
+                      Sign Out
+                    </button>
+                  </div>
+                ) : (
+                  <div className="py-1">
+                    <Link to="/login" className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 font-bold">Sign In</Link>
+                    <Link to="/register" className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600">Create Account</Link>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* Community Dropdown (Rest of your existing structure) */}
             <div className="relative group">
               <button className="flex items-center text-white hover:text-yellow-300 font-bold text-xl py-2 transition-colors">
                 Community
@@ -80,10 +129,6 @@ const Navbar = () => {
             </button>
 
           </div>
-
-          {/* Right Side - Empty for balance */}
-
-
         </div>
       </div>
     </nav>

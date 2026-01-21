@@ -15,6 +15,9 @@ import Hungry from './pages/Home/Hungry.jsx';
 import NepalFlagDivider from './pages/Home/NepalFlagDivider.jsx';
 import Review from './pages/Home/Review.jsx';
 import Event from './pages/Home/Event.jsx';
+import Login from './pages/Auth/Login.jsx';
+import Register from './pages/Auth/Register.jsx';
+import ProtectedRoute from './components/Protected/ProtectedRoute.jsx';
 
 
 function HomePage() {
@@ -44,6 +47,16 @@ function App() {
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+
+            <Route element={<ProtectedRoute />}>
+              <Route path="/profile" element={<div className="pt-40 text-center text-4xl font-bold bg-[#fdfaf5] min-h-screen">User Profile Setting</div>} />
+            </Route>
+
+            <Route element={<ProtectedRoute adminOnly={true} />}>
+              <Route path="/admin" element={<div className="pt-40 text-center text-4xl font-bold text-red-600 bg-[#fdfaf5] min-h-screen">Admin Control Center</div>} />
+            </Route>
 
           </Routes>
         </main>
