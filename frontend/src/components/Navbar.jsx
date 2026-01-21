@@ -73,19 +73,19 @@ const Navbar = () => {
               </div>
             </div>
 
-            {/* Community Dropdown (Rest of your existing structure) */}
+            {/* Community Dropdown */}
             <div className="relative group">
               <button className="flex items-center text-white hover:text-yellow-300 font-bold text-xl py-2 transition-colors">
                 Community
                 <ChevronDown className="ml-1 w-4 h-4" />
               </button>
-              <div className="absolute left-1/2 transform -translate-x-1/2 mt-0 w-56 bg-white border border-gray-100 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 ease-in-out">
+              <div className="absolute left-1/2 transform -translate-x-1/2 mt-0 w-64 bg-white border border-gray-100 rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 ease-in-out">
                 <div className="py-2">
-                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600">Relish Membership</a>
-                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600">Local Matters</a>
-                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600">Join Our Team</a>
-                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600">Australian Sourcing</a>
-                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600">Sustainability</a>
+                  <Link to="/community/membership" className="block px-6 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 border-b border-gray-50 font-semibold">Relish Membership</Link>
+                  <Link to="/community/local-matters" className="block px-6 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 border-b border-gray-50 font-semibold">Local Matters</Link>
+                  <Link to="/community/careers" className="block px-6 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 border-b border-gray-50 font-semibold">Join Our Team</Link>
+                  <Link to="/community/sourcing" className="block px-6 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 border-b border-gray-50 font-semibold">Australian Sourcing</Link>
+                  <Link to="/community/sustainability" className="block px-6 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 font-semibold">Sustainability</Link>
                 </div>
               </div>
             </div>
@@ -96,12 +96,12 @@ const Navbar = () => {
                 Restaurants
                 <ChevronDown className="ml-1 w-4 h-4" />
               </button>
-              <div className="absolute left-1/2 transform -translate-x-1/2 mt-0 w-48 bg-white border border-gray-100 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 ease-in-out">
+              <div className="absolute left-1/2 transform -translate-x-1/2 mt-0 w-64 bg-white border border-gray-100 rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 ease-in-out">
                 <div className="py-2">
-                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600">Find a Restaurant</a>
-                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600">Group Bookings</a>
-                  <Link to="/about" className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600">About Us</Link>
-                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600">News</a>
+                  <Link to="/restaurants/find" className="block px-6 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 border-b border-gray-50 font-semibold">Find a Restaurant</Link>
+                  <Link to="/restaurants/bookings" className="block px-6 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 border-b border-gray-50 font-semibold">Group Bookings</Link>
+                  <Link to="/about" className="block px-6 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 border-b border-gray-50 font-semibold">About Us</Link>
+                  <Link to="/news" className="block px-6 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 font-semibold">News</Link>
                 </div>
               </div>
             </div>
@@ -112,13 +112,12 @@ const Navbar = () => {
                 Food
                 <ChevronDown className="ml-1 w-4 h-4" />
               </button>
-              <div className="absolute left-1/2 transform -translate-x-1/2 mt-0 w-48 bg-white border border-gray-100 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 ease-in-out">
+              <div className="absolute left-1/2 transform -translate-x-1/2 mt-0 w-64 bg-white border border-gray-100 rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 ease-in-out">
                 <div className="py-2">
-                  <Link to="/menu" className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600">Menu</Link>
-                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600">Catering</a>
-                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600">Nutrition</a>
-                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600">Allergen Information</a>
-                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600">Gift Cards</a>
+                  <Link to="/menu" className="block px-6 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 border-b border-gray-50 font-semibold">Menu</Link>
+                  <Link to="/food/catering" className="block px-6 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 border-b border-gray-50 font-semibold">Catering</Link>
+                  <Link to="/food/nutrition" className="block px-6 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 border-b border-gray-50 font-semibold">Nutrition & Allergen</Link>
+                  <Link to="/food/gift-cards" className="block px-6 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 font-semibold">Gift Cards</Link>
                 </div>
               </div>
             </div>
