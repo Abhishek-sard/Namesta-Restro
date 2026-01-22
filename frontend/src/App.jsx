@@ -30,6 +30,8 @@ import AboutUs from './pages/Res/AboutUs.jsx';
 import GroupBookings from './pages/Res/GroupBookings.jsx';
 import News from './pages/Res/News.jsx';
 
+import AdminDashboard from './pages/Admin/AdminDashboard.jsx';
+
 
 function HomePage() {
   return (
@@ -83,7 +85,7 @@ function App() {
             </Route>
 
             <Route element={<ProtectedRoute adminOnly={true} />}>
-              <Route path="/admin" element={<div className="pt-40 text-center text-4xl font-bold text-red-600 bg-[#fdfaf5] min-h-screen">Admin Control Center</div>} />
+              <Route path="/admin" element={<AdminDashboard />} />
             </Route>
 
           </Routes>

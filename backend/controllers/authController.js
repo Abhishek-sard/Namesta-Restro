@@ -86,3 +86,37 @@ exports.getUserProfile = async (req, res) => {
         res.status(404).json({ message: 'User not found' });
     }
 };
+
+// @desc    Get all users
+// @route   GET /api/auth/users
+// @access  Private/Admin
+exports.getAllUsers = async (req, res) => {
+    try {
+        const users = await User.find({});
+        res.json(users);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};// @desc    Update password
+// @route   PUT /api/auth/updatepassword
+// @access  Private
+exports.updatePassword = async (req, res) => {
+    try {
+        const user = await User.findById(req.user.id).select('+password');
+
+        // Check current password
+        if (!(await user.matchPassword(req.body.currentPassword))) {
+            return res.status(401).json({ message: 'Current password is incorrect' });
+        }
+
+        user.password = req.body.newPassword;
+        await user.save();
+
+        res.status(200).json({
+            success: true,
+            message: 'Password updated successfully'
+        });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
