@@ -8,7 +8,7 @@ const EnergyWaterCare = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                     <div className="relative group lg:order-2">
                         <img
-                            src="https://images.unsplash.com/photo-1542601906990-b4d3fb773b09?q=80&w=2013&auto=format&fit=crop"
+                            src="/water.png"
                             alt="Water and Energy"
                             className="rounded-[3rem] shadow-2xl w-full h-[500px] object-cover group-hover:scale-105 transition-transform duration-700"
                         />

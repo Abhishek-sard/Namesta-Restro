@@ -39,7 +39,7 @@ const FoodWasteReduction = () => {
                     <div className="order-1 lg:order-2 group">
                         <div className="relative rounded-[3rem] overflow-hidden shadow-2xl">
                             <img
-                                src="https://images.unsplash.com/photo-1547592166-23ac45744acd?q=80&w=2071&auto=format&fit=crop"
+                                src="/reduce.jpg"
                                 alt="Chef cooking"
                                 className="w-full h-[500px] object-cover group-hover:scale-110 transition-transform duration-700"
                             />
