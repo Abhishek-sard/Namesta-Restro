@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 const images = [
-    "https://images.unsplash.com/photo-1514362545857-3bc16549766b?q=80&w=1920&auto=format&fit=crop", // Delicious Food Table
+    "./hero.jpg", // Delicious Food Table
     "https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=1920&auto=format&fit=crop", // Restaurant Interior
     "https://images.unsplash.com/photo-1544148103-0773bf10d330?q=80&w=1920&auto=format&fit=crop", // Plating Food
     "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1920&auto=format&fit=crop"  // Fine Dining

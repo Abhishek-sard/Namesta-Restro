@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { User, ChevronDown, LogOut, LayoutDashboard, Settings } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
@@ -7,6 +7,29 @@ const Navbar = () => {
   const { user, logout, isAdmin } = useAuth();
   const navigate = useNavigate();
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY < 10) {
+        setIsVisible(true);
+      } else if (currentScrollY > lastScrollY) {
+        // Scrolling down
+        setIsVisible(false);
+      } else {
+        // Scrolling up
+        setIsVisible(true);
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollY]);
 
   const handleLogout = () => {
     logout();
@@ -15,7 +38,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 w-full shadow-sm z-50 font-sans bg-[linear-gradient(110deg,#ffffff_35%,#9a3412_35%)]">
+    <nav className={`fixed top-0 left-0 w-full shadow-sm z-50 font-sans transition-transform duration-300 ${isVisible ? 'translate-y-0' : '-translate-y-full'} bg-[linear-gradient(110deg,#ffffff_35%,#9a3412_35%)]`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
         <div className="flex justify-between items-center h-24">
 
@@ -81,10 +104,9 @@ const Navbar = () => {
               </button>
               <div className="absolute left-1/2 transform -translate-x-1/2 mt-0 w-64 bg-white border border-gray-100 rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 ease-in-out">
                 <div className="py-2">
-                  <Link to="/community/membership" className="block px-6 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 border-b border-gray-50 font-semibold">Relish Membership</Link>
                   <Link to="/community/local-matters" className="block px-6 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 border-b border-gray-50 font-semibold">Local Matters</Link>
                   <Link to="/community/careers" className="block px-6 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 border-b border-gray-50 font-semibold">Join Our Team</Link>
-               
+
                   <Link to="/community/sustainability" className="block px-6 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 font-semibold">Sustainability</Link>
                 </div>
               </div>
@@ -101,7 +123,7 @@ const Navbar = () => {
                   <Link to="/restaurants/find" className="block px-6 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 border-b border-gray-50 font-semibold">Find a Restaurant</Link>
                   <Link to="/restaurants/bookings" className="block px-6 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 border-b border-gray-50 font-semibold">Group Bookings</Link>
                   <Link to="/about" className="block px-6 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 border-b border-gray-50 font-semibold">About Us</Link>
-                  <Link to="/news" className="block px-6 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 font-semibold">News</Link>
+                  <Link to="/blogs" className="block px-6 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 font-semibold">Blogs</Link>
                 </div>
               </div>
             </div>

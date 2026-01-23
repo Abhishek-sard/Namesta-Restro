@@ -26,6 +26,7 @@ const connectDB = async () => {
 // Routes
 app.use('/api/auth', require('./routes/authRoutes'));
 app.use('/api/menu', require('./routes/menuRoutes'));
+app.use('/api/blogs', require('./routes/blogRoutes'));
 
 // Root Route
 app.get('/', (req, res) => {

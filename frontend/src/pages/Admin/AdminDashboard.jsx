@@ -16,7 +16,9 @@ import {
     Bell,
     LogOut,
     AlertCircle,
-    Lock
+    Lock,
+    BookOpen,
+    FileText
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import axios from 'axios';
@@ -41,6 +43,18 @@ const AdminDashboard = () => {
     const [editingItem, setEditingItem] = useState(null);
     const [formData, setFormData] = useState({ name: '', category: '', price: '', description: '' });
 
+    // Blog State
+    const [blogs, setBlogs] = useState([]);
+    const [isBlogModalOpen, setIsBlogModalOpen] = useState(false);
+    const [editingBlog, setEditingBlog] = useState(null);
+    const [blogFormData, setBlogFormData] = useState({
+        title: '',
+        content: '',
+        author: user?.name || '',
+        category: 'Food',
+        image: ''
+    });
+
     // Password Reset State
     const [passwordData, setPasswordData] = useState({ currentPassword: '', newPassword: '', confirmPassword: '' });
     const [passwordStatus, setPasswordStatus] = useState({ type: '', message: '' });
@@ -50,6 +64,8 @@ const AdminDashboard = () => {
             fetchMenu();
         } else if (activeTab === 'customers') {
             fetchUsers();
+        } else if (activeTab === 'blogs') {
+            fetchBlogs();
         }
     }, [activeTab]);
 
@@ -76,6 +92,17 @@ const AdminDashboard = () => {
             setMenuItems(data.data);
         } catch (error) {
             console.error('Error fetching menu:', error);
+        }
+        setLoading(false);
+    };
+
+    const fetchBlogs = async () => {
+        setLoading(true);
+        try {
+            const { data } = await axios.get('http://localhost:5000/api/blogs');
+            setBlogs(data.data);
+        } catch (error) {
+            console.error('Error fetching blogs:', error);
         }
         setLoading(false);
     };
@@ -145,6 +172,58 @@ const AdminDashboard = () => {
         }
     };
 
+    const handleBlogSubmit = async (e) => {
+        e.preventDefault();
+        setLoading(true);
+        try {
+            const config = {
+                headers: {
+                    Authorization: `Bearer ${user.token}`
+                }
+            };
+            if (editingBlog) {
+                await axios.put(`http://localhost:5000/api/blogs/${editingBlog._id}`, blogFormData, config);
+            } else {
+                await axios.post('http://localhost:5000/api/blogs', blogFormData, config);
+            }
+            setIsBlogModalOpen(false);
+            setEditingBlog(null);
+            setBlogFormData({ title: '', content: '', author: user.name, category: 'Food', image: '' });
+            fetchBlogs();
+        } catch (error) {
+            console.error('Error saving blog:', error);
+        }
+        setLoading(false);
+    };
+
+    const handleEditBlog = (blog) => {
+        setEditingBlog(blog);
+        setBlogFormData({
+            title: blog.title,
+            content: blog.content,
+            author: blog.author,
+            category: blog.category,
+            image: blog.image || ''
+        });
+        setIsBlogModalOpen(true);
+    };
+
+    const handleDeleteBlog = async (id) => {
+        if (window.confirm('Are you sure you want to delete this blog?')) {
+            try {
+                const config = {
+                    headers: {
+                        Authorization: `Bearer ${user.token}`
+                    }
+                };
+                await axios.delete(`http://localhost:5000/api/blogs/${id}`, config);
+                fetchBlogs();
+            } catch (error) {
+                console.error('Error deleting blog:', error);
+            }
+        }
+    };
+
     const Sidebar = () => (
         <div className="w-64 bg-white h-screen fixed left-0 top-0 border-r border-gray-100 flex flex-col pt-24 z-20">
             <div className="px-6 mb-8">
@@ -162,6 +241,12 @@ const AdminDashboard = () => {
                     label="Menu Management"
                     active={activeTab === 'menu'}
                     onClick={() => setActiveTab('menu')}
+                />
+                <NavItem
+                    icon={BookOpen}
+                    label="Blog Management"
+                    active={activeTab === 'blogs'}
+                    onClick={() => setActiveTab('blogs')}
                 />
                 <NavItem
                     icon={ShoppingBag}
@@ -669,6 +754,7 @@ const AdminDashboard = () => {
 
                     {activeTab === 'overview' && <OverviewTab />}
                     {activeTab === 'menu' && <MenuTable />}
+                    {activeTab === 'blogs' && <BlogsTable />}
                     {activeTab === 'customers' && <UsersTable />}
                     {activeTab === 'settings' && <SettingsTab />}
                     {activeTab === 'orders' && (
@@ -683,6 +769,7 @@ const AdminDashboard = () => {
                 </div>
             </main>
             <Modal />
+            <BlogModal />
         </div>
     );
 };

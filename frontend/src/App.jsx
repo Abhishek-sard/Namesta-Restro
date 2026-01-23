@@ -18,7 +18,6 @@ import Event from './pages/Home/Event.jsx';
 import Login from './pages/Auth/Login.jsx';
 import Register from './pages/Auth/Register.jsx';
 import ProtectedRoute from './components/Protected/ProtectedRoute.jsx';
-import Membership from './pages/community/Membership.jsx';
 import LocalMatters from './pages/community/LocalMatters.jsx';
 import Careers from './pages/community/Careers.jsx';
 import Sustainability from './pages/community/Sustainability.jsx';
@@ -28,7 +27,7 @@ import GiftCards from './pages/Food/GiftCards.jsx';
 import FindRestaurant from './pages/Res/FindRestaurant.jsx';
 import AboutUs from './pages/Res/AboutUs.jsx';
 import GroupBookings from './pages/Res/GroupBookings.jsx';
-import News from './pages/Res/News.jsx';
+import Blogs from './pages/Res/Blogs.jsx';
 
 import AdminDashboard from './pages/Admin/AdminDashboard.jsx';
 
@@ -64,7 +63,6 @@ function App() {
             <Route path="/register" element={<Register />} />
 
             {/* Community Routes */}
-            <Route path="/community/membership" element={<Membership />} />
             <Route path="/community/local-matters" element={<LocalMatters />} />
             <Route path="/community/careers" element={<Careers />} />
             <Route path="/community/sustainability" element={<Sustainability />} />
@@ -78,7 +76,7 @@ function App() {
             <Route path="/restaurants/find" element={<FindRestaurant />} />
             <Route path="/restaurants/bookings" element={<GroupBookings />} />
             <Route path="/about" element={<AboutUs />} />
-            <Route path="/news" element={<News />} />
+            <Route path="/blogs" element={<Blogs />} />
 
             <Route element={<ProtectedRoute />}>
               <Route path="/profile" element={<div className="pt-40 text-center text-4xl font-bold bg-[#fdfaf5] min-h-screen">User Profile Setting</div>} />
