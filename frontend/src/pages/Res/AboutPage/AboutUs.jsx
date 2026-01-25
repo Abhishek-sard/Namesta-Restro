@@ -27,11 +27,11 @@ const AboutUs = () => {
                         <div className="grid grid-cols-2 gap-6 md:gap-12 py-10 border-t border-orange-100">
                             <div className="hover:transform hover:scale-105 transition-all duration-300">
                                 <p className="text-4xl md:text-5xl font-black text-red-600 mb-2">10+</p>
-                                <p className="text-gray-500 font-bold tracking-wider uppercase text-xs md:text-sm">Years of Tradition</p>
+                                <p className="text-gray-900 font-bold tracking-wider uppercase text-xs md:text-sm font-cursive">Years of Tradition</p>
                             </div>
                             <div className="hover:transform hover:scale-105 transition-all duration-300">
                                 <p className="text-4xl md:text-5xl font-black text-red-600 mb-2">50+</p>
-                                <p className="text-gray-500 font-bold tracking-wider uppercase text-xs md:text-sm">Authentic Recipes</p>
+                                <p className="text-gray-900 font-bold tracking-wider uppercase text-xs md:text-sm font-cursive">Authentic Recipes</p>
                             </div>
                         </div>
                     </div>
