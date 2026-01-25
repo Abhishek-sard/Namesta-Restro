@@ -18,7 +18,7 @@ const ClosingPromise = () => {
                         <Link to="/menu" className="bg-white text-green-800 px-12 py-5 rounded-3xl font-bold hover:bg-green-50 transition-all shadow-lg hover:-translate-y-1 text-xl font-cursive">
                             Explore Our Menu
                         </Link>
-                        <Link to="/about" className="bg-transparent border-2 border-white/30 text-white px-12 py-5 rounded-3xl font-bold hover:bg-white/10 transition-all backdrop-blur-sm text-xl font-cursive">
+                        <Link to="/restaurants/about" className="bg-transparent border-2 border-white/30 text-white px-12 py-5 rounded-3xl font-bold hover:bg-white/10 transition-all backdrop-blur-sm text-xl font-cursive">
                             Our Story
                         </Link>
                     </div>

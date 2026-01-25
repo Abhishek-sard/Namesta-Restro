@@ -25,7 +25,7 @@ import Menu from './pages/Food/Menu.jsx';
 import Catering from './pages/Food/Catering.jsx';
 import GiftCards from './pages/Food/GiftCards.jsx';
 import FindRestaurant from './pages/Res/FindRestaurant.jsx';
-import AboutUs from './pages/Res/AboutUs.jsx';
+import AboutUs from './pages/Res/AboutPage/AboutUs.jsx';
 import GroupBookings from './pages/Res/GroupBookings.jsx';
 import Blogs from './pages/Res/Blogs.jsx';
 
@@ -75,7 +75,7 @@ function App() {
             {/* Restaurant Routes */}
             <Route path="/restaurants/find" element={<FindRestaurant />} />
             <Route path="/restaurants/bookings" element={<GroupBookings />} />
-            <Route path="/about" element={<AboutUs />} />
+            <Route path="/restaurants/about" element={<AboutUs />} />
             <Route path="/blogs" element={<Blogs />} />
 
             <Route element={<ProtectedRoute />}>

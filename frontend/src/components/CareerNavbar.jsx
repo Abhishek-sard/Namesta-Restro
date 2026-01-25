@@ -8,7 +8,7 @@ const CareerNavbar = () => {
 
     const navLinks = [
         { name: 'Home', path: '/' },
-        { name: 'Our Story', path: '/about' },
+        { name: 'Our Story', path: '/restaurants/about' },
         { name: 'Our Impact', path: '/community/sustainability' },
         { name: 'Career Journey', path: '/community/careers#journey' },
         { name: 'Our Roles', path: '/community/careers#roles' },
