@@ -7,12 +7,12 @@ const CareerNavbar = () => {
     const location = useLocation();
 
     const navLinks = [
-        { name: 'Home', path: '/' },
-        { name: 'Our Story', path: '/restaurants/about' },
-        { name: 'Our Impact', path: '/community/sustainability' },
+        { name: 'Home', path: '/?experience=career' },
+        { name: 'Our Story', path: '/restaurants/about?experience=career' },
+        { name: 'Our Impact', path: '/community/sustainability?experience=career' },
         { name: 'Career Journey', path: '/community/careers#journey' },
         { name: 'Our Roles', path: '/community/careers#roles' },
-        { name: 'Our Community', path: '/community/local-matters' },
+        { name: 'Our Community', path: '/community/local-matters?experience=career' },
     ];
 
     // Helper to handle smooth scroll for hash links

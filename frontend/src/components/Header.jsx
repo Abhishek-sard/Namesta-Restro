@@ -5,9 +5,10 @@ import CareerNavbar from './CareerNavbar';
 
 const Header = () => {
     const location = useLocation();
-    const isCareerPage = location.pathname.startsWith('/community/careers');
+    const searchParams = new URLSearchParams(location.search);
+    const isCareerExperience = location.pathname.startsWith('/community/careers') || searchParams.get('experience') === 'career';
 
-    return isCareerPage ? <CareerNavbar /> : <Navbar />;
+    return isCareerExperience ? <CareerNavbar /> : <Navbar />;
 };
 
 export default Header;
