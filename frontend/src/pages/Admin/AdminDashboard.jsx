@@ -528,6 +528,82 @@ const AdminDashboard = () => {
         </div>
     );
 
+    const BlogsTable = () => (
+        <div className="bg-white rounded-3xl border border-gray-100 shadow-sm overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-700">
+            <div className="p-8 border-b border-gray-50 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                    <h3 className="text-2xl font-bold text-gray-900 mb-1">Blog Management</h3>
+                    <p className="text-gray-500">Create and manage your restaurant blogs</p>
+                </div>
+                <button
+                    onClick={() => {
+                        setEditingBlog(null);
+                        setBlogFormData({ title: '', content: '', author: user?.name, category: 'Food', image: '' });
+                        setIsBlogModalOpen(true);
+                    }}
+                    className="bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded-xl font-bold flex items-center gap-2 transition-all shadow-lg shadow-orange-100"
+                >
+                    <Plus className="w-5 h-5" />
+                    Add New Blog
+                </button>
+            </div>
+
+            <div className="p-6 overflow-x-auto">
+                <table className="w-full">
+                    <thead>
+                        <tr className="text-left">
+                            <th className="pb-4 pt-2 px-4 text-xs font-bold text-gray-400 uppercase tracking-wider">Blog Details</th>
+                            <th className="pb-4 pt-2 px-4 text-xs font-bold text-gray-400 uppercase tracking-wider">Category</th>
+                            <th className="pb-4 pt-2 px-4 text-xs font-bold text-gray-400 uppercase tracking-wider">Author</th>
+                            <th className="pb-4 pt-2 px-4 text-xs font-bold text-gray-400 uppercase tracking-wider">Date</th>
+                            <th className="pb-4 pt-2 px-4 text-xs font-bold text-gray-400 uppercase tracking-wider">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody className="divide-y divide-gray-50">
+                        {loading ? (
+                            <tr><td colSpan="5" className="py-20 text-center text-orange-600 font-bold">Loading Blogs...</td></tr>
+                        ) : blogs.filter(blog => blog.title.toLowerCase().includes(searchTerm.toLowerCase())).length > 0 ?
+                            blogs.filter(blog => blog.title.toLowerCase().includes(searchTerm.toLowerCase())).map((blog) => (
+                                <tr key={blog._id} className="hover:bg-gray-50/50 transition-colors group">
+                                    <td className="py-5 px-4 text-sm font-bold text-gray-900">{blog.title}</td>
+                                    <td className="py-5 px-4">
+                                        <span className="bg-orange-100 text-orange-600 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest border border-orange-200">
+                                            {blog.category}
+                                        </span>
+                                    </td>
+                                    <td className="py-5 px-4 text-sm text-gray-600">{blog.author}</td>
+                                    <td className="py-5 px-4 text-sm text-gray-500">
+                                        {new Date(blog.createdAt).toLocaleDateString()}
+                                    </td>
+                                    <td className="py-5 px-4">
+                                        <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                                            <button
+                                                onClick={() => handleEditBlog(blog)}
+                                                className="p-2 text-gray-400 hover:text-orange-600 hover:bg-orange-50 rounded-lg transition-all"
+                                            >
+                                                <Edit className="w-4 h-4" />
+                                            </button>
+                                            <button
+                                                onClick={() => handleDeleteBlog(blog._id)}
+                                                className="p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all"
+                                            >
+                                                <Trash2 className="w-4 h-4" />
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            )) : (
+                                <tr>
+                                    <td colSpan="5" className="py-12 text-center text-gray-400 italic">No blogs found.</td>
+                                </tr>
+                            )}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    );
+
+
     const SettingsTab = () => (
         <div className="max-w-2xl animate-in fade-in slide-in-from-bottom-4 duration-700">
             <div className="bg-white rounded-3xl border border-gray-100 shadow-sm overflow-hidden">
@@ -769,9 +845,112 @@ const AdminDashboard = () => {
                 </div>
             </main>
             <Modal />
-            <BlogModal />
+            <BlogModal
+                isOpen={isBlogModalOpen}
+                onClose={() => setIsBlogModalOpen(false)}
+                onSubmit={handleBlogSubmit}
+                blog={editingBlog}
+                formData={blogFormData}
+                setFormData={setBlogFormData}
+            />
         </div>
     );
 };
+
+const BlogModal = ({ isOpen, onClose, onSubmit, blog, formData, setFormData }) => (
+    <div className={`fixed inset-0 z-50 flex items-center justify-center p-4 transition-all duration-300 ${isOpen ? 'visible opacity-100' : 'invisible opacity-0'}`}>
+        <div className="absolute inset-0 bg-gray-900/60 backdrop-blur-sm" onClick={onClose} />
+        <div className={`bg-white rounded-[2rem] shadow-2xl w-full max-w-2xl relative z-10 transition-all duration-500 ${isOpen ? 'scale-100 translate-y-0' : 'scale-95 translate-y-8'}`}>
+            <div className="p-8">
+                <div className="flex justify-between items-center mb-6">
+                    <h3 className="text-2xl font-bold text-gray-900">{blog ? 'Edit Blog' : 'Add New Blog'}</h3>
+                    <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
+                        <Plus className="w-6 h-6 rotate-45" />
+                    </button>
+                </div>
+
+                <form onSubmit={onSubmit} className="space-y-5">
+                    <div className="grid grid-cols-2 gap-4">
+                        <div>
+                            <label className="block text-sm font-bold text-gray-700 mb-1.5">Blog Title</label>
+                            <input
+                                type="text"
+                                required
+                                className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all font-medium"
+                                placeholder="Enter title"
+                                value={formData.title}
+                                onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+                            />
+                        </div>
+                        <div>
+                            <label className="block text-sm font-bold text-gray-700 mb-1.5">Author</label>
+                            <input
+                                type="text"
+                                required
+                                className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all font-medium"
+                                value={formData.author}
+                                onChange={(e) => setFormData({ ...formData, author: e.target.value })}
+                            />
+                        </div>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-4">
+                        <div>
+                            <label className="block text-sm font-bold text-gray-700 mb-1.5">Category</label>
+                            <select
+                                className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all font-medium"
+                                value={formData.category}
+                                onChange={(e) => setFormData({ ...formData, category: e.target.value })}
+                            >
+                                <option value="Food">Food</option>
+                                <option value="Events">Events</option>
+                                <option value="Culture">Culture</option>
+                                <option value="Restaurant">Restaurant</option>
+                                <option value="Offers">Offers</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label className="block text-sm font-bold text-gray-700 mb-1.5">Image URL</label>
+                            <input
+                                type="text"
+                                className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all font-medium"
+                                placeholder="Enter image URL"
+                                value={formData.image}
+                                onChange={(e) => setFormData({ ...formData, image: e.target.value })}
+                            />
+                        </div>
+                    </div>
+
+                    <div>
+                        <label className="block text-sm font-bold text-gray-700 mb-1.5">Content</label>
+                        <textarea
+                            required
+                            className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all font-medium resize-none h-40"
+                            placeholder="Enter blog content..."
+                            value={formData.content}
+                            onChange={(e) => setFormData({ ...formData, content: e.target.value })}
+                        />
+                    </div>
+
+                    <div className="pt-4 flex gap-3">
+                        <button
+                            type="button"
+                            onClick={onClose}
+                            className="flex-1 px-6 py-3 rounded-xl font-bold text-gray-500 hover:bg-gray-100 transition-all border border-gray-100"
+                        >
+                            Cancel
+                        </button>
+                        <button
+                            type="submit"
+                            className="flex-[2] bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded-xl font-bold transition-all shadow-lg shadow-orange-100"
+                        >
+                            {blog ? 'Save Changes' : 'Create Blog'}
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+);
 
 export default AdminDashboard;

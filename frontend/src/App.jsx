@@ -28,6 +28,7 @@ import FindRestaurant from './pages/Res/FindRestaurant.jsx';
 import AboutUs from './pages/Res/AboutPage/AboutUs.jsx';
 import GroupBookings from './pages/Res/GroupBookings.jsx';
 import Blogs from './pages/Res/Blogs.jsx';
+import BlogDetail from './pages/Res/BlogDetail.jsx';
 
 import AdminDashboard from './pages/Admin/AdminDashboard.jsx';
 
@@ -77,6 +78,7 @@ function App() {
             <Route path="/restaurants/bookings" element={<GroupBookings />} />
             <Route path="/restaurants/about" element={<AboutUs />} />
             <Route path="/blogs" element={<Blogs />} />
+            <Route path="/blogs/:id" element={<BlogDetail />} />
 
             <Route element={<ProtectedRoute />}>
               <Route path="/profile" element={<div className="pt-40 text-center text-4xl font-bold bg-[#fdfaf5] min-h-screen">User Profile Setting</div>} />
