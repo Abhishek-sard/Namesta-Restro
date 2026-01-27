@@ -52,7 +52,7 @@ const News = () => {
                                     </div>
                                     <h3 className="text-2xl font-bold text-gray-900 mb-6 group-hover:text-red-600 transition-colors leading-tight line-clamp-2 h-16">{blog.title}</h3>
                                     <Link to={`/blogs/${blog._id}`} className="flex items-center gap-2 text-red-600 font-bold hover:underline">
-                                        READ ARTICLE <ChevronRight size={18} />
+                                        READ MORE <ChevronRight size={18} />
                                     </Link>
                                 </div>
                             </div>

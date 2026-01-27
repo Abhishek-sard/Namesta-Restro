@@ -178,17 +178,31 @@ const AdminDashboard = () => {
         try {
             const config = {
                 headers: {
+                    'Content-Type': 'multipart/form-data',
                     Authorization: `Bearer ${user.token}`
                 }
             };
-            if (editingBlog) {
-                await axios.put(`http://localhost:5000/api/blogs/${editingBlog._id}`, blogFormData, config);
+
+            const formData = new FormData();
+            formData.append('title', blogFormData.title);
+            formData.append('content', blogFormData.content);
+            formData.append('author', blogFormData.author);
+            formData.append('category', blogFormData.category);
+
+            if (blogFormData.imageFile) {
+                formData.append('image', blogFormData.imageFile);
             } else {
-                await axios.post('http://localhost:5000/api/blogs', blogFormData, config);
+                formData.append('image', blogFormData.image);
+            }
+
+            if (editingBlog) {
+                await axios.put(`http://localhost:5000/api/blogs/${editingBlog._id}`, formData, config);
+            } else {
+                await axios.post('http://localhost:5000/api/blogs', formData, config);
             }
             setIsBlogModalOpen(false);
             setEditingBlog(null);
-            setBlogFormData({ title: '', content: '', author: user.name, category: 'Food', image: '' });
+            setBlogFormData({ title: '', content: '', author: user.name, category: 'Food', image: '', imageFile: null });
             fetchBlogs();
         } catch (error) {
             console.error('Error saving blog:', error);
@@ -706,7 +720,7 @@ const AdminDashboard = () => {
                             <input
                                 type="text"
                                 required
-                                className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all font-medium"
+                                className="w-full px-4 py-3 rounded-xl border border-gray-700 bg-black text-white focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all font-medium"
                                 placeholder="e.g. Special Chicken MoMo"
                                 value={formData.name}
                                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -717,7 +731,7 @@ const AdminDashboard = () => {
                             <div>
                                 <label className="block text-sm font-bold text-gray-700 mb-1.5">Category</label>
                                 <select
-                                    className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all font-medium appearance-none"
+                                    className="w-full px-4 py-3 rounded-xl border border-gray-700 bg-black text-white focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all font-medium appearance-none"
                                     value={formData.category}
                                     required
                                     onChange={(e) => setFormData({ ...formData, category: e.target.value })}
@@ -736,7 +750,7 @@ const AdminDashboard = () => {
                                     type="number"
                                     step="0.01"
                                     required
-                                    className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all font-medium"
+                                    className="w-full px-4 py-3 rounded-xl border border-gray-700 bg-black text-white focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all font-medium"
                                     placeholder="0.00"
                                     value={formData.price}
                                     onChange={(e) => setFormData({ ...formData, price: e.target.value })}
@@ -747,7 +761,7 @@ const AdminDashboard = () => {
                         <div>
                             <label className="block text-sm font-bold text-gray-700 mb-1.5">Description</label>
                             <textarea
-                                className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all font-medium resize-none h-24"
+                                className="w-full px-4 py-3 rounded-xl border border-gray-700 bg-black text-white focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all font-medium resize-none h-24"
                                 placeholder="Brief description of the item..."
                                 value={formData.description}
                                 onChange={(e) => setFormData({ ...formData, description: e.target.value })}
@@ -876,7 +890,7 @@ const BlogModal = ({ isOpen, onClose, onSubmit, blog, formData, setFormData }) =
                             <input
                                 type="text"
                                 required
-                                className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all font-medium"
+                                className="w-full px-4 py-3 rounded-xl border border-gray-700 bg-black text-white focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all font-medium"
                                 placeholder="Enter title"
                                 value={formData.title}
                                 onChange={(e) => setFormData({ ...formData, title: e.target.value })}
@@ -887,7 +901,7 @@ const BlogModal = ({ isOpen, onClose, onSubmit, blog, formData, setFormData }) =
                             <input
                                 type="text"
                                 required
-                                className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all font-medium"
+                                className="w-full px-4 py-3 rounded-xl border border-gray-700 bg-black text-white focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all font-medium"
                                 value={formData.author}
                                 onChange={(e) => setFormData({ ...formData, author: e.target.value })}
                             />
@@ -898,7 +912,7 @@ const BlogModal = ({ isOpen, onClose, onSubmit, blog, formData, setFormData }) =
                         <div>
                             <label className="block text-sm font-bold text-gray-700 mb-1.5">Category</label>
                             <select
-                                className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all font-medium"
+                                className="w-full px-4 py-3 rounded-xl border border-gray-700 bg-black text-white focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all font-medium"
                                 value={formData.category}
                                 onChange={(e) => setFormData({ ...formData, category: e.target.value })}
                             >
@@ -910,14 +924,18 @@ const BlogModal = ({ isOpen, onClose, onSubmit, blog, formData, setFormData }) =
                             </select>
                         </div>
                         <div>
-                            <label className="block text-sm font-bold text-gray-700 mb-1.5">Image URL</label>
-                            <input
-                                type="text"
-                                className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all font-medium"
-                                placeholder="Enter image URL"
-                                value={formData.image}
-                                onChange={(e) => setFormData({ ...formData, image: e.target.value })}
-                            />
+                            <label className="block text-sm font-bold text-gray-700 mb-1.5">Blog Image</label>
+                            <div className="flex flex-col gap-2">
+                                <input
+                                    type="file"
+                                    accept="image/*"
+                                    className="w-full px-4 py-2 text-sm rounded-xl border border-gray-200 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-orange-50 file:text-orange-700 hover:file:bg-orange-100 transition-all font-medium"
+                                    onChange={(e) => setFormData({ ...formData, imageFile: e.target.files[0] })}
+                                />
+                                {formData.image && !formData.imageFile && (
+                                    <p className="text-xs text-gray-500 truncate">Current: {formData.image.split('/').pop()}</p>
+                                )}
+                            </div>
                         </div>
                     </div>
 
@@ -925,7 +943,7 @@ const BlogModal = ({ isOpen, onClose, onSubmit, blog, formData, setFormData }) =
                         <label className="block text-sm font-bold text-gray-700 mb-1.5">Content</label>
                         <textarea
                             required
-                            className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all font-medium resize-none h-40"
+                            className="w-full px-4 py-3 rounded-xl border border-gray-700 bg-black text-white focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all font-medium resize-none h-40"
                             placeholder="Enter blog content..."
                             value={formData.content}
                             onChange={(e) => setFormData({ ...formData, content: e.target.value })}

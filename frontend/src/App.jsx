@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header.jsx';
 import Footer from './components/Footer.jsx';
 
@@ -52,46 +52,55 @@ function HomePage() {
   )
 }
 
+function AppContent() {
+  const location = useLocation();
+  const isAdminPath = location.pathname.startsWith('/admin');
+
+  return (
+    <div className="min-h-screen bg-gray-50 flex flex-col">
+      <Header />
+      <main className="flex-grow">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+
+          {/* Community Routes */}
+          <Route path="/community/local-matters" element={<LocalMatters />} />
+          <Route path="/community/careers" element={<Careers />} />
+          <Route path="/community/sustainability" element={<Sustainability />} />
+
+          {/* Food Routes */}
+          <Route path="/menu" element={<Menu />} />
+          <Route path="/food/catering" element={<Catering />} />
+          <Route path="/food/gift-cards" element={<GiftCards />} />
+
+          {/* Restaurant Routes */}
+          <Route path="/restaurants/find" element={<FindRestaurant />} />
+          <Route path="/restaurants/bookings" element={<GroupBookings />} />
+          <Route path="/restaurants/about" element={<AboutUs />} />
+          <Route path="/blogs" element={<Blogs />} />
+          <Route path="/blogs/:id" element={<BlogDetail />} />
+
+          <Route element={<ProtectedRoute />}>
+            <Route path="/profile" element={<div className="pt-40 text-center text-4xl font-bold bg-[#fdfaf5] min-h-screen">User Profile Setting</div>} />
+          </Route>
+
+          <Route element={<ProtectedRoute adminOnly={true} />}>
+            <Route path="/admin" element={<AdminDashboard />} />
+          </Route>
+
+        </Routes>
+      </main>
+      {!isAdminPath && <Footer />}
+    </div>
+  );
+}
+
 function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-gray-50 flex flex-col">
-        <Header />
-        <main className="flex-grow">
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-
-            {/* Community Routes */}
-            <Route path="/community/local-matters" element={<LocalMatters />} />
-            <Route path="/community/careers" element={<Careers />} />
-            <Route path="/community/sustainability" element={<Sustainability />} />
-
-            {/* Food Routes */}
-            <Route path="/menu" element={<Menu />} />
-            <Route path="/food/catering" element={<Catering />} />
-            <Route path="/food/gift-cards" element={<GiftCards />} />
-
-            {/* Restaurant Routes */}
-            <Route path="/restaurants/find" element={<FindRestaurant />} />
-            <Route path="/restaurants/bookings" element={<GroupBookings />} />
-            <Route path="/restaurants/about" element={<AboutUs />} />
-            <Route path="/blogs" element={<Blogs />} />
-            <Route path="/blogs/:id" element={<BlogDetail />} />
-
-            <Route element={<ProtectedRoute />}>
-              <Route path="/profile" element={<div className="pt-40 text-center text-4xl font-bold bg-[#fdfaf5] min-h-screen">User Profile Setting</div>} />
-            </Route>
-
-            <Route element={<ProtectedRoute adminOnly={true} />}>
-              <Route path="/admin" element={<AdminDashboard />} />
-            </Route>
-
-          </Routes>
-        </main>
-        <Footer />
-      </div>
+      <AppContent />
     </Router>
   )
 }

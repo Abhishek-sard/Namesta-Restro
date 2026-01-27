@@ -36,7 +36,11 @@ exports.getBlog = async (req, res) => {
 // @access  Private/Admin
 exports.createBlog = async (req, res) => {
     try {
-        const blog = await Blog.create(req.body);
+        const blogData = { ...req.body };
+        if (req.file) {
+            blogData.image = `http://localhost:5000/uploads/${req.file.filename}`;
+        }
+        const blog = await Blog.create(blogData);
         res.status(201).json({ success: true, data: blog });
     } catch (error) {
         res.status(400).json({ success: false, message: error.message });
@@ -52,7 +56,13 @@ exports.updateBlog = async (req, res) => {
         if (!blog) {
             return res.status(404).json({ success: false, message: 'Blog not found' });
         }
-        blog = await Blog.findByIdAndUpdate(req.params.id, req.body, {
+
+        const blogData = { ...req.body };
+        if (req.file) {
+            blogData.image = `http://localhost:5000/uploads/${req.file.filename}`;
+        }
+
+        blog = await Blog.findByIdAndUpdate(req.params.id, blogData, {
             new: true,
             runValidators: true
         });
