@@ -25,7 +25,7 @@ const News = () => {
         <div className="pt-24 min-h-screen bg-[#fdfaf5]">
             <div className="max-w-7xl mx-auto px-4 py-20">
                 <div className="text-center mb-16">
-                    <h1 className="text-4xl md:text-6xl font-bold mb-4 font-cursive">Namaste <span className="text-red-600">News</span></h1>
+                    <h1 className="text-4xl md:text-6xl text-black font-bold mb-4 font-cursive">Namaste <span className="text-red-600">Blogs</span></h1>
                     <p className="text-gray-600 italic">Latest updates, awards, and stories from the family.</p>
                 </div>
 
