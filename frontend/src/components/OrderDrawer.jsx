@@ -38,7 +38,7 @@ const OrderDrawer = ({ isOpen, onClose }) => {
             />
 
             {/* Drawer */}
-            <div className={`fixed top-0 right-0 h-full w-full md:w-[500px] bg-white z-[70] shadow-2xl transform transition-transform duration-500 ease-in-out ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+            <div className={`fixed top-0 right-0 h-full w-full md:w-[700px] bg-white z-[70] shadow-2xl transform transition-transform duration-500 ease-in-out ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
                 {isLoading ? (
                     <div className="h-full flex flex-col items-center justify-center bg-red-600">
                         <style>
