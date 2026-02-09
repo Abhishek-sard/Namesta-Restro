@@ -21,7 +21,12 @@ exports.getMenus = async (req, res) => {
 // @access  Private/Admin
 exports.createMenu = async (req, res) => {
     try {
-        const menu = await Menu.create(req.body);
+        const menuData = { ...req.body };
+        if (req.file) {
+            menuData.image = `http://localhost:5000/uploads/${req.file.filename}`;
+        }
+
+        const menu = await Menu.create(menuData);
         res.status(201).json({
             success: true,
             data: menu
@@ -36,14 +41,20 @@ exports.createMenu = async (req, res) => {
 // @access  Private/Admin
 exports.updateMenu = async (req, res) => {
     try {
-        const menu = await Menu.findByIdAndUpdate(req.params.id, req.body, {
-            new: true,
-            runValidators: true
-        });
-
+        let menu = await Menu.findById(req.params.id);
         if (!menu) {
             return res.status(404).json({ success: false, error: 'Menu item not found' });
         }
+
+        const menuData = { ...req.body };
+        if (req.file) {
+            menuData.image = `http://localhost:5000/uploads/${req.file.filename}`;
+        }
+
+        menu = await Menu.findByIdAndUpdate(req.params.id, menuData, {
+            new: true,
+            runValidators: true
+        });
 
         res.status(200).json({
             success: true,

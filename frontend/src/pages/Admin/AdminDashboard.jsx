@@ -3,7 +3,6 @@ import {
     Users,
     Utensils,
     ShoppingBag,
-    TrendingUp,
     Plus,
     Search,
     MoreVertical,
@@ -11,7 +10,6 @@ import {
     Trash2,
     CheckCircle,
     Clock,
-    LayoutDashboard,
     Settings,
     Bell,
     LogOut,
@@ -24,24 +22,18 @@ import { useAuth } from '../../context/AuthContext';
 import axios from 'axios';
 
 const AdminDashboard = () => {
-    const [activeTab, setActiveTab] = useState('overview');
+    const [activeTab, setActiveTab] = useState('menu');
     const { user, logout } = useAuth();
     const [menuItems, setMenuItems] = useState([]);
     const [users, setUsers] = useState([]);
     const [loading, setLoading] = useState(false);
     const [searchTerm, setSearchTerm] = useState('');
 
-    // Stats Data
-    const stats = [
-        { title: 'Total Revenue', value: '$12,845', icon: TrendingUp, color: 'bg-green-500', trend: '+12.5%' },
-        { title: 'Total Orders', value: '456', icon: ShoppingBag, color: 'bg-blue-500', trend: '+8.2%' },
-        { title: 'Active Menu', value: '24', icon: Utensils, color: 'bg-orange-500', trend: '0%' },
-        { title: 'Customers', value: '1,204', icon: Users, color: 'bg-purple-500', trend: '+15.3%' },
-    ];
+
 
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [editingItem, setEditingItem] = useState(null);
-    const [formData, setFormData] = useState({ name: '', category: '', price: '', description: '' });
+    const [formData, setFormData] = useState({ name: '', category: '', price: '', description: '', image: '', imageFile: null });
 
     // Blog State
     const [blogs, setBlogs] = useState([]);
@@ -109,24 +101,49 @@ const AdminDashboard = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setLoading(true);
         try {
+            const config = {
+                headers: {
+                    Authorization: `Bearer ${user.token}`
+                }
+            };
+
+            const data = new FormData();
+            data.append('name', formData.name);
+            data.append('category', formData.category);
+            data.append('price', formData.price);
+            data.append('description', formData.description);
+            if (formData.imageFile) {
+                data.append('image', formData.imageFile);
+            }
+
             if (editingItem) {
-                await axios.put(`http://localhost:5000/api/menu/${editingItem._id}`, formData);
+                await axios.put(`http://localhost:5000/api/menu/${editingItem._id}`, data, config);
             } else {
-                await axios.post('http://localhost:5000/api/menu', formData);
+                await axios.post('http://localhost:5000/api/menu', data, config);
             }
             setIsModalOpen(false);
             setEditingItem(null);
-            setFormData({ name: '', category: '', price: '', description: '' });
+            setFormData({ name: '', category: '', price: '', description: '', image: '', imageFile: null });
             fetchMenu();
         } catch (error) {
             console.error('Error saving menu item:', error);
+            alert(error.response?.data?.error || 'Error saving menu item');
         }
+        setLoading(false);
     };
 
     const handleEdit = (item) => {
         setEditingItem(item);
-        setFormData({ name: item.name, category: item.category, price: item.price, description: item.description || '' });
+        setFormData({
+            name: item.name,
+            category: item.category,
+            price: item.price,
+            description: item.description || '',
+            image: item.image || '',
+            imageFile: null
+        });
         setIsModalOpen(true);
     };
 
@@ -238,50 +255,50 @@ const AdminDashboard = () => {
         }
     };
 
-    const Sidebar = () => (
+    const renderSidebar = () => (
         <div className="w-64 bg-white h-screen fixed left-0 top-0 border-r border-gray-100 flex flex-col pt-24 z-20">
             <div className="px-6 mb-8">
                 <h2 className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Main Menu</h2>
             </div>
             <nav className="flex-1 px-4 space-y-2">
-                <NavItem
-                    icon={LayoutDashboard}
-                    label="Overview"
-                    active={activeTab === 'overview'}
-                    onClick={() => setActiveTab('overview')}
-                />
-                <NavItem
-                    icon={Utensils}
-                    label="Menu Management"
-                    active={activeTab === 'menu'}
-                    onClick={() => setActiveTab('menu')}
-                />
-                <NavItem
-                    icon={BookOpen}
-                    label="Blog Management"
-                    active={activeTab === 'blogs'}
-                    onClick={() => setActiveTab('blogs')}
-                />
-                <NavItem
-                    icon={ShoppingBag}
-                    label="Orders"
-                    active={activeTab === 'orders'}
-                    onClick={() => setActiveTab('orders')}
-                />
-                <NavItem
-                    icon={Users}
-                    label="Customers"
-                    active={activeTab === 'customers'}
-                    onClick={() => setActiveTab('customers')}
-                />
+                {renderNavItem(
+                    LayoutDashboard,
+                    "Overview",
+                    activeTab === 'overview',
+                    () => setActiveTab('overview')
+                )}
+                {renderNavItem(
+                    Utensils,
+                    "Menu Management",
+                    activeTab === 'menu',
+                    () => setActiveTab('menu')
+                )}
+                {renderNavItem(
+                    BookOpen,
+                    "Blog Management",
+                    activeTab === 'blogs',
+                    () => setActiveTab('blogs')
+                )}
+                {renderNavItem(
+                    ShoppingBag,
+                    "Orders",
+                    activeTab === 'orders',
+                    () => setActiveTab('orders')
+                )}
+                {renderNavItem(
+                    Users,
+                    "Customers",
+                    activeTab === 'customers',
+                    () => setActiveTab('customers')
+                )}
                 <div className="pt-8 mb-4 px-2">
                     <h2 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4 px-4">Account</h2>
-                    <NavItem
-                        icon={Settings}
-                        label="Settings"
-                        active={activeTab === 'settings'}
-                        onClick={() => setActiveTab('settings')}
-                    />
+                    {renderNavItem(
+                        Settings,
+                        "Settings",
+                        activeTab === 'settings',
+                        () => setActiveTab('settings')
+                    )}
                     <button
                         onClick={logout}
                         className="w-full flex items-center gap-3 px-4 py-3 text-red-600 hover:bg-red-50 rounded-xl transition-all duration-200 mt-2"
@@ -294,9 +311,9 @@ const AdminDashboard = () => {
         </div>
     );
 
-    const NavItem = ({ icon: Icon, label, active, onClick }) => (
+    const renderNavItem = (Icon, label, active, callback) => (
         <button
-            onClick={onClick}
+            onClick={callback}
             className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 ${active
                 ? 'bg-orange-600 text-white shadow-lg shadow-orange-200'
                 : 'text-gray-500 hover:bg-orange-50 hover:text-orange-600'
@@ -307,82 +324,9 @@ const AdminDashboard = () => {
         </button>
     );
 
-    const OverviewTab = () => (
-        <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
-            {/* Stats Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                {stats.map((stat, i) => (
-                    <div key={i} className="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300 group">
-                        <div className="flex justify-between items-start mb-4">
-                            <div className={`${stat.color} p-3 rounded-2xl text-white shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                                <stat.icon className="w-6 h-6" />
-                            </div>
-                            <span className={`text-xs font-bold px-2.5 py-1 rounded-full ${stat.trend.startsWith('+') ? 'bg-green-100 text-green-600' : 'bg-red-100 text-red-600'}`}>
-                                {stat.trend}
-                            </span>
-                        </div>
-                        <h3 className="text-gray-500 text-sm font-medium mb-1">{stat.title}</h3>
-                        <p className="text-2xl font-bold text-gray-900">{stat.value}</p>
-                    </div>
-                ))}
-            </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                {/* Recent Orders Table */}
-                <div className="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm">
-                    <div className="flex justify-between items-center mb-6">
-                        <h3 className="text-xl font-bold text-gray-900">Recent Orders</h3>
-                        <button className="text-orange-600 font-semibold text-sm hover:underline">View all</button>
-                    </div>
-                    <div className="space-y-4">
-                        {[1, 2, 3, 4].map((item) => (
-                            <div key={item} className="flex items-center justify-between p-4 bg-gray-50 rounded-2xl">
-                                <div className="flex items-center gap-4">
-                                    <div className="bg-white p-2.5 rounded-xl shadow-sm">
-                                        <ShoppingBag className="w-5 h-5 text-gray-400" />
-                                    </div>
-                                    <div>
-                                        <p className="font-bold text-gray-900 leading-none mb-1">Order #88{item}</p>
-                                        <p className="text-xs text-gray-500">2 mins ago • $42.00</p>
-                                    </div>
-                                </div>
-                                <div className="flex items-center gap-2 text-green-600 bg-green-50 px-3 py-1 rounded-full">
-                                    <CheckCircle className="w-4 h-4" />
-                                    <span className="text-xs font-bold uppercase">Success</span>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
 
-                {/* Top Products */}
-                <div className="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm">
-                    <h3 className="text-xl font-bold text-gray-900 mb-6">Popular Items</h3>
-                    <div className="space-y-6">
-                        {['Chicken Choila', 'Goat Curry', 'MoMo Special'].map((item, i) => (
-                            <div key={i} className="flex items-center justify-between">
-                                <div className="flex items-center gap-4">
-                                    <div className="w-12 h-12 bg-orange-100 rounded-2xl flex items-center justify-center text-orange-600 font-bold uppercase">
-                                        {item.charAt(0)}
-                                    </div>
-                                    <div>
-                                        <p className="font-bold text-gray-900">{item}</p>
-                                        <p className="text-xs text-gray-500">Main Course</p>
-                                    </div>
-                                </div>
-                                <div className="text-right">
-                                    <p className="font-bold text-gray-900">$18.50</p>
-                                    <p className="text-xs text-green-500 font-medium">+12% from last week</p>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
-
-    const MenuTable = () => (
+    const renderMenuTable = () => (
         <div className="bg-white rounded-3xl border border-gray-100 shadow-sm overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-700">
             <div className="p-8 border-b border-gray-50 flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
@@ -390,7 +334,7 @@ const AdminDashboard = () => {
                     <p className="text-gray-500">Manage your restaurant items and categories</p>
                 </div>
                 <button
-                    onClick={() => { setEditingItem(null); setFormData({ name: '', category: '', price: '', description: '' }); setIsModalOpen(true); }}
+                    onClick={() => { setEditingItem(null); setFormData({ name: '', category: '', price: '', description: '', image: '', imageFile: null }); setIsModalOpen(true); }}
                     className="bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded-xl font-bold flex items-center gap-2 transition-all shadow-lg shadow-orange-100"
                 >
                     <Plus className="w-5 h-5" />
@@ -416,9 +360,19 @@ const AdminDashboard = () => {
                             menuItems.filter(item => item.name.toLowerCase().includes(searchTerm.toLowerCase()) || item.category.toLowerCase().includes(searchTerm.toLowerCase())).map((item) => (
                                 <tr key={item._id} className="hover:bg-gray-50/50 transition-colors group">
                                     <td className="py-5 px-4">
-                                        <div>
-                                            <p className="font-bold text-gray-900">{item.name}</p>
-                                            <p className="text-xs text-gray-500 truncate max-w-[200px]">{item.description}</p>
+                                        <div className="flex items-center gap-4">
+                                            <div className="w-12 h-12 rounded-xl bg-gray-100 overflow-hidden flex-shrink-0">
+                                                <img
+                                                    src={item.image.startsWith('http') ? item.image : `http://localhost:5000/uploads/${item.image}`}
+                                                    alt={item.name}
+                                                    className="w-full h-full object-cover"
+                                                    onError={(e) => { e.target.src = 'https://placehold.co/100x100?text=No+Img'; }}
+                                                />
+                                            </div>
+                                            <div>
+                                                <p className="font-bold text-gray-900">{item.name}</p>
+                                                <p className="text-xs text-gray-500 truncate max-w-[150px]">{item.description}</p>
+                                            </div>
                                         </div>
                                     </td>
                                     <td className="py-5 px-4">
@@ -461,7 +415,7 @@ const AdminDashboard = () => {
         </div>
     );
 
-    const UsersTable = () => (
+    const renderUsersTable = () => (
         <div className="bg-white rounded-3xl border border-gray-100 shadow-sm overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-700">
             <div className="p-8 border-b border-gray-50 flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
@@ -542,7 +496,7 @@ const AdminDashboard = () => {
         </div>
     );
 
-    const BlogsTable = () => (
+    const renderBlogsTable = () => (
         <div className="bg-white rounded-3xl border border-gray-100 shadow-sm overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-700">
             <div className="p-8 border-b border-gray-50 flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
@@ -618,7 +572,7 @@ const AdminDashboard = () => {
     );
 
 
-    const SettingsTab = () => (
+    const renderSettingsTab = () => (
         <div className="max-w-2xl animate-in fade-in slide-in-from-bottom-4 duration-700">
             <div className="bg-white rounded-3xl border border-gray-100 shadow-sm overflow-hidden">
                 <div className="p-8 border-b border-gray-50 text-center">
@@ -702,7 +656,7 @@ const AdminDashboard = () => {
         </div>
     );
 
-    const Modal = () => (
+    const renderModal = () => (
         <div className={`fixed inset-0 z-50 flex items-center justify-center p-4 transition-all duration-300 ${isModalOpen ? 'visible opacity-100' : 'invisible opacity-0'}`}>
             <div className="absolute inset-0 bg-gray-900/60 backdrop-blur-sm" onClick={() => setIsModalOpen(false)} />
             <div className={`bg-white rounded-[2rem] shadow-2xl w-full max-w-lg relative z-10 transition-all duration-500 ${isModalOpen ? 'scale-100 translate-y-0' : 'scale-95 translate-y-8'}`}>
@@ -768,6 +722,21 @@ const AdminDashboard = () => {
                             />
                         </div>
 
+                        <div>
+                            <label className="block text-sm font-bold text-gray-700 mb-1.5">Item Image</label>
+                            <div className="flex flex-col gap-2">
+                                <input
+                                    type="file"
+                                    accept="image/*"
+                                    className="w-full px-4 py-2 text-sm rounded-xl border border-gray-200 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-orange-50 file:text-orange-700 hover:file:bg-orange-100 transition-all font-medium"
+                                    onChange={(e) => setFormData({ ...formData, imageFile: e.target.files[0] })}
+                                />
+                                {formData.image && !formData.imageFile && (
+                                    <p className="text-xs text-gray-500 truncate">Current: {formData.image.split('/').pop()}</p>
+                                )}
+                            </div>
+                        </div>
+
                         <div className="pt-4 flex gap-3">
                             <button
                                 type="button"
@@ -791,7 +760,7 @@ const AdminDashboard = () => {
 
     return (
         <div className="min-h-screen bg-[#fcfcfd]">
-            <Sidebar />
+            {renderSidebar()}
 
             <main className="ml-64 pt-24 min-h-screen">
                 <header className="fixed top-0 right-0 left-64 h-24 bg-white/80 backdrop-blur-md border-b border-gray-100 z-10 px-8 flex items-center justify-between">
@@ -842,11 +811,10 @@ const AdminDashboard = () => {
                         </div>
                     </div>
 
-                    {activeTab === 'overview' && <OverviewTab />}
-                    {activeTab === 'menu' && <MenuTable />}
-                    {activeTab === 'blogs' && <BlogsTable />}
-                    {activeTab === 'customers' && <UsersTable />}
-                    {activeTab === 'settings' && <SettingsTab />}
+                    {activeTab === 'menu' && renderMenuTable()}
+                    {activeTab === 'blogs' && renderBlogsTable()}
+                    {activeTab === 'customers' && renderUsersTable()}
+                    {activeTab === 'settings' && renderSettingsTab()}
                     {activeTab === 'orders' && (
                         <div className="bg-white p-20 rounded-3xl border border-dashed border-gray-200 text-center">
                             <div className="w-20 h-20 bg-orange-50 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -858,7 +826,7 @@ const AdminDashboard = () => {
                     )}
                 </div>
             </main>
-            <Modal />
+            {renderModal()}
             <BlogModal
                 isOpen={isBlogModalOpen}
                 onClose={() => setIsBlogModalOpen(false)}
