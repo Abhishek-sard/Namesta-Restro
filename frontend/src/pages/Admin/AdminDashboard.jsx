@@ -16,7 +16,8 @@ import {
     AlertCircle,
     Lock,
     BookOpen,
-    FileText
+    FileText,
+    LayoutDashboard
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import axios from 'axios';
