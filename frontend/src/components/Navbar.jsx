@@ -137,8 +137,7 @@ const Navbar = () => {
               <div className="absolute left-1/2 transform -translate-x-1/2 mt-0 w-64 bg-white border border-gray-100 rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 ease-in-out">
                 <div className="py-2">
                   <Link to="/menu" className="block px-6 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 border-b border-gray-50 font-semibold">Menu</Link>
-                  <Link to="/food/catering" className="block px-6 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 border-b border-gray-50 font-semibold">Catering</Link>
-                  <Link to="/food/gift-cards" className="block px-6 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 font-semibold">Gift Cards</Link>
+                  <Link to="/food/catering" className="block px-6 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 font-semibold">Catering</Link>
                 </div>
               </div>
             </div>
