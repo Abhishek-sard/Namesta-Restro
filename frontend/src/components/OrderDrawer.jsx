@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { X, ShoppingBag, Truck, Store } from 'lucide-react';
+import { X, ShoppingBag, Truck, Store, UtensilsCrossed } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const OrderDrawer = ({ isOpen, onClose }) => {
@@ -55,7 +55,7 @@ const OrderDrawer = ({ isOpen, onClose }) => {
                             <h2 className="text-3xl font-cursive text-white mb-4">Welcome to</h2>
                             <h1
                                 className="text-5xl font-cursive text-white overflow-hidden whitespace-nowrap border-r-4 border-white pr-2 inline-block"
-                                style={{ animation: 'write-cursive 8s linear forwards, blink 0.75s step-end infinite' }}
+                                style={{ animation: 'write-cursive 8s linear forwards, blink 0.25s step-end infinite' }}
                             >
                                 Namaste Restaurant
                             </h1>
@@ -107,6 +107,28 @@ const OrderDrawer = ({ isOpen, onClose }) => {
                                     </div>
                                 </button>
 
+                                {/* Order at a Table Option */}
+                                <button
+                                    onClick={() => handleNavigation('/menu?type=dine-in')}
+                                    className="w-full bg-white p-6 rounded-3xl border-2 border-transparent hover:border-orange-500 shadow-sm hover:shadow-xl hover:shadow-orange-100 transition-all group text-left relative overflow-hidden"
+                                >
+                                    <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                                        <UtensilsCrossed className="w-24 h-24 text-orange-600 transform rotate-12" />
+                                    </div>
+                                    <div className="relative z-10 flex items-start gap-4">
+                                        <div className="w-12 h-12 bg-purple-50 rounded-2xl flex items-center justify-center group-hover:bg-purple-100 transition-colors">
+                                            <UtensilsCrossed className="w-6 h-6 text-purple-600" />
+                                        </div>
+                                        <div>
+                                            <h3 className="text-lg font-bold text-gray-900 mb-1">Order at a Table</h3>
+                                            <p className="text-sm text-gray-500 mb-3">Dine in at our restaurant with table service.</p>
+                                            <span className="text-xs font-bold bg-gray-100 text-gray-600 px-3 py-1 rounded-full group-hover:bg-purple-600 group-hover:text-white transition-colors">
+                                                Reserve Now
+                                            </span>
+                                        </div>
+                                    </div>
+                                </button>
+
                                 {/* Pickup Option */}
                                 <button
                                     onClick={() => handleNavigation('/menu?type=pickup')}
@@ -130,22 +152,7 @@ const OrderDrawer = ({ isOpen, onClose }) => {
                                 </button>
                             </div>
 
-                            {/* Promo / Extra Info */}
-                            <div className="mt-8">
-                                <div className="bg-gradient-to-br from-orange-500 to-red-600 rounded-3xl p-6 text-white relative overflow-hidden">
-                                    <div className="absolute -bottom-4 -right-4 bg-white/10 w-32 h-32 rounded-full blur-2xl" />
-                                    <div className="relative z-10">
-                                        <span className="inline-block bg-white/20 px-3 py-1 rounded-full text-xs font-bold mb-3 backdrop-blur-sm">
-                                            Limited Offer
-                                        </span>
-                                        <h3 className="text-xl font-bold mb-2">Free Delivery!</h3>
-                                        <p className="text-white/90 text-sm mb-4">On all orders above $50. Use code <span className="font-mono font-bold bg-white/20 px-1 rounded">FREEDEL</span></p>
-                                        <button onClick={() => handleNavigation('/menu')} className="w-full bg-white text-orange-600 font-bold py-3 rounded-xl hover:bg-gray-50 transition-colors shadow-lg">
-                                            Order Now
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
+
                         </div>
 
                         {/* Footer */}
