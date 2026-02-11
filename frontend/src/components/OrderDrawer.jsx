@@ -5,7 +5,7 @@ import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
 const OrderDrawer = ({ isOpen, onClose }) => {
     const [isLoading, setIsLoading] = useState(false);
-    const [currentView, setCurrentView] = useState('order-type'); // 'order-type', 'menu', 'cart', 'checkout', 'confirmation'
+    const [currentView, setCurrentView] = useState('order-type'); // 'order-type', 'table-selection', 'address-selection', 'menu', 'cart', 'checkout', 'confirmation'
     const [selectedOrderType, setSelectedOrderType] = useState(null);
     const [menus, setMenus] = useState([]);
     const [menuLoading, setMenuLoading] = useState(false);
@@ -21,6 +21,7 @@ const OrderDrawer = ({ isOpen, onClose }) => {
         email: '',
         address: '',
         tableNumber: '',
+        pickupTime: 'ASAP',
         specialInstructions: ''
     });
     const [orderNumber, setOrderNumber] = useState('');
@@ -56,7 +57,7 @@ const OrderDrawer = ({ isOpen, onClose }) => {
             setSelectedOrderType(null);
             setCart([]);
             setCustomerInfo({
-                name: '', phone: '', email: '', address: '', tableNumber: '', specialInstructions: ''
+                name: '', phone: '', email: '', address: '', tableNumber: '', pickupTime: 'ASAP', specialInstructions: ''
             });
         }
         return () => {
@@ -81,8 +82,35 @@ const OrderDrawer = ({ isOpen, onClose }) => {
 
     const handleOrderTypeSelect = (type) => {
         setSelectedOrderType(type);
-        setCurrentView('menu');
-        fetchMenus();
+        if (type === 'dine-in') {
+            setCurrentView('table-selection');
+        } else if (type === 'delivery') {
+            setCurrentView('address-selection');
+        } else {
+            setCurrentView('menu');
+            fetchMenus();
+        }
+    };
+
+    const handleTableSubmit = (e) => {
+        e.preventDefault();
+        if (customerInfo.tableNumber.trim()) {
+            setCurrentView('menu');
+            fetchMenus();
+        }
+    };
+
+    const handleAddressSubmit = (e) => {
+        e.preventDefault();
+        if (customerInfo.address.trim()) {
+            setCurrentView('menu');
+            fetchMenus();
+        }
+    };
+
+    const handleBackToOrderType = () => {
+        setCurrentView('order-type');
+        setSelectedOrderType(null);
     };
 
     // Cart functions
@@ -130,9 +158,16 @@ const OrderDrawer = ({ isOpen, onClose }) => {
 
     // Navigation
     const handleBackToSelection = () => {
-        setCurrentView('order-type');
-        setSelectedOrderType(null);
-        setMenus([]);
+        if (selectedOrderType === 'dine-in') {
+            setCurrentView('table-selection');
+        } else if (selectedOrderType === 'delivery') {
+            setCurrentView('address-selection');
+        } else {
+            setCurrentView('order-type');
+            setSelectedOrderType(null);
+        }
+        // Keep menus populated but hidden or reset? Usually reset is safer
+        // setMenus([]); 
         setMenuError(null);
     };
 
@@ -171,7 +206,7 @@ const OrderDrawer = ({ isOpen, onClose }) => {
         setCurrentView('order-type');
         setSelectedOrderType(null);
         setCustomerInfo({
-            name: '', phone: '', email: '', address: '', tableNumber: '', specialInstructions: ''
+            name: '', phone: '', email: '', address: '', tableNumber: '', pickupTime: 'ASAP', specialInstructions: ''
         });
     };
 
@@ -347,6 +382,22 @@ const OrderDrawer = ({ isOpen, onClose }) => {
                                             rows="3"
                                             className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-orange-500 focus:ring-2 focus:ring-orange-100 outline-none transition-all resize-none"
                                         />
+                                    )}
+                                    {selectedOrderType === 'pickup' && (
+                                        <div className="space-y-2">
+                                            <label className="text-sm font-semibold text-gray-700 ml-1">Pickup Time *</label>
+                                            <select
+                                                value={customerInfo.pickupTime}
+                                                onChange={(e) => setCustomerInfo({ ...customerInfo, pickupTime: e.target.value })}
+                                                className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-orange-500 focus:ring-2 focus:ring-orange-100 outline-none transition-all bg-white"
+                                            >
+                                                <option value="ASAP">As soon as possible (15-20 mins)</option>
+                                                <option value="15min">In 15 minutes</option>
+                                                <option value="30min">In 30 minutes</option>
+                                                <option value="45min">In 45 minutes</option>
+                                                <option value="1hr">In 1 hour</option>
+                                            </select>
+                                        </div>
                                     )}
                                     {selectedOrderType === 'dine-in' && (
                                         <input
@@ -554,6 +605,112 @@ const OrderDrawer = ({ isOpen, onClose }) => {
                                 </div>
                             </>
                         )}
+                    </div>
+                ) : currentView === 'table-selection' ? (
+                    // Table Selection View
+                    <div className="h-full flex flex-col">
+                        <div className="p-6 border-b border-gray-100 flex items-center justify-between bg-white">
+                            <div className="flex items-center gap-3">
+                                <button onClick={handleBackToOrderType} className="p-2 hover:bg-gray-100 rounded-full transition-colors">
+                                    <ArrowLeft className="w-6 h-6 text-gray-600" />
+                                </button>
+                                <div className="bg-purple-100 p-2 rounded-xl">
+                                    <UtensilsCrossed className="w-6 h-6 text-purple-600" />
+                                </div>
+                                <div>
+                                    <h2 className="text-xl font-bold text-gray-900">Order at Table</h2>
+                                    <p className="text-sm text-gray-500">Fine dining experience</p>
+                                </div>
+                            </div>
+                            <button onClick={onClose} className="p-2 hover:bg-gray-100 rounded-full transition-colors">
+                                <X className="w-6 h-6 text-gray-400" />
+                            </button>
+                        </div>
+
+                        <div className="flex-1 flex flex-col items-center justify-center p-6 bg-gray-50/50">
+                            <div className="bg-white rounded-3xl p-8 shadow-xl max-w-sm w-full text-center">
+                                <div className="w-20 h-20 bg-purple-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                                    <UtensilsCrossed className="w-10 h-10 text-purple-600" />
+                                </div>
+                                <h3 className="text-2xl font-bold text-gray-900 mb-2">Where are you sitting?</h3>
+                                <p className="text-gray-500 mb-8">Please enter your table number to start ordering</p>
+
+                                <form onSubmit={handleTableSubmit} className="space-y-6">
+                                    <div className="relative">
+                                        <input
+                                            type="text"
+                                            placeholder="Enter Table Number"
+                                            required
+                                            value={customerInfo.tableNumber}
+                                            onChange={(e) => setCustomerInfo({ ...customerInfo, tableNumber: e.target.value })}
+                                            className="w-full px-6 py-4 rounded-2xl border-2 border-gray-100 focus:border-purple-500 focus:ring-4 focus:ring-purple-50 outline-none transition-all text-center text-2xl font-bold placeholder:text-gray-300 placeholder:font-normal"
+                                            autoFocus
+                                        />
+                                    </div>
+                                    <button
+                                        type="submit"
+                                        disabled={!customerInfo.tableNumber.trim()}
+                                        className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white py-4 rounded-2xl font-bold hover:from-purple-700 hover:to-indigo-700 transition-all shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 group"
+                                    >
+                                        View Menu
+                                        <ArrowLeft className="w-5 h-5 rotate-180 group-hover:translate-x-1 transition-transform" />
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                ) : currentView === 'address-selection' ? (
+                    // Address Selection View
+                    <div className="h-full flex flex-col">
+                        <div className="p-6 border-b border-gray-100 flex items-center justify-between bg-white">
+                            <div className="flex items-center gap-3">
+                                <button onClick={handleBackToOrderType} className="p-2 hover:bg-gray-100 rounded-full transition-colors">
+                                    <ArrowLeft className="w-6 h-6 text-gray-600" />
+                                </button>
+                                <div className="bg-blue-100 p-2 rounded-xl">
+                                    <Truck className="w-6 h-6 text-blue-600" />
+                                </div>
+                                <div>
+                                    <h2 className="text-xl font-bold text-gray-900">Delivery Address</h2>
+                                    <p className="text-sm text-gray-500">Where should we bring your food?</p>
+                                </div>
+                            </div>
+                            <button onClick={onClose} className="p-2 hover:bg-gray-100 rounded-full transition-colors">
+                                <X className="w-6 h-6 text-gray-400" />
+                            </button>
+                        </div>
+
+                        <div className="flex-1 flex flex-col items-center justify-center p-6 bg-gray-50/50">
+                            <div className="bg-white rounded-3xl p-8 shadow-xl max-w-md w-full text-center">
+                                <div className="w-20 h-20 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                                    <Truck className="w-10 h-10 text-blue-600" />
+                                </div>
+                                <h3 className="text-2xl font-bold text-gray-900 mb-2">Delivery Details</h3>
+                                <p className="text-gray-500 mb-8">Please enter your delivery address to see available items</p>
+
+                                <form onSubmit={handleAddressSubmit} className="space-y-6 text-left">
+                                    <div className="relative">
+                                        <label className="text-sm font-semibold text-gray-700 ml-1 mb-2 block">Street Address *</label>
+                                        <textarea
+                                            placeholder="Enter your full delivery address"
+                                            required
+                                            value={customerInfo.address}
+                                            onChange={(e) => setCustomerInfo({ ...customerInfo, address: e.target.value })}
+                                            className="w-full px-6 py-4 rounded-2xl border-2 border-gray-100 focus:border-blue-500 focus:ring-4 focus:ring-blue-50 outline-none transition-all text-lg font-medium resize-none min-h-[120px]"
+                                            autoFocus
+                                        />
+                                    </div>
+                                    <button
+                                        type="submit"
+                                        disabled={!customerInfo.address.trim()}
+                                        className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-4 rounded-2xl font-bold hover:from-blue-700 hover:to-indigo-700 transition-all shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 group"
+                                    >
+                                        Browse Menu
+                                        <ArrowLeft className="w-5 h-5 rotate-180 group-hover:translate-x-1 transition-transform" />
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 ) : currentView === 'menu' ? (
                     // Menu View
