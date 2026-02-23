@@ -4,9 +4,22 @@ const MenuBar = () => {
   const [selectedCategory, setSelectedCategory] = useState("");
 
   const menuData = {
-    "Starters": [
-      { sub: "Veg Momos", price: 120 },
-      { sub: "Chicken Momos", price: 180 }
+    "ENTREE": [
+      { sub: "SAMOSA (2 Pcs)", price: "$9.99" },
+      { sub: "SAMOSA CHAT (with/without yogurt)", price: "$11.99 / $12.99"  },
+      {sub: "VEGETABLE PAKAUDA (6 Pcs) ", price: "$9.99"},
+      {sub: "AALU CHOP (4 Pcs) ", price: "$11.99"},
+      {sub: "", price: ""},
+      {sub: "", price: ""},
+      {sub: "", price: ""},
+      {sub: "", price: ""},
+      {sub: "", price: ""},
+      {sub: "", price: ""},
+      {sub: "", price: ""},
+      {sub: "", price: ""},
+      {sub: "", price: ""},
+      {sub: "", price: ""},
+      {sub: "", price: ""},
     ],
     "Main Course": [
       { sub: "Veg Thali", price: 250 },
