@@ -115,10 +115,6 @@ const Footer = () => {
                 <Phone className="w-5 h-5 text-white flex-shrink-0" />
                 <span className="font-cursive">02 7900 8711</span>
               </li>
-              <li className="flex items-center space-x-3 text-white font-cursive">
-                <Mail className="w-5 h-5 text-white flex-shrink-0" />
-                <span className="font-cursive">info@namasterestro.com.au</span>
-              </li>
             </ul>
           </div>
 
