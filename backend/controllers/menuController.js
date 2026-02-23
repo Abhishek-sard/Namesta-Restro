@@ -1,9 +1,9 @@
-const Menu = require('../models/Menu');
+import Menu from '../models/Menu.js';
 
 // @desc    Get all menu items
 // @route   GET /api/menu
 // @access  Public
-exports.getMenus = async (req, res) => {
+const getMenus = async (req, res) => {
     try {
         const menus = await Menu.find();
         res.status(200).json({
@@ -19,7 +19,7 @@ exports.getMenus = async (req, res) => {
 // @desc    Create new menu item
 // @route   POST /api/menu
 // @access  Private/Admin
-exports.createMenu = async (req, res) => {
+const createMenu = async (req, res) => {
     try {
         const menuData = { ...req.body };
         if (req.file) {
@@ -39,7 +39,7 @@ exports.createMenu = async (req, res) => {
 // @desc    Update menu item
 // @route   PUT /api/menu/:id
 // @access  Private/Admin
-exports.updateMenu = async (req, res) => {
+const updateMenu = async (req, res) => {
     try {
         let menu = await Menu.findById(req.params.id);
         if (!menu) {
@@ -68,7 +68,7 @@ exports.updateMenu = async (req, res) => {
 // @desc    Delete menu item
 // @route   DELETE /api/menu/:id
 // @access  Private/Admin
-exports.deleteMenu = async (req, res) => {
+const deleteMenu = async (req, res) => {
     try {
         const menu = await Menu.findByIdAndDelete(req.params.id);
 
@@ -84,3 +84,5 @@ exports.deleteMenu = async (req, res) => {
         res.status(400).json({ success: false, error: err.message });
     }
 };
+
+export { getMenus, createMenu, updateMenu, deleteMenu };

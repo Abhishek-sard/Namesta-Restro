@@ -14,7 +14,7 @@ const CustomerConnection = () => {
                 <div className="space-y-12">
                     <div className="relative p-10 bg-gray-50 rounded-[3rem] shadow-sm hover:shadow-xl transition-shadow duration-500">
                         <p className="text-2xl md:text-3xl text-gray-800 font-light italic leading-relaxed font-cursive">
-                            “Namaste feels like home — fresh food and warm people.”
+                            “Subhakamana feels like home — fresh food and warm people.”
                         </p>
                         <div className="mt-8">
                             <h4 className="font-bold text-gray-900">Sarah Jenkins</h4>

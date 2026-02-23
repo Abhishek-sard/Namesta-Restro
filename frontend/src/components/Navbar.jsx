@@ -48,7 +48,7 @@ const Navbar = () => {
             {/* Left Side - Logo */}
             <div className="flex-1 flex justify-start">
               <Link to="/" className="flex items-center">
-                <img src="/namesta.jpg" alt="Namesta Logo" className="h-35 w-auto object-contain mt-16" />
+                <img src="/logo.png" alt="Namesta Logo" className="h-35 w-auto object-contain mt-16" />
               </Link>
             </div>
 

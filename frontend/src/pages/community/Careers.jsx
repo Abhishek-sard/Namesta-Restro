@@ -21,7 +21,7 @@ const Careers = () => {
 
             {/* Why Join Us */}
             <div id="story" className="max-w-7xl mx-auto px-4 py-20 text-center">
-                <h2 className="text-4xl font-bold mb-16 text-gray-900 font-sans uppercase">Why Namaste?</h2>
+                <h2 className="text-4xl font-bold mb-16 text-gray-900 font-sans uppercase">Why Subhakamana?</h2>
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                     <div className="p-8 hover:bg-orange-50 rounded-2xl transition-colors">
                         <Zap className="text-orange-500 mx-auto mb-4" size={40} />
@@ -75,7 +75,7 @@ const Careers = () => {
             <div id="roles" className="bg-gray-50 py-24">
                 <div className="max-w-4xl mx-auto px-4">
                     <h2 className="text-4xl font-bold mb-4 text-center text-gray-900 italic font-cursive">Our Roles</h2>
-                    <p className="text-center text-gray-600 mb-12">Explore the opportunities waiting for you at Namaste Restro.</p>
+                    <p className="text-center text-gray-600 mb-12">Explore the opportunities waiting for you at Subhakamana Restaurant.</p>
                     <div className="space-y-4">
                         {jobs.map((job, i) => (
                             <div key={i} className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex justify-between items-center group hover:shadow-lg transition-all hover:-translate-y-1">
@@ -93,7 +93,7 @@ const Careers = () => {
                         <h3 className="text-2xl font-bold mb-4">Don't see your perfect fit?</h3>
                         <p className="text-gray-600 mb-8 max-w-lg mx-auto">We're always looking for passionate people. Send your CV to our talent pool and we'll reach out when a role opens up.</p>
                         <a href="mailto:careers@namasterestro.com" className="inline-block bg-red-600 text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-neutral-900 transition-colors shadow-lg shadow-red-200">
-                            careers@namasterestro.com
+                            careers@subhakamanaresturant.com
                         </a>
                     </div>
                 </div>

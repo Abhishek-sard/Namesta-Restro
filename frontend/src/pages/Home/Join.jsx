@@ -23,7 +23,7 @@ const Join = () => {
           </h2>
 
           <p className="text-gray-700 text-lg mb-8 leading-relaxed font-cursive">
-            At Namaste Restaurant, we are always looking for passionate individuals
+            At Subhakamana Restaurant, we are always looking for passionate individuals
             to join our team. Whether you're an experienced professional or just
             starting your career, we offer opportunities for growth and development
             in a supportive environment.

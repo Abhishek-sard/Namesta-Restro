@@ -9,7 +9,7 @@ const SustainabilityPhilosophy = () => {
                     <div className="absolute -bottom-2 left-0 w-full h-1 bg-green-500 transform scale-x-50"></div>
                 </h2>
                 <p className="text-2xl md:text-3xl text-gray-700 leading-relaxed font-light italic font-cursive max-w-3xl mx-auto">
-                    "At Namaste Restaurant, sustainability means caring for nature, supporting our community, and cooking responsibly. Every choice we make is guided by respect for the land that feeds us."
+                    "At Subhakamana Restaurant, sustainability means caring for nature, supporting our community, and cooking responsibly. Every choice we make is guided by respect for the land that feeds us."
                 </p>
             </div>
         </section>

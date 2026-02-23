@@ -42,7 +42,7 @@ const Review = () => {
           </h2>
           <div className="w-24 h-1 bg-red-600 mx-auto rounded-full mb-6"></div>
           <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-            Don't just take our word for it. Here's what our beloved guests have to say about their experience at Namaste Restro.
+            Don't just take our word for it. Here's what our beloved guests have to say about their experience at Subhakamana Restaurant.
           </p>
         </div>
 

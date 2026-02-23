@@ -10,7 +10,7 @@ const LocalMeaning = () => {
                 </h2>
                 <div className="space-y-6">
                     <p className="text-lg md:text-xl text-gray-700 leading-relaxed font-light italic font-cursive">
-                        "At Namaste Restaurant, Local Matters means building strong connections with our community.
+                        "At Subhakamana Restaurant, Local Matters means building strong connections with our community.
                         We choose fresh, locally sourced ingredients and support small businesses to ensure quality,
                         sustainability, and authentic Nepali flavors."
                     </p>

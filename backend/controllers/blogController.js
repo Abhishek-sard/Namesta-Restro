@@ -1,9 +1,9 @@
-const Blog = require('../models/Blog');
+import Blog from '../models/Blog.js';
 
 // @desc    Get all blogs
 // @route   GET /api/blogs
 // @access  Public
-exports.getBlogs = async (req, res) => {
+const getBlogs = async (req, res) => {
     try {
         const blogs = await Blog.find().sort({ createdAt: -1 });
         res.status(200).json({
@@ -19,7 +19,7 @@ exports.getBlogs = async (req, res) => {
 // @desc    Get single blog
 // @route   GET /api/blogs/:id
 // @access  Public
-exports.getBlog = async (req, res) => {
+const getBlog = async (req, res) => {
     try {
         const blog = await Blog.findById(req.params.id);
         if (!blog) {
@@ -34,7 +34,7 @@ exports.getBlog = async (req, res) => {
 // @desc    Create new blog
 // @route   POST /api/blogs
 // @access  Private/Admin
-exports.createBlog = async (req, res) => {
+const createBlog = async (req, res) => {
     try {
         const blogData = { ...req.body };
         if (req.file) {
@@ -50,7 +50,7 @@ exports.createBlog = async (req, res) => {
 // @desc    Update blog
 // @route   PUT /api/blogs/:id
 // @access  Private/Admin
-exports.updateBlog = async (req, res) => {
+const updateBlog = async (req, res) => {
     try {
         let blog = await Blog.findById(req.params.id);
         if (!blog) {
@@ -75,7 +75,7 @@ exports.updateBlog = async (req, res) => {
 // @desc    Delete blog
 // @route   DELETE /api/blogs/:id
 // @access  Private/Admin
-exports.deleteBlog = async (req, res) => {
+const deleteBlog = async (req, res) => {
     try {
         const blog = await Blog.findById(req.params.id);
         if (!blog) {
@@ -87,3 +87,6 @@ exports.deleteBlog = async (req, res) => {
         res.status(500).json({ success: false, message: error.message });
     }
 };
+
+
+export { getBlogs, getBlog, createBlog, updateBlog, deleteBlog };

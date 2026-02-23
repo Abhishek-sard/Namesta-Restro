@@ -11,7 +11,7 @@ const ClosingPromise = () => {
 
                     <h2 className="text-5xl md:text-7xl font-bold mb-8 relative z-10 font-cursive">Our Simple Promise</h2>
                     <p className="text-2xl md:text-3xl text-green-50 mb-12 max-w-3xl mx-auto relative z-10 opacity-90 font-cursive italic leading-relaxed">
-                        “Good food should not harm the planet. At Namaste Restaurant, we cook with care—for people and for nature.”
+                        “Good food should not harm the planet. At Subhakamana Restaurant, we cook with care—for people and for nature.”
                     </p>
 
                     <div className="flex flex-col sm:flex-row justify-center gap-6 relative z-10">

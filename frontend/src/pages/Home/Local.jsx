@@ -23,7 +23,7 @@ const Local = () => {
           </h2>
 
           <p className="text-gray-900 text-lg mb-8 leading-relaxed font-cursive">
-            At Namaste Restaurant, we believe in supporting our local community.
+            At Subhakamana Restaurant, we believe in supporting our local community.
             We work with local farmers and suppliers to bring fresh ingredients
             while giving back through cultural and community initiatives.
           </p>

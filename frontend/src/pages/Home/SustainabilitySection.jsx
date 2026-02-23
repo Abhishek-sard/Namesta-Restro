@@ -14,7 +14,7 @@ const SustainabilitySection = () => {
           </h2>
 
           <p className="text-gray-700 text-lg mb-8 leading-relaxed font-cursive">
-            At Namaste Restaurant, we believe in respecting nature.
+            At Subhakamana Restaurant, we believe in respecting nature.
             We source ingredients locally, reduce waste, and follow
             sustainable practices to protect our environment while
             serving authentic Nepali cuisine.

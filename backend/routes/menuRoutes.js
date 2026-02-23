@@ -1,15 +1,9 @@
-const express = require('express');
-const {
-    getMenus,
-    createMenu,
-    updateMenu,
-    deleteMenu
-} = require('../controllers/menuController');
-const upload = require('../middleware/uploadMiddleware');
+import express from 'express';
+import { getMenus, createMenu, updateMenu, deleteMenu } from '../controllers/menuController.js';
+import upload from '../middleware/uploadMiddleware.js';
+import { protect, authorize } from '../middleware/authMiddleware.js';
 
 const router = express.Router();
-
-const { protect, authorize } = require('../middleware/authMiddleware');
 
 router
     .route('/')
@@ -21,4 +15,4 @@ router
     .put(protect, authorize('admin'), upload.single('image'), updateMenu)
     .delete(protect, authorize('admin'), deleteMenu);
 
-module.exports = router;
+export default router;

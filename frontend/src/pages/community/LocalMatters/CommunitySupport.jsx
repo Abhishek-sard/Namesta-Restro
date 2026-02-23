@@ -12,7 +12,7 @@ const CommunitySupport = () => {
                         </h2>
                         <div className="space-y-6 text-lg text-gray-700 font-cursive">
                             <p>
-                                At Namaste, our community is our family. We take pride in more than just serving meals; we actively participate in the local life that surrounds us.
+                                At Subhakamana, our community is our family. We take pride in more than just serving meals; we actively participate in the local life that surrounds us.
                             </p>
                             <ul className="space-y-4">
                                 <li className="flex items-start gap-3">

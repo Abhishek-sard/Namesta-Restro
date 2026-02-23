@@ -693,8 +693,14 @@ const AdminDashboard = () => {
                                 >
                                     <option value="">Select</option>
                                     <option value="Starters">Starters</option>
-                                    <option value="Main Course">Main Course</option>
-                                    <option value="Bread & Rice">Bread & Rice</option>
+                                    <option value="MoMos">MoMos</option>
+                                    <option value="Chowmein">Chowmein</option>
+                                    <option value="Thukpa">Thukpa</option>
+                                    <option value="Thali">Thali</option>
+                                    <option value="Curry">Curry</option>
+                                    <option value="Fried Rice">Fried Rice</option>
+                                    <option value="Biryani">Biryani</option>
+                                    <option value="Naan">Naan</option>
                                     <option value="Desserts">Desserts</option>
                                     <option value="Drinks">Drinks</option>
                                 </select>
