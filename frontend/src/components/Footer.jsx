@@ -21,7 +21,7 @@ const Footer = () => {
           {/* 1. Brand Section */}
           <div>
             <h3 className="text-2xl font-bold mb-6 font-cursive">
-              NAMESTA<span className="text-orange-500 font-cursive">.</span>
+              SUBHAKAMANA<span className="text-orange-500 font-cursive">.</span>
             </h3>
             <p className="text-white mb-6 leading-relaxed font-cursive">
               Experience the authentic taste of tradition. We bring you the
