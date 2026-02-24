@@ -178,9 +178,53 @@ const MenuBar = () => {
       { sub: "VEGETABLE FRIED RICE", price: "$14.99" },
       { sub: "EGG FRIED RICE ", price: "$15.99" },
       { sub: "CHICKEN FREID RICE ", price: "$15.99" },
-      { sub: "BUFF FRIED RICE ", price: "$16.99" },
+      { sub: "MIX FRIED RICE (EGG & CHICKEN) ", price: "$17.99" },
     ],
-  };
+    BIRYANI: [
+      { sub: "VEGETABLE BIRYANI ", price: "$15.99" },
+      { sub: "GOAT BIRYANI ", price: "$17.99" },
+      { sub: "CHICKEN BIRYANI ", price: "$16.99" },
+    ],
+    NAAN: [
+      { sub: "PLAIN NAAN ", price: "$4.99" },
+      { sub: "GARLIC NAAN ", price: "$5.99" },
+      { sub: "GARLIC NAAN ", price: "$5.99" },
+      { sub: "GARLIC BUTTER NAAN ", price: "$5.99" },
+    ],
+    EXTRAS: [
+      { sub: "MOMO ACHAR/ CHILLI SAUCE ", price: "$2.00" },
+      { sub: "MOMO JHOL ", price: "$2.99" },
+      { sub: " THALI-ACHAR,SAAG,YOGHURT", price: "$3.00" },
+      { sub: "THALI-CURRY ", price: "$6.00" },
+    ],
+    SIDES: [
+      { sub: "PLAIN RICE ", price: "$4.99" },
+      { sub: "RICE FLAKES ", price: "$3.99" },
+      { sub: "SWEET YOGHURT ", price: "$5.99" },
+      { sub: "MANGO PICKLE ", price: "$2.99" },
+      { sub: "OMELETTE ", price: "$9.99" },
+    ],
+    SALADS: [
+      { sub: "CUCUMBER AND CARROTS ", price: "$8.99", description: "Cucumber and carrots marinated in nepalese style spicy dressing" },
+    ],
+    KIDS MENU: [
+      { sub: "KIDS NUGGETS AND CHIPS ", price: "$9.99" },
+      { sub: "CHIPS ", price: "$6.99" },
+    ],
+    SWEETS: [
+      { sub: "RASBARI(2 pcs) ", price: "$5.99", description: "RASBARI (2pcs) Soft cottage cheese balls in sugar syrup" },
+      { sub: "GULAB JAMUN ", price: "$6.99", description: "Sweet milky solid balls in sugar syrup and yoghurt" },
+      { sub: "RASMALAI ", price: "$9.99", description: "Soft cottage cheese solids in rich aromatic sweet milky syrup" },
+    ],
+    SOFT DRINKS: [
+      { sub: "COKE, FANTA, SPRITE, LEMONADE ", price: "$4.50" },
+      { sub: " JUICE (apple, orange, mango)  ", price: "$4.99" },
+      { sub: " LASSI (Plain or mango) ", price: "$5.99" },
+      { sub: "LASSI (banana, strawberry)", price: "$7.99" },
+      { sub: "", price: "$2.99" },
+    ],
+
+  };   
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-red-50 pt-32 pb-16 px-6">
