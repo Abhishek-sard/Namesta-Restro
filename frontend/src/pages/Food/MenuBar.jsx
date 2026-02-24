@@ -17,44 +17,142 @@ const MenuBar = () => {
         description:
           "Crushed samosas with yoghurt and sweet tamarind sauce topping",
       },
-      { sub: "AALU CHOP (4 Pcs) ", price: "$11.99" },
-      { sub: "AALU KO ACHAAR", price: "$9.99" },
-      { sub: "BHATMAS SADEKO ", price: "9.99" },
-      { sub: "CHATPATE/WAI WAI SADEKO", price: "$10.99/11.99" },
-      { sub: "PANI PURI / DAHI PURI (8 Pcs)", price: "$9.99/$10.99" },
+      {
+        sub: "AALU CHOP (4 Pcs) ",
+        price: "$11.99",
+        description:
+          "Vegetable cake coated in spicy batter, deep fried and serve. With side of homemade spicy dipping sauce ",
+      },
+      {
+        sub: "AALU KO ACHAAR",
+        price: "$9.99",
+        description:
+          "Potato cake coated with spicy batter, deep fried and served with side of homemade dipping sauce",
+      },
+      {
+        sub: "BHATMAS SADEKO ",
+        price: "9.99",
+        description:
+          " Marinated potatoes in garlic, ginger, mixed spices and fresh herbs ",
+      },
+      {
+        sub: "CHATPATE/WAI WAI SADEKO",
+        price: "$10.99/11.99",
+        description:
+          "Fried soya bean marinated with onion, ginger, garlic, fresh herbs & mustard oil",
+      },
+      {
+        sub: "PANI PURI / DAHI PURI (8 Pcs)",
+        price: "$9.99/$10.99",
+        description:
+          "Spicy marinated mixture of rice puff, onions, potato chilli, coriander, mix spices and fresh herbs",
+      },
       {
         sub: "LAPHING(DRY/JHOL) (CHIPS PEANUTS $1 EXTRA) ",
         price: "$9.99/$10.50",
+        description:
+          "Crispy fried pastry, stuffed with spicy potato mix and filled with spicy sour watery sauce",
       },
-      { sub: "BARA (PLAIN/EGG)", price: "$8.99/$10.99" },
-      { sub: "CHATTAMARI", price: "$15.99" },
-      { sub: "CHIPS CHILLI ", price: "$12.99" },
-      { sub: "PEERO AALU, MUSTANG AALU", price: "$12.99" },
-      { sub: "PANEER CHILLI", price: "$15.99" },
-      { sub: "CHICKEN CHILLI", price: "$15.99" },
-      { sub: "BUFF CHILLI", price: "$17.99" },
-      { sub: "CHICKEN CHHOYLA/SET", price: "$15.99/$18.99" },
-      { sub: "CHICKEN SEKUWA/SET", price: "$15.99/$18.99" },
-      { sub: "LAMB SEKUWA/SET", price: "$15.99/$19.99" },
-      { sub: "PORK SEKUWA/SET", price: "$15.99/$18.99" },
-      { sub: "BHUTTAN/SET", price: "$15.99/$19.99" },
-      { sub: "BUFF SUKUTI/SET", price: "$18.99/$22.99" },
-      { sub: "SAUSAGE FRY ", price: " $10.99" },
-      { sub: "TIMMUR CHICKEN ", price: "$15.99" },
-      { sub: "NEWARI KHAJA SET(VEG, CHICKEN, BUFF)", price: "$19.99/$21.99" },
-      { sub: "MIX PLATTER ", price: " $29.99" },
-      { sub: "SUBHAKAMANA PLATTER", price: "$28.99" },
-      { sub: "VEGETARIAN PLATTER ", price: "$24.99" },
-      { sub: " SUBHAKAMANA SPECIALMOMO CHOWMEIN COMBO", price: "$15.99" },
+      {
+        sub: "BARA (PLAIN/EGG)",
+        price: "$8.99/$10.99",
+        description:
+          " Aromatic starchy spiced roll served dry or with spicy soup ",
+      },
+      {
+        sub: "CHATTAMARI",
+        price: "$15.99",
+        description:
+          "Black lentil pan cake with ginger, garlic, fresh herbs and spices ",
+      },
+      {
+        sub: "CHIPS CHILLI ",
+        price: "$12.99",
+        description:
+          "Traditional pan cake made of rice four, garlic, ginger, onion, spices, fresh herbs and topped with egg and chicken served with spicy dipping sauce",
+      },
+      { sub: "PEERO AALU, MUSTANG AALU", price: "$12.99", description: "" },
+      { sub: "PANEER CHILLI", price: "$15.99", description: "" },
+      { sub: "CHICKEN CHILLI", price: "$15.99", description: "" },
+      { sub: "BUFF CHILLI", price: "$17.99", description: "" },
+      { sub: "CHICKEN CHHOYLA/SET", price: "$15.99/$18.99", description: "" },
+      { sub: "CHICKEN SEKUWA/SET", price: "$15.99/$18.99", description: "" },
+      { sub: "LAMB SEKUWA/SET", price: "$15.99/$19.99", description: "" },
+      { sub: "PORK SEKUWA/SET", price: "$15.99/$18.99", description: "" },
+      { sub: "BHUTTAN/SET", price: "$15.99/$19.99", description: "" },
+      { sub: "BUFF SUKUTI/SET", price: "$18.99/$22.99", description: "" },
+      { sub: "SAUSAGE FRY ", price: " $10.99", description: "" },
+      { sub: "TIMMUR CHICKEN ", price: "$15.99", description: "" },
+      {
+        sub: "NEWARI KHAJA SET(VEG, CHICKEN, BUFF)",
+        price: "$19.99/$21.99",
+        description: "",
+      },
+      { sub: "MIX PLATTER ", price: " $29.99", description: "" },
+      { sub: "SUBHAKAMANA PLATTER", price: "$28.99", description: "" },
+      { sub: "VEGETARIAN PLATTER ", price: "$24.99", description: "" },
+      {
+        sub: " SUBHAKAMANA SPECIALMOMO CHOWMEIN COMBO",
+        price: "$15.99",
+        description: "",
+      },
+    ],
+    "MAINS: momo": [
+      {
+        sub: "STEAM MO:MO",
+        description: "VEG: $12.99| CHICKEN: $12.99 | BUFF: $14.99",
+      },
+      {
+        sub: "FRIED MO:MO",
+        description: "VEG: $14.99| CHICKEN: $14.99 | BUFF: $16.99",
+      },
+      {
+        sub: "CHILLI MO:MO",
+        description: "VEG: $15.99 | CHICKEN: $15.99| BUFF: $17.99",
+      },
+      {
+        sub: "KOTHEY MO:MO",
+        description: "VEG: $15.99 | CHICKEN: $15.99| BUFF: $16.99",
+      },
+      {
+        sub: "JHOL MO:MO",
+        description: "VEG: $15.99 | CHICKEN: $15.99| BUFF: $16.99",
+      },
+      {
+        sub: "SADEKO MO:MO",
+        description: "VEG: $15.99 | CHICKEN: $15.99| BUFF: $17.99",
+      },
+      {
+        sub: "MO: MO: PLATTER (15 PCS, STEAM, FRIED & CHILLI)",
+        description: "VEG: $24.99 | CHICKEN: $24.99| BUFF: $26.99",
+      },
+      {
+        sub: "MO: MO: PLATTER (20 PCS, STEAM, KOTHEY, FRIED & CHILLI)",
+        description: "VEG: $35.99 | CHICKEN: $35.99| BUFF: $37.99",
+      },
+    ],
+    CHOWMEIN: [
+      { sub: "VEG CHOWMEIN ", price: "$14.99" },
+      { sub: "CHICKEN/EGG CHOWMEIN ", price: "$15.99" },
+      { sub: "BUFF CHOWMEIN ", price: "$16.99" },
+      { sub: "MIX CHOWMEIN (CHICHEN, EGG, BUFF)  ", price: "$17.99" },
+    ],
+    THUKPA: [
+      { sub: "VEG THUKPA ", price: "$14.99" },
+      { sub: "CHICKEN/EGG THUKPA ", price: "$16.99" },
+      { sub: "BUFF THUKPA ", price: "$17.99" },
+      { sub: "MIX THUKPA (CHICHEN, EGG)  ", price: "$18.99" },
+      { sub: "MO:MO THUKPA (VEG/CHICKEN/BUFF) ", price: "$21/$22/$23" },
+    ],
+    THALI: [
+      {
+        sub: "THAKALI THALI ",
+        price: "VEG $24.99 | CHICKEN $24.99|GOAT $24.99 | FISH $24.99 ",
+        description: "THAKALI THALI\nPlain rice, black lentil soup, green vegetable, mix pickle, papadams, side of sweet yoghurt and ghee with your choice \nof curry served with desert.",
+      },
+      { sub: "NEPALI THALI ", price: "VEG $19.99 |GOAT $19.99 | CHICKEN $19.99FISH $19.99 ", description: " Rice, daal, green leaves, mix pickle, sweet yoghurt and choice of curry." },
+      { sub: "DHINDO THALI SET (limited available) ", price: "VEG $27.99 | GOAT $27.99  | CHICKEN $27.99 | FISH $28.99" },
 
-    ],
-    "Main Course": [
-      { sub: "Veg Thali", price: 250 },
-      { sub: "Chicken Thali", price: 350 },
-    ],
-    Beverages: [
-      { sub: "Coke", price: 60 },
-      { sub: "Lassi", price: 90 },
     ],
   };
 
@@ -100,6 +198,11 @@ const MenuBar = () => {
                 <p className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-red-600">
                   Rs. {item.price}
                 </p>
+                {item.description && (
+                  <p className="mt-2 text-gray-600 text-sm">
+                    {item.description}
+                  </p>
+                )}
               </div>
             ))}
           </div>
