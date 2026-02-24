@@ -163,24 +163,22 @@ const MenuBar = () => {
       },
     ],
     CURRY: [
-      { sub: " DAAL", price: "$12.99", description: "Black lentil soup with Nepalese style herbs and aromatic 
-spices." },
-      { sub: "AALU TAMA ", price: "$14.99", description: "Potato, bamboo shoot and blackeyed bean cooked with 
-Nepalese style aromatic herbs and spices" },
-      { sub: "AALU BHENTA / AALU CAULI  ", price: "$14.99", description: "Vegetable curry with potato and eggplant cooked in Nepalese 
-style aromatic blend of spices" },
+      { sub: " DAAL", price: "$12.99", description: "Black lentil soup with Nepalese style herbs and aromatic spices." },
+      { sub: "AALU TAMA ", price: "$14.99", description: "Potato, bamboo shoot and blackeyed bean cooked with Nepalese style aromatic herbs and spices" },
+      { sub: "AALU BHENTA / AALU CAULI  ", price: "$14.99", description: "Vegetable curry with potato and eggplant cooked in Nepalese style aromatic blend of spices" },
       { sub: "HARIYO SAAG ", price: "$9.99", description: "Green vegetable leaf tossed in pan with light seasoning " },
-      { sub: "CHICKEN CURRY ", price: "$15.99", description: "Chicken with bone cooked in Nepalese style tomato and onion 
-based rich curry sauce with fresh herbs and spices" },
-      { sub: "GOAT CURY ", price: "$16.99", description: "Goat meat pieces with bone cooked in Nepalese style tomato 
-and onion based rich curry sauce with fresh herbs and 
-spices" },
-      { sub: "MATAR PANEER", price: "$16.99", description: "Cottage cheese cubes & green peas cooked in rich blend of 
-aromatic curry sauce finished with touch of cream" },
-      { sub: "BUTTER CHICKEN  ", price: "$18.99", description: "Boneless chicken cooked in aromatic rich blend of curry 
-sauce and finished with cashew nuts and touch of cream" },
-      { sub: "FISH CURRY", price: "$18.99", description: "" },
+      { sub: "CHICKEN CURRY ", price: "$15.99", description: "Chicken with bone cooked in Nepalese style tomato and onion based rich curry sauce with fresh herbs and spices" },
+      { sub: "GOAT CURY ", price: "$16.99", description: "Goat meat pieces with bone cooked in Nepalese style tomato and onion based rich curry sauce with fresh herbs and spices" },
+      { sub: "MATAR PANEER", price: "$16.99", description: "Cottage cheese cubes & green peas cooked in rich blend of aromatic curry sauce finished with touch of cream" },
+      { sub: "BUTTER CHICKEN  ", price: "$18.99", description: "Boneless chicken cooked in aromatic rich blend of curry sauce and finished with cashew nuts and touch of cream" },
+      { sub: "FISH CURRY", price: "$18.99", description: "Boneless fish pieces cooked through Nepalese style tomato and onion based rich curry sauce with fresh herbs and spices" },
     
+    ],
+    FRIES: [
+      { sub: "VEGETABLE FRIED RICE", price: "$14.99" },
+      { sub: "EGG FRIED RICE ", price: "$15.99" },
+      { sub: "CHICKEN FREID RICE ", price: "$15.99" },
+      { sub: "BUFF FRIED RICE ", price: "$16.99" },
     ],
   };
 
