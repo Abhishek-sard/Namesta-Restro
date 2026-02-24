@@ -67,7 +67,7 @@ const MenuBar = () => {
       {
         sub: "CHATTAMARI",
         price: "$15.99",
-         description:
+        description:
           "Traditional pan cake made of rice four, garlic, ginger, onion, spices, fresh herbs and topped with egg and chicken served with spicy dipping sauce",
       },
       {
@@ -75,36 +75,106 @@ const MenuBar = () => {
         price: "$12.99",
         description:
           "Crispy fried potato chips tossed with garlic, ginger, onions, coriander, Capsicum and homemade chilli sauce",
-       
       },
-      { sub: "PEERO AALU, MUSTANG AALU", price: "$12.99", description: "Spicy Potato, Cumin Potato, Sitchuan Pepper Potato " },
-      { sub: "PANEER CHILLI", price: "$15.99", description: "Pan fried cottage cheese cubes with garlic, ginger, onions, coriander, Capsicum and homemade chilli sauce. " },
-      { sub: "CHICKEN CHILLI", price: "$15.99", description: " Boneless chicken pieces fried and tossed with garlic, ginger, onions, coriander, Capsicum and homemade chilli sauce" },
-      { sub: "BUFF CHILLI", price: "$17.99", description: "Tender buffalo meat pieces tossed with garlic, ginger, onions, coriander, Capsicum, homemade chilli sauce & fresh herbs" },
-      { sub: "CHICKEN CHHOYLA/SET", price: "$15.99/$18.99", description: "Boneless chicken pieces cooked over tandoor, marinated with garlic, ginger, onions, Nepalese spices, fresh herbs & mustard oil, served cold." },
-      { sub: "CHICKEN SEKUWA/SET", price: "$15.99/$18.99", description: "Marinated chicken pieces cooked over tandoor" },
-      { sub: "LAMB SEKUWA/SET", price: "$15.99/$19.99", description: "Marinated boneless tender lamb pieces cooked over tandoor" },
-      { sub: "PORK SEKUWA/SET", price: "$15.99/$18.99", description: "Marinated boneless pork pieces cooked over tandoor" },
-      { sub: "BHUTTAN/SET", price: "$15.99/$19.99", description: "Pan fried goat intestine, with garlic, ginger onion & fresh herbs" },
-      { sub: "BUFF SUKUTI/SET", price: "$18.99/$22.99", description: "Buff dry meat served with soya bean, rice flakes potato pickle   green salad" },
-      { sub: "SAUSAGE FRY ", price: " $10.99", description: " Crispy fried chicken sausages served with spicy dipping sauce" },
-      { sub: "TIMMUR CHICKEN ", price: "$15.99", description: "Boneless Chicken, santed in nepalese spices and sichuan pepper" },
+      {
+        sub: "PEERO AALU, MUSTANG AALU",
+        price: "$12.99",
+        description: "Spicy Potato, Cumin Potato, Sitchuan Pepper Potato ",
+      },
+      {
+        sub: "PANEER CHILLI",
+        price: "$15.99",
+        description:
+          "Pan fried cottage cheese cubes with garlic, ginger, onions, coriander, Capsicum and homemade chilli sauce. ",
+      },
+      {
+        sub: "CHICKEN CHILLI",
+        price: "$15.99",
+        description:
+          " Boneless chicken pieces fried and tossed with garlic, ginger, onions, coriander, Capsicum and homemade chilli sauce",
+      },
+      {
+        sub: "BUFF CHILLI",
+        price: "$17.99",
+        description:
+          "Tender buffalo meat pieces tossed with garlic, ginger, onions, coriander, Capsicum, homemade chilli sauce & fresh herbs",
+      },
+      {
+        sub: "CHICKEN CHHOYLA/SET",
+        price: "$15.99/$18.99",
+        description:
+          "Boneless chicken pieces cooked over tandoor, marinated with garlic, ginger, onions, Nepalese spices, fresh herbs & mustard oil, served cold.",
+      },
+      {
+        sub: "CHICKEN SEKUWA/SET",
+        price: "$15.99/$18.99",
+        description: "Marinated chicken pieces cooked over tandoor",
+      },
+      {
+        sub: "LAMB SEKUWA/SET",
+        price: "$15.99/$19.99",
+        description:
+          "Marinated boneless tender lamb pieces cooked over tandoor",
+      },
+      {
+        sub: "PORK SEKUWA/SET",
+        price: "$15.99/$18.99",
+        description: "Marinated boneless pork pieces cooked over tandoor",
+      },
+      {
+        sub: "BHUTTAN/SET",
+        price: "$15.99/$19.99",
+        description:
+          "Pan fried goat intestine, with garlic, ginger onion & fresh herbs",
+      },
+      {
+        sub: "BUFF SUKUTI/SET",
+        price: "$18.99/$22.99",
+        description:
+          "Buff dry meat served with soya bean, rice flakes potato pickle   green salad",
+      },
+      {
+        sub: "SAUSAGE FRY ",
+        price: " $10.99",
+        description:
+          " Crispy fried chicken sausages served with spicy dipping sauce",
+      },
+      {
+        sub: "TIMMUR CHICKEN ",
+        price: "$15.99",
+        description:
+          "Boneless Chicken, santed in nepalese spices and sichuan pepper",
+      },
       {
         sub: "NEWARI KHAJA SET(VEG, CHICKEN, BUFF)",
         price: "$19.99/$21.99",
         description: "",
       },
-      { sub: "MIX PLATTER ", price: " $29.99", description: "Mix plate of Chicken Sausage, vegetable pakauda, bara, chicken chhoyla, lamb chhoyla, bhatmas sadeko, aalu ko achar Served with side of homemade dipping sauce." },
-      { sub: "SUBHAKAMANA PLATTER", price: "$28.99", description: "4 steam chicken mo:mo: Bara, chattamari, marinated soya bean, lamb or chicken chhoyla and fresh potato pickle served with homemade spicy dipping sauce." },
-      { sub: "VEGETARIAN PLATTER ", price: "$24.99", description: "" },
+      {
+        sub: "MIX PLATTER ",
+        price: " $29.99",
+        description:
+          "Mix plate of Chicken Sausage, vegetable pakauda, bara, chicken chhoyla, lamb chhoyla, bhatmas sadeko, aalu ko achar Served with side of homemade dipping sauce.",
+      },
+
+      {
+        sub: "VEGETARIAN PLATTER ",
+        price: "$24.99",
+        description:
+          "Mix Plate of pakauda, bhatmas, aalu achar, bara, aalu chop, samosa served with homemade dipping sauce",
+      },
       {
         sub: " SUBHAKAMANA SPECIALMOMO CHOWMEIN COMBO",
         price: "$15.99",
-        description: "Mix Plate of pakauda, bhatmas, aalu achar, bara, aalu chop, samosa served with homemade dipping sauce",
+        description:
+          "4 steam chicken mo:mo: Bara, chattamari, marinated soya bean, lamb or chicken chhoyla and fresh potato pickle served with homemade spicy dipping sauce.",
       },
       {
-        sub: "NEWARI KHAJA SET(VEG, CHICKEN, BUFF) ", price: "$19.99/$21.99" , description: " "
-      }
+        sub: "NEWARI KHAJA SET(VEG, CHICKEN, BUFF) ",
+        price: "$19.99/$21.99",
+        description:
+          " Traditional mix plate of bara, rice flakes, soya bean, potato pickle, potato and bamboo shoot curry,  green veg, homemade spicy dipping sauce and choice of chicken,lamb or without chhoyla",
+      },
     ],
     "MAINS: momo": [
       {
@@ -302,7 +372,7 @@ const MenuBar = () => {
         <h1 className="text-5xl font-bold text-center mb-12">
           Our{" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-red-600">
-            Categories
+            SUBHAKAMANA RESTAURANT & CATERING SERVICES
           </span>
         </h1>
 
@@ -315,7 +385,7 @@ const MenuBar = () => {
               className={`px-6 py-3 rounded-xl font-semibold transition-all shadow-md ${
                 selectedCategory === category
                   ? "bg-gradient-to-r from-orange-600 to-red-600 text-white"
-                  : "bg-white border border-gray-200 hover:bg-orange-100"
+                  : "bg-yellow-600 border border-gray-200 hover:bg-orange-100"
               }`}
             >
               {category}
