@@ -177,12 +177,6 @@ const Navbar = () => {
                       Find a Restaurant
                     </Link>
                     <Link
-                      to="/restaurants/bookings"
-                      className="block px-6 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 border-b border-gray-50 font-semibold"
-                    >
-                      Group Bookings
-                    </Link>
-                    <Link
                       to="/restaurants/about"
                       className="block px-6 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 border-b border-gray-50 font-semibold"
                     >

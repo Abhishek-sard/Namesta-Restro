@@ -16,10 +16,10 @@ const AboutUs = () => {
                         <h4 className="text-red-600 font-bold uppercase tracking-[0.3em] mb-4 text-sm md:text-base">Our Heritage</h4>
                         <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-8 font-cursive leading-tight">
                             The Story of <br className="hidden sm:block" />
-                            <span className="text-orange-900 drop-shadow-sm">Namaste Restaurant</span>
+                            <span className="text-orange-900 drop-shadow-sm">Subhakamana Restaurant</span>
                         </h1>
                         <p className="text-lg md:text-2xl text-gray-700 leading-relaxed mb-8 italic font-light">
-                            "Namaste" is more than just a greeting; it's a way of life. Founded with a vision to bring the authentic flavors of Nepal to the vibrant streets of Sydney.
+                            "subhakamana" is more than just a taste; it's a way of life. Founded with a vision to bring the authentic flavors of Nepal to the vibrant streets of Sydney.
                         </p>
                         <p className="text-gray-900 leading-relaxed mb-10 text-base md:text-lg font-cursive text-justify">
                             Our journey started with a small kitchen and a big dream: to create a space where food is a bridge between cultures. Every spice we use is hand-picked, and every recipe is passed down through generations of Himalayan chefs, ensuring every bite tells a story of tradition and love. We believe that food is not just nourishment, but a language that connects us all.
@@ -39,7 +39,7 @@ const AboutUs = () => {
                     <div className="relative mt-12 lg:mt-0 animate-fade-in-up md:animation-delay-2000">
                         <div className="absolute inset-0 bg-orange-900/10 rounded-[40px] md:rounded-[100px] transform rotate-3 scale-105 blur-2xl"></div>
                         <img
-                            src="/about.jpg"
+                            src="/about1.jpg"
                             alt="About Us"
                             className="rounded-[40px] md:rounded-[100px] shadow-2xl relative z-10 w-full max-w-2xl mx-auto transform hover:rotate-1 transition-transform duration-700"
                         />
@@ -63,7 +63,7 @@ const AboutUs = () => {
                                 { year: "2014", title: "The First Spice", desc: "Our doors first opened in Sydney with only six tables and a menu written by hand." },
                                 { year: "2017", title: "Regional Recognition", desc: "Voted as the 'Hidden Gem' for authentic Himalayan flavors by the local community." },
                                 { year: "2021", title: "Sustainable Shift", desc: "Committed to 100% plastic-free operations and direct-from-farm sourcing." },
-                                { year: "2024", title: "A Decade of Taste", desc: "Celebrating 10 years of bringing joy, culture, and 'Namaste' to every guest." }
+                                { year: "2024", title: "A Decade of Taste", desc: "Celebrating 10 years of bringing joy, culture, and 'Subhakamana' to every guest." }
                             ].map((item, idx) => (
                                 <div key={idx} className={`flex flex-col md:flex-row items-center ${idx % 2 === 0 ? 'md:flex-row-reverse' : ''} mb-12`}>
                                     <div className="flex-1 w-full md:w-auto">
@@ -168,7 +168,7 @@ const AboutUs = () => {
                                 <h4 className="text-red-600 font-bold uppercase tracking-widest mb-4">Culinary Secrets</h4>
                                 <h2 className="text-3xl md:text-5xl font-bold mb-8 font-cursive leading-tight">Authentic Himalayan <br />Ingredients</h2>
                                 <p className="text-gray-700 text-lg mb-8 leading-relaxed text-justify">
-                                    What makes Namaste unique? We use rare spices found only in the high-altitude valleys of the Himalayas. Our selection process is rigorous, ensuring only the most aromatic and flavorful spices make it to our kitchen.
+                                    What makes subhakamana unique? We use rare spices found only in the high-altitude valleys of the Himalayas. Our selection process is rigorous, ensuring only the most aromatic and flavorful spices make it to our kitchen.
                                 </p>
                                 <ul className="space-y-6">
                                     {[
@@ -257,7 +257,7 @@ const AboutUs = () => {
                                 <Rocket className="w-12 h-12 text-orange-500 mb-8 animate-pulse" />
                                 <h2 className="text-3xl md:text-5xl font-bold mb-8 font-cursive">Looking Ahead</h2>
                                 <p className="text-xl text-gray-300 leading-relaxed mb-8 font-light text-justify">
-                                    Our journey is only beginning. We envision a future where Namaste becomes a cultural hub—a place for workshops on Himalayan spices, community cooking classes, and deeper cultural exchange. We are exploring new flavors and techniques while staying true to our heritage.
+                                    Our journey is only beginning. We envision a future where subhakamana becomes a cultural hub—a place for workshops on Himalayan spices, community cooking classes, and deeper cultural exchange. We are exploring new flavors and techniques while staying true to our heritage.
                                 </p>
                                 <div className="flex items-center space-x-4">
                                     <div className="w-12 h-12 rounded-full border border-gray-700 flex items-center justify-center">
@@ -297,7 +297,7 @@ const AboutUs = () => {
                         </div>
                         <div className="bg-red-50 p-8 rounded-3xl border border-red-100">
                             <h3 className="text-xl font-bold mb-4 text-red-900">Cultural Pride</h3>
-                            <p className="text-gray-600 leading-relaxed text-justify">From supporting traditional Nepalese dance events to hosting community festivals, Namaste is a home for culture and connection. We take pride in sharing our rich heritage with the vibrant Australian community.</p>
+                            <p className="text-gray-600 leading-relaxed text-justify">From supporting traditional Nepalese dance events to hosting community festivals, subhakamana is a home for culture and connection. We take pride in sharing our rich heritage with the vibrant Australian community.</p>
                         </div>
                     </div>
                 </div>

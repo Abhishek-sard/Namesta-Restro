@@ -27,7 +27,6 @@ import Catering from './pages/Food/Catering.jsx';
 
 import FindRestaurant from './pages/Res/FindRestaurant.jsx';
 import AboutUs from './pages/Res/AboutPage/AboutUs.jsx';
-import GroupBookings from './pages/Res/GroupBookings.jsx';
 import Blogs from './pages/Res/Blogs.jsx';
 import BlogDetail from './pages/Res/BlogDetail.jsx';
 
@@ -79,7 +78,6 @@ function AppContent() {
 
           {/* Restaurant Routes */}
           <Route path="/restaurants/find" element={<FindRestaurant />} />
-          <Route path="/restaurants/bookings" element={<GroupBookings />} />
           <Route path="/restaurants/about" element={<AboutUs />} />
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/blogs/:id" element={<BlogDetail />} />
