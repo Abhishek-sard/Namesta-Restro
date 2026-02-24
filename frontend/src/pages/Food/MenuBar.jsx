@@ -5,97 +5,106 @@ const MenuBar = () => {
 
   const menuData = {
     ENTREE: [
-      { sub: "SAMOSA (2 Pcs)", price: "$9.99" },
+      {
+        sub: "SAMOSA (2 Pcs)",
+        price: "$9.99",
+        description: "Home made pastry stuffed with potatoes, peas and spices",
+      },
       {
         sub: "SAMOSA CHAT (with/without yogurt)",
         price: "$11.99 / $12.99",
-        description: "Home made pastry stuffed with potatoes, peas and spices",
+        description:
+          "Crushed samosas with yoghurt and sweet tamarind sauce topping",
       },
       {
         sub: "VEGETABLE PAKAUDA (6 Pcs) ",
         price: "$9.99",
         description:
-          "Crushed samosas with yoghurt and sweet tamarind sauce topping",
+          "Vegetable cake coated in spicy batter, deep fried and serve. With side of homemade spicy dipping sauce ",
       },
       {
         sub: "AALU CHOP (4 Pcs) ",
         price: "$11.99",
         description:
-          "Vegetable cake coated in spicy batter, deep fried and serve. With side of homemade spicy dipping sauce ",
+          "Potato cake coated with spicy batter, deep fried and served with side of homemade dipping sauce",
       },
       {
         sub: "AALU KO ACHAAR",
         price: "$9.99",
         description:
-          "Potato cake coated with spicy batter, deep fried and served with side of homemade dipping sauce",
+          " Marinated potatoes in garlic, ginger, mixed spices and fresh herbs ",
       },
       {
         sub: "BHATMAS SADEKO ",
         price: "9.99",
         description:
-          " Marinated potatoes in garlic, ginger, mixed spices and fresh herbs ",
+          "Fried soya bean marinated with onion, ginger, garlic, fresh herbs & mustard oil",
       },
       {
         sub: "CHATPATE/WAI WAI SADEKO",
         price: "$10.99/11.99",
         description:
-          "Fried soya bean marinated with onion, ginger, garlic, fresh herbs & mustard oil",
+          "Spicy marinated mixture of rice puff, onions, potato chilli, coriander, mix spices and fresh herbs",
       },
       {
         sub: "PANI PURI / DAHI PURI (8 Pcs)",
         price: "$9.99/$10.99",
         description:
-          "Spicy marinated mixture of rice puff, onions, potato chilli, coriander, mix spices and fresh herbs",
+          "Crispy fried pastry, stuffed with spicy potato mix and filled with spicy sour watery sauce",
       },
       {
         sub: "LAPHING(DRY/JHOL) (CHIPS PEANUTS $1 EXTRA) ",
         price: "$9.99/$10.50",
         description:
-          "Crispy fried pastry, stuffed with spicy potato mix and filled with spicy sour watery sauce",
+          " Aromatic starchy spiced roll served dry or with spicy soup ",
       },
       {
         sub: "BARA (PLAIN/EGG)",
         price: "$8.99/$10.99",
         description:
-          " Aromatic starchy spiced roll served dry or with spicy soup ",
+          "Black lentil pan cake with ginger, garlic, fresh herbs and spices ",
       },
       {
         sub: "CHATTAMARI",
         price: "$15.99",
-        description:
-          "Black lentil pan cake with ginger, garlic, fresh herbs and spices ",
+         description:
+          "Traditional pan cake made of rice four, garlic, ginger, onion, spices, fresh herbs and topped with egg and chicken served with spicy dipping sauce",
       },
       {
         sub: "CHIPS CHILLI ",
         price: "$12.99",
         description:
-          "Traditional pan cake made of rice four, garlic, ginger, onion, spices, fresh herbs and topped with egg and chicken served with spicy dipping sauce",
+          "Crispy fried potato chips tossed with garlic, ginger, onions, coriander, Capsicum and homemade chilli sauce",
+       
       },
-      { sub: "PEERO AALU, MUSTANG AALU", price: "$12.99", description: "" },
-      { sub: "PANEER CHILLI", price: "$15.99", description: "" },
-      { sub: "CHICKEN CHILLI", price: "$15.99", description: "" },
-      { sub: "BUFF CHILLI", price: "$17.99", description: "" },
-      { sub: "CHICKEN CHHOYLA/SET", price: "$15.99/$18.99", description: "" },
-      { sub: "CHICKEN SEKUWA/SET", price: "$15.99/$18.99", description: "" },
-      { sub: "LAMB SEKUWA/SET", price: "$15.99/$19.99", description: "" },
-      { sub: "PORK SEKUWA/SET", price: "$15.99/$18.99", description: "" },
-      { sub: "BHUTTAN/SET", price: "$15.99/$19.99", description: "" },
-      { sub: "BUFF SUKUTI/SET", price: "$18.99/$22.99", description: "" },
-      { sub: "SAUSAGE FRY ", price: " $10.99", description: "" },
-      { sub: "TIMMUR CHICKEN ", price: "$15.99", description: "" },
+      { sub: "PEERO AALU, MUSTANG AALU", price: "$12.99", description: "Spicy Potato, Cumin Potato, Sitchuan Pepper Potato " },
+      { sub: "PANEER CHILLI", price: "$15.99", description: "Pan fried cottage cheese cubes with garlic, ginger, onions, coriander, Capsicum and homemade chilli sauce. " },
+      { sub: "CHICKEN CHILLI", price: "$15.99", description: " Boneless chicken pieces fried and tossed with garlic, ginger, onions, coriander, Capsicum and homemade chilli sauce" },
+      { sub: "BUFF CHILLI", price: "$17.99", description: "Tender buffalo meat pieces tossed with garlic, ginger, onions, coriander, Capsicum, homemade chilli sauce & fresh herbs" },
+      { sub: "CHICKEN CHHOYLA/SET", price: "$15.99/$18.99", description: "Boneless chicken pieces cooked over tandoor, marinated with garlic, ginger, onions, Nepalese spices, fresh herbs & mustard oil, served cold." },
+      { sub: "CHICKEN SEKUWA/SET", price: "$15.99/$18.99", description: "Marinated chicken pieces cooked over tandoor" },
+      { sub: "LAMB SEKUWA/SET", price: "$15.99/$19.99", description: "Marinated boneless tender lamb pieces cooked over tandoor" },
+      { sub: "PORK SEKUWA/SET", price: "$15.99/$18.99", description: "Marinated boneless pork pieces cooked over tandoor" },
+      { sub: "BHUTTAN/SET", price: "$15.99/$19.99", description: "Pan fried goat intestine, with garlic, ginger onion & fresh herbs" },
+      { sub: "BUFF SUKUTI/SET", price: "$18.99/$22.99", description: "Buff dry meat served with soya bean, rice flakes potato pickle   green salad" },
+      { sub: "SAUSAGE FRY ", price: " $10.99", description: " Crispy fried chicken sausages served with spicy dipping sauce" },
+      { sub: "TIMMUR CHICKEN ", price: "$15.99", description: "Boneless Chicken, santed in nepalese spices and sichuan pepper" },
       {
         sub: "NEWARI KHAJA SET(VEG, CHICKEN, BUFF)",
         price: "$19.99/$21.99",
         description: "",
       },
-      { sub: "MIX PLATTER ", price: " $29.99", description: "" },
-      { sub: "SUBHAKAMANA PLATTER", price: "$28.99", description: "" },
+      { sub: "MIX PLATTER ", price: " $29.99", description: "Mix plate of Chicken Sausage, vegetable pakauda, bara, chicken chhoyla, lamb chhoyla, bhatmas sadeko, aalu ko achar Served with side of homemade dipping sauce." },
+      { sub: "SUBHAKAMANA PLATTER", price: "$28.99", description: "4 steam chicken mo:mo: Bara, chattamari, marinated soya bean, lamb or chicken chhoyla and fresh potato pickle served with homemade spicy dipping sauce." },
       { sub: "VEGETARIAN PLATTER ", price: "$24.99", description: "" },
       {
         sub: " SUBHAKAMANA SPECIALMOMO CHOWMEIN COMBO",
         price: "$15.99",
-        description: "",
+        description: "Mix Plate of pakauda, bhatmas, aalu achar, bara, aalu chop, samosa served with homemade dipping sauce",
       },
+      {
+        sub: "NEWARI KHAJA SET(VEG, CHICKEN, BUFF) ", price: "$19.99/$21.99" , description: " "
+      }
     ],
     "MAINS: momo": [
       {
@@ -163,16 +172,59 @@ const MenuBar = () => {
       },
     ],
     CURRY: [
-      { sub: " DAAL", price: "$12.99", description: "Black lentil soup with Nepalese style herbs and aromatic spices." },
-      { sub: "AALU TAMA ", price: "$14.99", description: "Potato, bamboo shoot and blackeyed bean cooked with Nepalese style aromatic herbs and spices" },
-      { sub: "AALU BHENTA / AALU CAULI  ", price: "$14.99", description: "Vegetable curry with potato and eggplant cooked in Nepalese style aromatic blend of spices" },
-      { sub: "HARIYO SAAG ", price: "$9.99", description: "Green vegetable leaf tossed in pan with light seasoning " },
-      { sub: "CHICKEN CURRY ", price: "$15.99", description: "Chicken with bone cooked in Nepalese style tomato and onion based rich curry sauce with fresh herbs and spices" },
-      { sub: "GOAT CURY ", price: "$16.99", description: "Goat meat pieces with bone cooked in Nepalese style tomato and onion based rich curry sauce with fresh herbs and spices" },
-      { sub: "MATAR PANEER", price: "$16.99", description: "Cottage cheese cubes & green peas cooked in rich blend of aromatic curry sauce finished with touch of cream" },
-      { sub: "BUTTER CHICKEN  ", price: "$18.99", description: "Boneless chicken cooked in aromatic rich blend of curry sauce and finished with cashew nuts and touch of cream" },
-      { sub: "FISH CURRY", price: "$18.99", description: "Boneless fish pieces cooked through Nepalese style tomato and onion based rich curry sauce with fresh herbs and spices" },
-    
+      {
+        sub: " DAAL",
+        price: "$12.99",
+        description:
+          "Black lentil soup with Nepalese style herbs and aromatic spices.",
+      },
+      {
+        sub: "AALU TAMA ",
+        price: "$14.99",
+        description:
+          "Potato, bamboo shoot and blackeyed bean cooked with Nepalese style aromatic herbs and spices",
+      },
+      {
+        sub: "AALU BHENTA / AALU CAULI  ",
+        price: "$14.99",
+        description:
+          "Vegetable curry with potato and eggplant cooked in Nepalese style aromatic blend of spices",
+      },
+      {
+        sub: "HARIYO SAAG ",
+        price: "$9.99",
+        description: "Green vegetable leaf tossed in pan with light seasoning ",
+      },
+      {
+        sub: "CHICKEN CURRY ",
+        price: "$15.99",
+        description:
+          "Chicken with bone cooked in Nepalese style tomato and onion based rich curry sauce with fresh herbs and spices",
+      },
+      {
+        sub: "GOAT CURY ",
+        price: "$16.99",
+        description:
+          "Goat meat pieces with bone cooked in Nepalese style tomato and onion based rich curry sauce with fresh herbs and spices",
+      },
+      {
+        sub: "MATAR PANEER",
+        price: "$16.99",
+        description:
+          "Cottage cheese cubes & green peas cooked in rich blend of aromatic curry sauce finished with touch of cream",
+      },
+      {
+        sub: "BUTTER CHICKEN  ",
+        price: "$18.99",
+        description:
+          "Boneless chicken cooked in aromatic rich blend of curry sauce and finished with cashew nuts and touch of cream",
+      },
+      {
+        sub: "FISH CURRY",
+        price: "$18.99",
+        description:
+          "Boneless fish pieces cooked through Nepalese style tomato and onion based rich curry sauce with fresh herbs and spices",
+      },
     ],
     FRIES: [
       { sub: "VEGETABLE FRIED RICE", price: "$14.99" },
@@ -205,26 +257,43 @@ const MenuBar = () => {
       { sub: "OMELETTE ", price: "$9.99" },
     ],
     SALADS: [
-      { sub: "CUCUMBER AND CARROTS ", price: "$8.99", description: "Cucumber and carrots marinated in nepalese style spicy dressing" },
+      {
+        sub: "CUCUMBER AND CARROTS ",
+        price: "$8.99",
+        description:
+          "Cucumber and carrots marinated in nepalese style spicy dressing",
+      },
     ],
-    KIDS MENU: [
+    "KIDS MENU": [
       { sub: "KIDS NUGGETS AND CHIPS ", price: "$9.99" },
       { sub: "CHIPS ", price: "$6.99" },
     ],
     SWEETS: [
-      { sub: "RASBARI(2 pcs) ", price: "$5.99", description: "RASBARI (2pcs) Soft cottage cheese balls in sugar syrup" },
-      { sub: "GULAB JAMUN ", price: "$6.99", description: "Sweet milky solid balls in sugar syrup and yoghurt" },
-      { sub: "RASMALAI ", price: "$9.99", description: "Soft cottage cheese solids in rich aromatic sweet milky syrup" },
+      {
+        sub: "RASBARI(2 pcs) ",
+        price: "$5.99",
+        description: "RASBARI (2pcs) Soft cottage cheese balls in sugar syrup",
+      },
+      {
+        sub: "GULAB JAMUN ",
+        price: "$6.99",
+        description: "Sweet milky solid balls in sugar syrup and yoghurt",
+      },
+      {
+        sub: "RASMALAI ",
+        price: "$9.99",
+        description:
+          "Soft cottage cheese solids in rich aromatic sweet milky syrup",
+      },
     ],
-    SOFT DRINKS: [
+    "SOFT DRINKS": [
       { sub: "COKE, FANTA, SPRITE, LEMONADE ", price: "$4.50" },
       { sub: " JUICE (apple, orange, mango)  ", price: "$4.99" },
       { sub: " LASSI (Plain or mango) ", price: "$5.99" },
       { sub: "LASSI (banana, strawberry)", price: "$7.99" },
-      { sub: "", price: "$2.99" },
+      { sub: "TEA (Milk tea, black tea, lemon tea)", price: "$4.99" },
     ],
-
-  };   
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-red-50 pt-32 pb-16 px-6">
