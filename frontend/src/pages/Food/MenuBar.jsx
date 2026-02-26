@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { useCart } from "../../context/CartContext.jsx";
 
 const MenuBar = () => {
   const [selectedCategory, setSelectedCategory] = useState("");
+  const { addToCart, getItemQuantityInCart } = useCart();
 
   const menuData = {
     ENTREE: [
@@ -382,11 +384,10 @@ const MenuBar = () => {
             <button
               key={category}
               onClick={() => setSelectedCategory(category)}
-              className={`px-6 py-3 rounded-xl font-semibold transition-all shadow-md ${
-                selectedCategory === category
+              className={`px-6 py-3 rounded-xl font-semibold transition-all shadow-md ${selectedCategory === category
                   ? "bg-gradient-to-r from-orange-600 to-red-600 text-white"
                   : "bg-yellow-600 border border-gray-200 hover:bg-orange-100"
-              }`}
+                }`}
             >
               {category}
             </button>
@@ -396,24 +397,43 @@ const MenuBar = () => {
         {/* Subcategories with Price */}
         {selectedCategory && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {menuData[selectedCategory].map((item, index) => (
-              <div
-                key={index}
-                className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all border border-gray-100 hover:border-orange-200"
-              >
-                <h3 className="text-xl font-bold text-gray-900 mb-2">
-                  {item.sub}
-                </h3>
-                <p className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-red-600">
-                  Rs. {item.price}
-                </p>
-                {item.description && (
-                  <p className="mt-2 text-gray-600 text-sm">
-                    {item.description}
+            {menuData[selectedCategory].map((item, index) => {
+              const quantityInCart = getItemQuantityInCart(item.sub);
+              return (
+                <div
+                  key={index}
+                  className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all border border-gray-100 hover:border-orange-200"
+                >
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">
+                    {item.sub}
+                  </h3>
+                  <p className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-red-600">
+                    Rs. {item.price}
                   </p>
-                )}
-              </div>
-            ))}
+                  {item.description && (
+                    <p className="mt-2 text-gray-600 text-sm">
+                      {item.description}
+                    </p>
+                  )}
+                  <div className="mt-4 flex items-center justify-between">
+                    <button
+                      onClick={() => addToCart({
+                        ...item,
+                        _id: item._id || item.sub // use name as fallback id
+                      })}
+                      className="bg-gradient-to-r from-orange-600 to-red-600 text-white px-4 py-2 rounded-xl font-semibold hover:from-orange-700 hover:to-red-700 transition-all shadow-md"
+                    >
+                      Add to cart
+                    </button>
+                    {quantityInCart > 0 && (
+                      <span className="text-sm text-gray-700">
+                        {quantityInCart} in cart
+                      </span>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
           </div>
         )}
       </div>

@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
 import OrderDrawer from "./OrderDrawer";
+import { useCart } from "../context/CartContext.jsx";
 
 const Navbar = () => {
   const { user, logout, isAdmin } = useAuth();
@@ -17,6 +18,7 @@ const Navbar = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isOrderDrawerOpen, setIsOrderDrawerOpen] = useState(false);
+  const { getCartItemCount } = useCart();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -228,7 +230,7 @@ const Navbar = () => {
                 onClick={() => setIsOrderDrawerOpen(true)}
                 className="bg-yellow-400 hover:bg-yellow-600 text-white font-bold py-3 px-8 text-lg rounded-full transition-colors shadow-sm ml-6"
               >
-                ORDER NOW
+                ORDER NOW{getCartItemCount() > 0 && ` (${getCartItemCount()})`}
               </button>
             </div>
           </div>

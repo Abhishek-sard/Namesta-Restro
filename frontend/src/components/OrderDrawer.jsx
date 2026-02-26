@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { X, ShoppingBag, Truck, Store, UtensilsCrossed, ArrowLeft, Loader2, AlertCircle, ShoppingCart, Plus, Minus, Trash2, CheckCircle, CreditCard } from 'lucide-react';
 import axios from 'axios';
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+import { useCart } from '../context/CartContext.jsx';
 
 const OrderDrawer = ({ isOpen, onClose }) => {
     const [isLoading, setIsLoading] = useState(false);
@@ -11,8 +12,8 @@ const OrderDrawer = ({ isOpen, onClose }) => {
     const [menuLoading, setMenuLoading] = useState(false);
     const [menuError, setMenuError] = useState(null);
 
-    // Cart state
-    const [cart, setCart] = useState([]);
+    // Cart context
+    const { cart, addToCart, updateQuantity, removeFromCart, getCartTotal, getCartItemCount, getItemQuantityInCart, clearCart } = useCart();
 
     // Checkout state
     const [customerInfo, setCustomerInfo] = useState({
@@ -55,7 +56,7 @@ const OrderDrawer = ({ isOpen, onClose }) => {
             // Reset all state when drawer closes
             setCurrentView('order-type');
             setSelectedOrderType(null);
-            setCart([]);
+            clearCart();
             setCustomerInfo({
                 name: '', phone: '', email: '', address: '', tableNumber: '', pickupTime: 'ASAP', specialInstructions: ''
             });
@@ -113,48 +114,6 @@ const OrderDrawer = ({ isOpen, onClose }) => {
         setSelectedOrderType(null);
     };
 
-    // Cart functions
-    const addToCart = (menuItem) => {
-        const existingItem = cart.find(item => item.menuItem._id === menuItem._id);
-        if (existingItem) {
-            setCart(cart.map(item =>
-                item.menuItem._id === menuItem._id
-                    ? { ...item, quantity: item.quantity + 1 }
-                    : item
-            ));
-        } else {
-            setCart([...cart, { menuItem, quantity: 1 }]);
-        }
-    };
-
-    const updateQuantity = (itemId, newQuantity) => {
-        if (newQuantity <= 0) {
-            removeFromCart(itemId);
-        } else {
-            setCart(cart.map(item =>
-                item.menuItem._id === itemId
-                    ? { ...item, quantity: newQuantity }
-                    : item
-            ));
-        }
-    };
-
-    const removeFromCart = (itemId) => {
-        setCart(cart.filter(item => item.menuItem._id !== itemId));
-    };
-
-    const getCartTotal = () => {
-        return cart.reduce((total, item) => total + (item.menuItem.price * item.quantity), 0);
-    };
-
-    const getCartItemCount = () => {
-        return cart.reduce((count, item) => count + item.quantity, 0);
-    };
-
-    const getItemQuantityInCart = (itemId) => {
-        const item = cart.find(item => item.menuItem._id === itemId);
-        return item ? item.quantity : 0;
-    };
 
     // Navigation
     const handleBackToSelection = () => {
