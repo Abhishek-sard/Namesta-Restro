@@ -300,7 +300,7 @@ const OrderDrawer = ({ isOpen, onClose }) => {
                                         required
                                         value={customerInfo.name}
                                         onChange={(e) => setCustomerInfo({ ...customerInfo, name: e.target.value })}
-                                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-orange-500 focus:ring-2 focus:ring-orange-100 outline-none transition-all"
+                                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-orange-500 focus:ring-2 focus:ring-orange-100 outline-none transition-all text-gray-900"
                                     />
                                     <input
                                         type="tel"
@@ -308,7 +308,7 @@ const OrderDrawer = ({ isOpen, onClose }) => {
                                         required
                                         value={customerInfo.phone}
                                         onChange={(e) => setCustomerInfo({ ...customerInfo, phone: e.target.value })}
-                                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-orange-500 focus:ring-2 focus:ring-orange-100 outline-none transition-all"
+                                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-orange-500 focus:ring-2 focus:ring-orange-100 outline-none transition-all text-gray-900"
                                     />
                                     <input
                                         type="email"
@@ -316,7 +316,7 @@ const OrderDrawer = ({ isOpen, onClose }) => {
                                         required
                                         value={customerInfo.email}
                                         onChange={(e) => setCustomerInfo({ ...customerInfo, email: e.target.value })}
-                                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-orange-500 focus:ring-2 focus:ring-orange-100 outline-none transition-all"
+                                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-orange-500 focus:ring-2 focus:ring-orange-100 outline-none transition-all text-gray-900"
                                     />
                                     {selectedOrderType === 'delivery' && (
                                         <textarea
@@ -325,7 +325,7 @@ const OrderDrawer = ({ isOpen, onClose }) => {
                                             value={customerInfo.address}
                                             onChange={(e) => setCustomerInfo({ ...customerInfo, address: e.target.value })}
                                             rows="3"
-                                            className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-orange-500 focus:ring-2 focus:ring-orange-100 outline-none transition-all resize-none"
+                                            className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-orange-500 focus:ring-2 focus:ring-orange-100 outline-none transition-all resize-none text-gray-900"
                                         />
                                     )}
                                     {selectedOrderType === 'pickup' && (
@@ -334,7 +334,7 @@ const OrderDrawer = ({ isOpen, onClose }) => {
                                             <select
                                                 value={customerInfo.pickupTime}
                                                 onChange={(e) => setCustomerInfo({ ...customerInfo, pickupTime: e.target.value })}
-                                                className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-orange-500 focus:ring-2 focus:ring-orange-100 outline-none transition-all bg-white"
+                                                className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-orange-500 focus:ring-2 focus:ring-orange-100 outline-none transition-all bg-white text-gray-900"
                                             >
                                                 <option value="ASAP">As soon as possible (15-20 mins)</option>
                                                 <option value="15min">In 15 minutes</option>
@@ -350,7 +350,7 @@ const OrderDrawer = ({ isOpen, onClose }) => {
                                             placeholder="Table Number (Optional)"
                                             value={customerInfo.tableNumber}
                                             onChange={(e) => setCustomerInfo({ ...customerInfo, tableNumber: e.target.value })}
-                                            className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-orange-500 focus:ring-2 focus:ring-orange-100 outline-none transition-all"
+                                            className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-orange-500 focus:ring-2 focus:ring-orange-100 outline-none transition-all text-gray-900"
                                         />
                                     )}
                                     <textarea
@@ -358,7 +358,7 @@ const OrderDrawer = ({ isOpen, onClose }) => {
                                         value={customerInfo.specialInstructions}
                                         onChange={(e) => setCustomerInfo({ ...customerInfo, specialInstructions: e.target.value })}
                                         rows="2"
-                                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-orange-500 focus:ring-2 focus:ring-orange-100 outline-none transition-all resize-none"
+                                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-orange-500 focus:ring-2 focus:ring-orange-100 outline-none transition-all resize-none text-gray-900"
                                     />
                                 </div>
                             </div>
