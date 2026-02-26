@@ -34,13 +34,6 @@ app.use('/api/auth', authRoutes);
 app.use('/api/menu', menuRoutes);
 app.use('/api/blogs', blogRoutes);
 
-// PayPal Configuration Endpoint
-app.get("/api/config/paypal", (req, res) => {
-    res.send({
-        clientId: process.env.PAYPAL_CLIENT_ID,
-    });
-});
-
 // Root Route
 app.get('/', (req, res) => {
     res.send('API is running...');

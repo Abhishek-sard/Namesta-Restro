@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { X, ShoppingBag, Truck, Store, UtensilsCrossed, ArrowLeft, Loader2, AlertCircle, ShoppingCart, Plus, Minus, Trash2, CheckCircle, CreditCard } from 'lucide-react';
 import axios from 'axios';
-import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import { useCart } from '../context/CartContext.jsx';
 
 const OrderDrawer = ({ isOpen, onClose }) => {
@@ -26,8 +25,6 @@ const OrderDrawer = ({ isOpen, onClose }) => {
         specialInstructions: ''
     });
     const [orderNumber, setOrderNumber] = useState('');
-    const [paymentProcessing, setPaymentProcessing] = useState(false);
-    const [paypalClientId, setPaypalClientId] = useState(null);
 
     // Prevent body scroll when drawer is open
     useEffect(() => {
@@ -38,16 +35,7 @@ const OrderDrawer = ({ isOpen, onClose }) => {
                 setIsLoading(false);
             }, 8500);
 
-            // Fetch PayPal Client ID
-            const getPayPalClientId = async () => {
-                try {
-                    const { data } = await axios.get('http://localhost:5000/api/config/paypal');
-                    setPaypalClientId(data.clientId);
-                } catch (error) {
-                    console.error("Error fetching PayPal client ID:", error);
-                }
-            };
-            getPayPalClientId();
+
 
             return () => clearTimeout(timer);
         } else {
@@ -146,16 +134,14 @@ const OrderDrawer = ({ isOpen, onClose }) => {
         setCurrentView('cart');
     };
 
-    // Payment
+    // Order Placement
     const handlePlaceOrder = async (e) => {
         e.preventDefault();
-        setPaymentProcessing(true);
 
-        // Simulate payment processing
+        // Process order
         setTimeout(() => {
             const orderNum = 'ORD-' + Math.random().toString(36).substr(2, 9).toUpperCase();
             setOrderNumber(orderNum);
-            setPaymentProcessing(false);
             setCurrentView('confirmation');
         }, 2000);
     };
@@ -410,48 +396,7 @@ const OrderDrawer = ({ isOpen, onClose }) => {
                                 </div>
                             </div>
 
-                            {/* Payment Section */}
-                            <div className="bg-white rounded-3xl p-6 shadow-sm">
-                                <h3 className="text-lg font-bold text-gray-900 mb-4">Payment</h3>
-                                {!paypalClientId ? (
-                                    <div className="flex items-center justify-center py-4">
-                                        <Loader2 className="w-8 h-8 text-orange-600 animate-spin" />
-                                    </div>
-                                ) : (
-                                    <div className="relative z-0">
-                                        <PayPalScriptProvider options={{ "client-id": paypalClientId }}>
-                                            <PayPalButtons
-                                                style={{ layout: "vertical", shape: "pill", color: "gold", label: "pay" }}
-                                                createOrder={(data, actions) => {
-                                                    return actions.order.create({
-                                                        purchase_units: [
-                                                            {
-                                                                amount: {
-                                                                    value: finalTotal.toFixed(2),
-                                                                },
-                                                            },
-                                                        ],
-                                                    });
-                                                }}
-                                                onApprove={(data, actions) => {
-                                                    return actions.order.capture().then((details) => {
-                                                        const orderNum = 'ORD-' + Math.random().toString(36).substr(2, 9).toUpperCase();
-                                                        setOrderNumber(orderNum);
-                                                        setCurrentView('confirmation');
-                                                    });
-                                                }}
-                                                onError={(err) => {
-                                                    console.error("PayPal Error:", err);
-                                                    alert("Payment failed. Please try again.");
-                                                }}
-                                            />
-                                        </PayPalScriptProvider>
-                                    </div>
-                                )}
-                                <p className="text-xs text-gray-500 text-center mt-4">
-                                    Secure payment via PayPal. Your information is encrypted.
-                                </p>
-                            </div>
+
                         </form>
                     </div>
                 ) : currentView === 'cart' ? (

@@ -19,4 +19,4 @@ If you are developing a production application, we recommend using TypeScript wi
 ## License
 password: admindashboard123
 username: admindashboard123
-gmail: admindashboard@gmail.com
+gmail: admindashboard@gmail.com 
