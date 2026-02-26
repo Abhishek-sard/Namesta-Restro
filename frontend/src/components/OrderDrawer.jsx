@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { X, ShoppingBag, Truck, Store, UtensilsCrossed, ArrowLeft, Loader2, AlertCircle, ShoppingCart, Plus, Minus, Trash2, CheckCircle, CreditCard } from 'lucide-react';
 import axios from 'axios';
 import { useCart } from '../context/CartContext.jsx';
+import StripeCheckout from './StripeCheckout.jsx';
 
 const OrderDrawer = ({ isOpen, onClose }) => {
     const [isLoading, setIsLoading] = useState(false);
@@ -134,20 +135,62 @@ const OrderDrawer = ({ isOpen, onClose }) => {
         setCurrentView('cart');
     };
 
-    // Order Placement
+    // Order Placement with Stripe
     const handlePlaceOrder = async (e) => {
         e.preventDefault();
+        
+        // Validate customer info
+        if (!customerInfo.name.trim() || !customerInfo.phone.trim() || !customerInfo.email.trim()) {
+            alert('Please fill in all required customer information');
+            return;
+        }
 
-        // Process order
-        setTimeout(() => {
-            const orderNum = 'ORD-' + Math.random().toString(36).substr(2, 9).toUpperCase();
-            setOrderNumber(orderNum);
-            setCurrentView('confirmation');
-        }, 2000);
+        if (selectedOrderType === 'delivery' && !customerInfo.address.trim()) {
+            alert('Please provide delivery address');
+            return;
+        }
+
+        setIsLoading(true);
+
+        try {
+            // Create order in backend
+            const orderResponse = await axios.post('http://localhost:5000/api/orders', {
+                customerName: customerInfo.name,
+                customerPhone: customerInfo.phone,
+                customerEmail: customerInfo.email,
+                deliveryAddress: customerInfo.address || '',
+                tableNumber: customerInfo.tableNumber || '',
+                pickupTime: customerInfo.pickupTime,
+                specialInstructions: customerInfo.specialInstructions,
+                orderType: selectedOrderType,
+                items: cart.map(item => ({
+                    menuItem: item.menuItem._id,
+                    quantity: item.quantity,
+                    price: item.menuItem.price
+                })),
+                subtotal: getCartTotal(),
+                tax: tax,
+                deliveryFee: deliveryFee,
+                total: finalTotal,
+                status: 'pending_payment',
+                paymentMethod: 'stripe'
+            });
+
+            const orderId = orderResponse.data.order._id;
+            setOrderNumber(orderResponse.data.order.orderNumber);
+
+            // Show Stripe Payment Dialog
+            setCurrentView('stripe-payment');
+            
+        } catch (error) {
+            console.error('Error creating order:', error);
+            alert('Failed to create order. Please try again.');
+            setIsLoading(false);
+        }
     };
 
     const handleOrderAgain = () => {
-        setCart([]);
+        clearCart();
         setCurrentView('order-type');
         setSelectedOrderType(null);
         setCustomerInfo({
@@ -212,6 +255,40 @@ const OrderDrawer = ({ isOpen, onClose }) => {
                             >
                                 Namaste Restaurant
                             </h1>
+                        </div>
+                    </div>
+                ) : currentView === 'stripe-payment' ? (
+                    // Stripe Payment View
+                    <div className="h-full flex flex-col">
+                        <div className="p-6 border-b border-gray-100 flex items-center justify-between bg-white sticky top-0 z-10">
+                            <div className="flex items-center gap-3">
+                                <div className="bg-blue-100 p-2 rounded-xl">
+                                    <CreditCard className="w-6 h-6 text-blue-600" />
+                                </div>
+                                <div>
+                                    <h2 className="text-xl font-bold text-gray-900">Secure Payment</h2>
+                                    <p className="text-sm text-gray-500">Powered by Stripe</p>
+                                </div>
+                            </div>
+                            <button onClick={onClose} className="p-2 hover:bg-gray-100 rounded-full transition-colors">
+                                <X className="w-6 h-6 text-gray-400" />
+                            </button>
+                        </div>
+
+                        <div className="flex-1 overflow-y-auto p-6 bg-gray-50/50">
+                            <StripeCheckout 
+                                amount={finalTotal}
+                                orderNumber={orderNumber}
+                                customerInfo={customerInfo}
+                                onPaymentSuccess={() => {
+                                    setTimeout(() => {
+                                        setCurrentView('confirmation');
+                                    }, 1000);
+                                }}
+                                onPaymentError={(error) => {
+                                    alert('Payment failed: ' + error);
+                                }}
+                            />
                         </div>
                     </div>
                 ) : currentView === 'confirmation' ? (
@@ -396,7 +473,33 @@ const OrderDrawer = ({ isOpen, onClose }) => {
                                 </div>
                             </div>
 
-
+                            {/* Payment Button */}
+                            <div className="flex gap-3 mt-6">
+                                <button
+                                    type="button"
+                                    onClick={handleBackToCart}
+                                    className="flex-1 px-6 py-4 rounded-xl font-bold border-2 border-gray-200 text-gray-700 hover:bg-gray-50 transition-colors"
+                                >
+                                    Back to Cart
+                                </button>
+                                <button
+                                    type="submit"
+                                    disabled={isLoading}
+                                    className="flex-1 bg-gradient-to-r from-orange-600 to-red-600 text-white py-4 rounded-xl font-bold hover:from-orange-700 hover:to-red-700 transition-all shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                                >
+                                    {isLoading ? (
+                                        <>
+                                            <Loader2 className="w-5 h-5 animate-spin" />
+                                            Processing...
+                                        </>
+                                    ) : (
+                                        <>
+                                            <CreditCard className="w-5 h-5" />
+                                            Pay ${finalTotal.toFixed(2)}
+                                        </>
+                                    )}
+                                </button>
+                            </div>
                         </form>
                     </div>
                 ) : currentView === 'cart' ? (

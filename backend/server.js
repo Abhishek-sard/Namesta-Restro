@@ -11,6 +11,7 @@ import { fileURLToPath } from 'url';
 import authRoutes from './routes/authRoutes.js';
 import menuRoutes from './routes/menuRoutes.js';
 import blogRoutes from './routes/blogRoutes.js';
+import stripeRoutes from './routes/stripeRoutes.js';
 import connectDB from './config/db.js';
 
 // Load environment variables
@@ -26,6 +27,12 @@ const app = express();
 
 // Middleware
 app.use(cors());
+
+// ⚠️  IMPORTANT: Stripe webhook must receive raw body
+// This route must come before express.json()
+app.use('/api/stripe/webhook', express.raw({ type: 'application/json' }));
+
+// Regular JSON middleware for all other routes
 app.use(express.json());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
@@ -33,6 +40,7 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use('/api/auth', authRoutes);
 app.use('/api/menu', menuRoutes);
 app.use('/api/blogs', blogRoutes);
+app.use('/api/stripe', stripeRoutes);
 
 // Root Route
 app.get('/', (req, res) => {

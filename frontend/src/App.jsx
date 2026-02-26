@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header.jsx';
 import Footer from './components/Footer.jsx';
+import { PaymentProvider } from './context/PaymentContext.jsx';
 
 
 import HeroSlider from './pages/Home/HeroSlider.jsx';
@@ -99,9 +100,11 @@ function AppContent() {
 
 function App() {
   return (
-    <Router>
-      <AppContent />
-    </Router>
+    <PaymentProvider>
+      <Router>
+        <AppContent />
+      </Router>
+    </PaymentProvider>
   )
 }
 

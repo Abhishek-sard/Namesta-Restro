@@ -17,9 +17,11 @@ import {
     Lock,
     BookOpen,
     FileText,
-    LayoutDashboard
+    LayoutDashboard,
+    CreditCard
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
+import StripeSettings from './StripeSettings';
 import axios from 'axios';
 
 const AdminDashboard = () => {
@@ -293,7 +295,14 @@ const AdminDashboard = () => {
                     () => setActiveTab('customers')
                 )}
                 <div className="pt-8 mb-4 px-2">
-                    <h2 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4 px-4">Account</h2>
+                    <h2 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4 px-4">Payments</h2>
+                    {renderNavItem(
+                        CreditCard,
+                        "Stripe Settings",
+                        activeTab === 'stripe',
+                        () => setActiveTab('stripe')
+                    )}
+                    <h2 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4 px-4 mt-8">Account</h2>
                     {renderNavItem(
                         Settings,
                         "Settings",
@@ -822,6 +831,7 @@ const AdminDashboard = () => {
                     {activeTab === 'blogs' && renderBlogsTable()}
                     {activeTab === 'customers' && renderUsersTable()}
                     {activeTab === 'settings' && renderSettingsTab()}
+                    {activeTab === 'stripe' && <StripeSettings />}
                     {activeTab === 'orders' && (
                         <div className="bg-white p-20 rounded-3xl border border-dashed border-gray-200 text-center">
                             <div className="w-20 h-20 bg-orange-50 rounded-full flex items-center justify-center mx-auto mb-6">
