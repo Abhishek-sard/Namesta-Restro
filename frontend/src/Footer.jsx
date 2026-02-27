@@ -26,7 +26,7 @@ const Footer = () => {
 
                     {/* 1. Brand Section */}
                     <div>
-                        <h3 className="text-2xl font-bold mb-6">NAMESTA<span className="text-orange-500">.</span></h3>
+                        <h3 className="text-2xl font-bold mb-6">SUBHAKAMANA<span className="text-orange-500">.</span></h3>
                         <p className="text-gray-400 mb-6 leading-relaxed">
                             Experience the authentic taste of tradition. We bring you the finest culinary delights with a modern twist.
                         </p>
@@ -62,16 +62,13 @@ const Footer = () => {
                         <ul className="space-y-4">
                             <li className="flex items-start space-x-3 text-gray-400">
                                 <MapPin className="w-5 h-5 text-orange-500 mt-1 flex-shrink-0" />
-                                <span>Ramdhuni-1, sunsari Nepal</span>
+                                <span>508 Princes Hwy, Rockdale NSW 2216 Phone: (02) 7900 8711</span>
                             </li>
                             <li className="flex items-center space-x-3 text-gray-400">
                                 <Phone className="w-5 h-5 text-orange-500 flex-shrink-0" />
-                                <span>+61 420 253 134</span>
+                                <span>02 7900 8711</span>
                             </li>
-                            <li className="flex items-center space-x-3 text-gray-400">
-                                <Mail className="w-5 h-5 text-orange-500 flex-shrink-0" />
-                                <span>nfo@namasterestro.com.au</span>
-                            </li>
+                            
                         </ul>
                     </div>
 
@@ -98,7 +95,7 @@ const Footer = () => {
 
                 {/* Bottom Bar */}
                 <div className="border-t border-gray-800 mt-16 pt-8 text-center text-gray-500 text-sm">
-                    <p>&copy; {new Date().getFullYear()} Namesta Restro. All rights reserved.</p>
+                    <p>&copy; {new Date().getFullYear()} Subhakamana Restro. All rights reserved.</p>
                 </div>
             </div>
         </footer>

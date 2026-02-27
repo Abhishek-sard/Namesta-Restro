@@ -253,7 +253,7 @@ const OrderDrawer = ({ isOpen, onClose }) => {
                                 className="text-5xl font-cursive text-white overflow-hidden whitespace-nowrap border-r-4 border-white pr-2 inline-block"
                                 style={{ animation: 'write-cursive 8s linear forwards, blink 0.25s step-end infinite' }}
                             >
-                                Namaste Restaurant
+                                Subhakamana Restaurant
                             </h1>
                         </div>
                     </div>
@@ -402,7 +402,7 @@ const OrderDrawer = ({ isOpen, onClose }) => {
                                             value={customerInfo.address}
                                             onChange={(e) => setCustomerInfo({ ...customerInfo, address: e.target.value })}
                                             rows="3"
-                                            className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-orange-500 focus:ring-2 focus:ring-orange-100 outline-none transition-all resize-none text-gray-900"
+                                            className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-orange-500 focus:ring-2 focus:ring-orange-100 outline-none transition-all resize-none text-black placeholder-black"
                                         />
                                     )}
                                     {selectedOrderType === 'pickup' && (
@@ -650,7 +650,7 @@ const OrderDrawer = ({ isOpen, onClose }) => {
                                             required
                                             value={customerInfo.tableNumber}
                                             onChange={(e) => setCustomerInfo({ ...customerInfo, tableNumber: e.target.value })}
-                                            className="w-full px-6 py-4 rounded-2xl border-2 border-gray-100 focus:border-purple-500 focus:ring-4 focus:ring-purple-50 outline-none transition-all text-center text-2xl font-bold placeholder:text-gray-300 placeholder:font-normal"
+                                            className="w-full px-6 py-4 rounded-2xl border-2 border-gray-100 focus:border-purple-500 focus:ring-4 focus:ring-purple-50 outline-none transition-all text-center text-2xl font-bold placeholder:text-gray-300 placeholder:font-normal text-gray-800"
                                             autoFocus
                                         />
                                     </div>
@@ -703,7 +703,7 @@ const OrderDrawer = ({ isOpen, onClose }) => {
                                             required
                                             value={customerInfo.address}
                                             onChange={(e) => setCustomerInfo({ ...customerInfo, address: e.target.value })}
-                                            className="w-full px-6 py-4 rounded-2xl border-2 border-gray-100 focus:border-blue-500 focus:ring-4 focus:ring-blue-50 outline-none transition-all text-lg font-medium resize-none min-h-[120px]"
+                                            className="w-full px-6 py-4 rounded-2xl border-2 border-gray-100 focus:border-blue-500 focus:ring-4 focus:ring-blue-50 outline-none transition-all text-lg font-medium resize-none min-h-[120px] text-gray-900"
                                             autoFocus
                                         />
                                     </div>
