@@ -24,9 +24,6 @@ const LocalCTA = () => {
                         <Link to="/community/careers" className="bg-transparent border-2 border-white/30 text-white px-8 py-4 rounded-3xl font-bold hover:bg-white/10 transition-all backdrop-blur-sm">
                             Join Our Community
                         </Link>
-                        <Link to="/restaurants/bookings" className="bg-black/20 text-white px-8 py-4 rounded-3xl font-bold hover:bg-black/40 transition-all backdrop-blur-sm border border-white/10">
-                            Book a Table
-                        </Link>
                     </div>
                 </div>
             </div>

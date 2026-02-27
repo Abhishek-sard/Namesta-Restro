@@ -17,7 +17,7 @@ const LocalSourcing = () => {
                         <div className="absolute -top-4 -left-4 w-24 h-24 bg-orange-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
                         <div className="absolute -bottom-8 -right-8 w-32 h-32 bg-yellow-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
                         <img
-                            src="/localsupport.jpg"
+                            src="/localmatter1.jpg"
                             alt="Local Vegetables and Spices"
                             className="rounded-3xl shadow-2xl relative z-10 hover:scale-[1.02] transition-transform duration-500"
                         />
