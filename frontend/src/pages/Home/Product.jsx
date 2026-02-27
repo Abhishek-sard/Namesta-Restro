@@ -1,14 +1,15 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const Product = () => {
   const products = [
-    { id: 1, name: "Steamed Momo", description: "Authentic Nepali steamed dumplings with spicy tomato chutney.", price: "$12.99", image: "/momo.png" },
-    { id: 2, name: "Dal Bhat Tarkari", description: "The soul of Nepali cuisine - rice, lentils, and seasonal vegetable curry.", price: "$18.50", image: "/dalbhat.png" },
-    { id: 3, name: "Himalayan Thukpa", description: "Hearty Tibetan-style noodle soup with fresh vegetables and aromatic spices.", price: "$14.99", image: "/thukpa.png" },
-    { id: 4, name: "Nepali Chow Mein", description: "Spicy stir-fried noodles with crisp vegetables and traditional Nepali zest.", price: "$13.50", image: "/chowmein.png" },
-    { id: 5, name: "Mutton Sekuwa", description: "Traditionally grilled spiced mutton, smoky and tender.", price: "$16.99", image: "/sekuwa.png" },
-    { id: 6, name: "Garlic Butter Naan", description: "Freshly baked clay-oven bread brushed with garlic butter.", price: "$4.50", image: "/naan.png" },
+    { id: 1, name: "Steamed Momo", description: "Authentic Nepali steamed dumplings with spicy tomato chutney.", image: "/momo.png" },
+    { id: 2, name: "Dal Bhat Tarkari", description: "The soul of Nepali cuisine - rice, lentils, and seasonal vegetable curry.", image: "/dalbhat.png" },
+    { id: 3, name: "Himalayan Thukpa", description: "Hearty Tibetan-style noodle soup with fresh vegetables and aromatic spices.", image: "/thukpa.png" },
+    { id: 4, name: "Nepali Chow Mein", description: "Spicy stir-fried noodles with crisp vegetables and traditional Nepali zest.", image: "/chowmein.png" },
+    { id: 5, name: "Mutton Sekuwa", description: "Traditionally grilled spiced mutton, smoky and tender.", image: "/sekuwa.png" },
+    { id: 6, name: "Garlic Butter Naan", description: "Freshly baked clay-oven bread brushed with garlic butter.", image: "/naan.png" },
   ];
 
   const itemsPerPage = 4;
@@ -43,7 +44,7 @@ const Product = () => {
                 className="h-40 w-full object-cover rounded-t-xl"
               />
               <div className="p-4">
-                <h2 className="text-lg font-semibold">{product.name}</h2>
+                <h2 className="text-yellow-900 font-semibold">{product.name}</h2>
                 <p className="text-gray-500 text-sm">{product.description}</p>
                 <p className="text-yellow-900 font-bold mt-2">{product.price}</p>
               </div>
@@ -62,9 +63,9 @@ const Product = () => {
           </button>
 
 
-          <button className="px-8 py-4 bg-yellow-900 text-white rounded-lg shadow hover:bg-yellow-300 mt-6">
+          <Link to="/menu" className="px-8 py-4 bg-yellow-900 text-white rounded-lg shadow hover:bg-yellow-300 mt-6 inline-block text-center">
             View Menu
-          </button>
+          </Link>
 
           <button
             onClick={next}

@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const SustainabilitySection = () => {
   return (
     <div className="bg-white py-20 px-20 mt-20">
@@ -20,9 +22,9 @@ const SustainabilitySection = () => {
             serving authentic Nepali cuisine.
           </p>
 
-          <button className="px-8 py-3 bg-yellow-900 text-white text-lg font-semibold rounded-xl shadow hover:bg-yellow-800 transition font-cursive">
+          <Link to="/community/sustainability" className="inline-block px-8 py-3 bg-yellow-900 text-white text-lg font-semibold rounded-xl shadow hover:bg-yellow-800 transition font-cursive">
             SEE MORE
-          </button>
+          </Link>
         </div>
 
         {/* RIGHT IMAGE */}

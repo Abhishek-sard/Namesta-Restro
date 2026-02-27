@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Local = () => {
   return (
     <div className="bg-white py-20 px-20">
@@ -28,9 +30,9 @@ const Local = () => {
             while giving back through cultural and community initiatives.
           </p>
 
-          <button className="px-8 py-3 bg-yellow-900 text-white text-lg font-semibold rounded-xl shadow hover:bg-yellow-800 transition">
+          <Link to="/blogs" className="px-8 py-3 bg-yellow-900 text-white text-lg font-semibold rounded-xl shadow hover:bg-yellow-800 transition inline-block">
             Learn More
-          </button>
+          </Link>
         </div>
 
       </div>

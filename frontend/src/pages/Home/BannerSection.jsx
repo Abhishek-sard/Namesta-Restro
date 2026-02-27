@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const BannerSection = () => {
   return (
     <div
@@ -19,9 +21,9 @@ const BannerSection = () => {
 
       {/* BOTTOM LEFT BUTTON */}
       <div className="absolute bottom-4 left-8 md:left-16">
-        <button className="px-8 py-3 bg-white text-orange-600 text-lg font-semibold rounded-xl shadow hover:bg-yellow-200 transition font-cursive">
+        <Link to="/menu" className="inline-block px-8 py-3 bg-white text-orange-600 text-lg font-semibold rounded-xl shadow hover:bg-yellow-200 transition font-cursive">
           SEE MORE
-        </button>
+        </Link>
       </div>
     </div>
   );

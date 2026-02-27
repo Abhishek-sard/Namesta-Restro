@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Symbol = () => {
   return (
     <div
@@ -21,13 +23,13 @@ const Symbol = () => {
 
         {/* Buttons */}
         <div className="flex justify-center gap-4">
-          <button className="px-8 py-3 bg-yellow-500 text-white text-lg font-semibold rounded-xl shadow-lg hover:bg-yellow-400 transition">
+          <Link to="/register" className="px-8 py-3 bg-yellow-500 text-white text-lg font-semibold rounded-xl shadow-lg hover:bg-yellow-400 transition inline-block">
             Sign Up
-          </button>
+          </Link>
 
-          <button className="px-8 py-3 border-2 border-white text-white text-lg font-semibold rounded-xl hover:bg-white hover:text-yellow-500 transition">
+          <Link to="/blogs" className="px-8 py-3 border-2 border-white text-white text-lg font-semibold rounded-xl hover:bg-white hover:text-yellow-500 transition inline-block">
             Learn More
-          </button>
+          </Link>
         </div>
       </div>
     </div>

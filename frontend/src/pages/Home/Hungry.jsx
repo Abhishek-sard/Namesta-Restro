@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Hungry = () => {
   return (
@@ -14,9 +15,9 @@ const Hungry = () => {
         <h2 className="text-4xl md:text-6xl font-bold text-white mb-8 font-cursive drop-shadow-lg">
           Hungry Yet?
         </h2>
-        <button className="px-12 py-4 bg-orange-600 text-white text-xl font-semibold rounded-full shadow-2xl hover:bg-orange-700 transition-all transform hover:scale-105">
+        <Link to="/menu" className="inline-block px-12 py-4 bg-orange-600 text-white text-xl font-semibold rounded-full shadow-2xl hover:bg-orange-700 transition-all transform hover:scale-105">
           Order Now
-        </button>
+        </Link>
       </div>
     </div>
   );

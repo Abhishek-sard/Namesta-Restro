@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Taste = () => {
     return (
         <div className="bg-white py-20 px-18">
@@ -16,9 +18,9 @@ const Taste = () => {
                     </p>
 
                     <div className="flex justify-center md:justify-start gap-4">
-                        <button className="px-8 py-3 bg-yellow-900 text-white text-lg font-semibold rounded-xl shadow hover:bg-yellow-800 transition">
+                        <Link to="/restaurants/about" className="px-8 py-3 bg-yellow-900 text-white text-lg font-semibold rounded-xl shadow hover:bg-yellow-800 transition inline-block">
                             About Us
-                        </button>
+                        </Link>
                     </div>
                 </div>
 

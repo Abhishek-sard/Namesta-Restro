@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Join = () => {
   return (
     <div className="bg-white py-20 px-25">
@@ -29,9 +31,9 @@ const Join = () => {
             in a supportive environment.
           </p>
 
-          <button className="px-8 py-3 bg-yellow-900 text-white text-lg font-semibold rounded-xl shadow hover:bg-yellow-800 transition font-cursive">
+          <Link to="/community/careers" className="inline-block px-8 py-3 bg-yellow-900 text-white text-lg font-semibold rounded-xl shadow hover:bg-yellow-800 transition font-cursive">
             JOIN OUR TEAM
-          </button>
+          </Link>
         </div>
 
 
