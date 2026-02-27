@@ -23,7 +23,6 @@ import LocalMatters from './pages/community/LocalMatters.jsx';
 import Careers from './pages/community/Careers.jsx';
 import Sustainability from './pages/community/Sustainability.jsx';
 import Menu from './pages/Food/Menu.jsx';
-import MenuBar from './pages/Food/MenuBar.jsx';
 import Catering from './pages/Food/Catering.jsx';
 
 import FindRestaurant from './pages/Res/FindRestaurant.jsx';
@@ -74,7 +73,6 @@ function AppContent() {
           {/* Food Routes */}
           <Route path="/menu" element={<Menu />} />
           <Route path="/food/catering" element={<Catering />} />
-          <Route path='/food/menu-bar' element={<MenuBar />} />
 
 
           {/* Restaurant Routes */}

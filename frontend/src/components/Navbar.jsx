@@ -208,12 +208,6 @@ const Navbar = () => {
                     >
                       Menu
                     </Link>
-                    <Link
-                      to="/food/menu-bar"
-                      className="block px-6 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 border-b border-gray-50 font-semibold"
-                    >
-                      MenuBar
-                    </Link>
 
                     <Link
                       to="/food/catering"
