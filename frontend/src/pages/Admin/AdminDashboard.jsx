@@ -23,6 +23,7 @@ import {
 import { useAuth } from '../../context/AuthContext';
 import StripeSettings from './StripeSettings';
 import axios from 'axios';
+import { API_URL, UPLOADS_URL } from '../../config';
 
 const AdminDashboard = () => {
     const [activeTab, setActiveTab] = useState('menu');
@@ -72,7 +73,7 @@ const AdminDashboard = () => {
                     Authorization: `Bearer ${user.token}`
                 }
             };
-            const { data } = await axios.get('http://localhost:5000/api/auth/users', config);
+            const { data } = await axios.get(`${API_URL}/auth/users`, config);
             setUsers(data);
         } catch (error) {
             console.error('Error fetching users:', error);
@@ -83,7 +84,7 @@ const AdminDashboard = () => {
     const fetchMenu = async () => {
         setLoading(true);
         try {
-            const { data } = await axios.get('http://localhost:5000/api/menu');
+            const { data } = await axios.get(`${API_URL}/menu`);
             setMenuItems(data.data);
         } catch (error) {
             console.error('Error fetching menu:', error);
@@ -94,7 +95,7 @@ const AdminDashboard = () => {
     const fetchBlogs = async () => {
         setLoading(true);
         try {
-            const { data } = await axios.get('http://localhost:5000/api/blogs');
+            const { data } = await axios.get(`${API_URL}/blogs`);
             setBlogs(data.data);
         } catch (error) {
             console.error('Error fetching blogs:', error);
@@ -122,9 +123,9 @@ const AdminDashboard = () => {
             }
 
             if (editingItem) {
-                await axios.put(`http://localhost:5000/api/menu/${editingItem._id}`, data, config);
+                await axios.put(`${API_URL}/menu/${editingItem._id}`, data, config);
             } else {
-                await axios.post('http://localhost:5000/api/menu', data, config);
+                await axios.post(`${API_URL}/menu`, data, config);
             }
             setIsModalOpen(false);
             setEditingItem(null);
@@ -165,7 +166,7 @@ const AdminDashboard = () => {
                     Authorization: `Bearer ${user.token}`
                 }
             };
-            await axios.put('http://localhost:5000/api/auth/updatepassword', {
+            await axios.put(`${API_URL}/auth/updatepassword`, {
                 currentPassword: passwordData.currentPassword,
                 newPassword: passwordData.newPassword
             }, config);
@@ -189,7 +190,7 @@ const AdminDashboard = () => {
                         Authorization: `Bearer ${user.token}`
                     }
                 };
-                await axios.delete(`http://localhost:5000/api/menu/${id}`, config);
+                await axios.delete(`${API_URL}/menu/${id}`, config);
                 // refresh list after deletion
                 fetchMenu();
             } catch (error) {
@@ -223,9 +224,9 @@ const AdminDashboard = () => {
             }
 
             if (editingBlog) {
-                await axios.put(`http://localhost:5000/api/blogs/${editingBlog._id}`, formData, config);
+                await axios.put(`${API_URL}/blogs/${editingBlog._id}`, formData, config);
             } else {
-                await axios.post('http://localhost:5000/api/blogs', formData, config);
+                await axios.post(`${API_URL}/blogs`, formData, config);
             }
             setIsBlogModalOpen(false);
             setEditingBlog(null);
@@ -257,7 +258,7 @@ const AdminDashboard = () => {
                         Authorization: `Bearer ${user.token}`
                     }
                 };
-                await axios.delete(`http://localhost:5000/api/blogs/${id}`, config);
+                await axios.delete(`${API_URL}/blogs/${id}`, config);
                 fetchBlogs();
             } catch (error) {
                 console.error('Error deleting blog:', error);
@@ -380,7 +381,7 @@ const AdminDashboard = () => {
                                         <div className="flex items-center gap-4">
                                             <div className="w-12 h-12 rounded-xl bg-gray-100 overflow-hidden flex-shrink-0">
                                                 <img
-                                                    src={item.image.startsWith('http') ? item.image : `http://localhost:5000/uploads/${item.image}`}
+                                                    src={item.image.startsWith('http') ? item.image : `${UPLOADS_URL}/${item.image}`}
                                                     alt={item.name}
                                                     className="w-full h-full object-cover"
                                                     onError={(e) => { e.target.src = 'https://placehold.co/100x100?text=No+Img'; }}

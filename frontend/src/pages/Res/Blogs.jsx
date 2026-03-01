@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Calendar, ChevronRight } from 'lucide-react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { API_URL } from '../../config';
 
 const News = () => {
     const [blogs, setBlogs] = useState([]);
@@ -10,7 +11,7 @@ const News = () => {
     useEffect(() => {
         const fetchBlogs = async () => {
             try {
-                const { data } = await axios.get('http://localhost:5000/api/blogs');
+                const { data } = await axios.get(`${API_URL}/blogs`);
                 setBlogs(data.data);
                 setLoading(false);
             } catch (error) {

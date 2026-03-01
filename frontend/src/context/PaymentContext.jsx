@@ -1,5 +1,6 @@
 import React, { createContext, useState, useContext } from 'react';
 import axios from 'axios';
+import { API_URL } from '../config';
 
 const PaymentContext = createContext();
 
@@ -20,7 +21,7 @@ export const PaymentProvider = ({ children }) => {
     const getPublicKey = async () => {
         try {
             setLoading(true);
-            const { data } = await axios.get('http://localhost:5000/api/stripe/config');
+            const { data } = await axios.get(`${API_URL}/stripe/config`);
             const pk = data?.data?.publicKey || import.meta.env.VITE_STRIPE_PUBLIC_KEY || null;
             setPublicKey(pk);
             setError(null);
@@ -42,7 +43,7 @@ export const PaymentProvider = ({ children }) => {
     const createPaymentIntent = async (orderId, amount, currency = 'usd') => {
         try {
             setLoading(true);
-            const { data } = await axios.post('http://localhost:5000/api/payments/intent', {
+            const { data } = await axios.post(`${API_URL}/payments/intent`, {
                 orderId,
                 amount,
                 currency
@@ -63,7 +64,7 @@ export const PaymentProvider = ({ children }) => {
     const confirmPayment = async (paymentIntentId, paymentMethodId) => {
         try {
             setLoading(true);
-            const { data } = await axios.post('http://localhost:5000/api/payments/confirm', {
+            const { data } = await axios.post(`${API_URL}/payments/confirm`, {
                 paymentIntentId,
                 paymentMethodId
             });
@@ -83,7 +84,7 @@ export const PaymentProvider = ({ children }) => {
     const getPaymentStatus = async (paymentIntentId) => {
         try {
             setLoading(true);
-            const { data } = await axios.get(`http://localhost:5000/api/payments/${paymentIntentId}`);
+            const { data } = await axios.get(`${API_URL}/payments/${paymentIntentId}`);
             setError(null);
             return data.data;
         } catch (err) {
@@ -100,7 +101,7 @@ export const PaymentProvider = ({ children }) => {
     const refundPayment = async (chargeId, amount, reason) => {
         try {
             setLoading(true);
-            const { data } = await axios.post('http://localhost:5000/api/payments/refund', {
+            const { data } = await axios.post(`${API_URL}/payments/refund`, {
                 chargeId,
                 amount,
                 reason

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Calendar, User, Tag, ArrowLeft, Clock } from 'lucide-react';
 import axios from 'axios';
+import { API_URL } from '../../config';
 
 const BlogDetail = () => {
     const { id } = useParams();
@@ -13,7 +14,7 @@ const BlogDetail = () => {
     useEffect(() => {
         const fetchBlog = async () => {
             try {
-                const { data } = await axios.get(`http://localhost:5000/api/blogs/${id}`);
+                const { data } = await axios.get(`${API_URL}/blogs/${id}`);
                 setBlog(data.data);
                 setLoading(false);
             } catch (err) {

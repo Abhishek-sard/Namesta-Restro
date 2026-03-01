@@ -3,6 +3,7 @@ import { loadStripe } from '@stripe/stripe-js';
 import { Elements, CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { AlertCircle, CheckCircle, Loader2, Lock, CreditCard } from 'lucide-react';
 import { usePayment } from '../context/PaymentContext';
+import { API_URL } from '../config';
 
 // Stripe Promise (singleton)
 let stripePromise = null;
@@ -59,7 +60,7 @@ const StripeCheckoutForm = ({
             }
 
             // Create payment intent on backend
-            const intentResponse = await fetch('http://localhost:5000/api/payments/intent', {
+            const intentResponse = await fetch(`${API_URL}/payments/intent`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({

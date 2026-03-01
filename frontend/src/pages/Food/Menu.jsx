@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { AlertCircle, Loader2, Plus } from "lucide-react";
+import { API_URL, UPLOADS_URL } from "../../config";
 
 const Menu = () => {
   const [menus, setMenus] = useState([]);
@@ -13,7 +14,7 @@ const Menu = () => {
 
   const fetchMenus = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/menu");
+      const res = await axios.get(`${API_URL}/menu`);
       setMenus(res.data.data);
       setLoading(false);
     } catch (error) {
@@ -121,7 +122,7 @@ const Menu = () => {
                             item.image
                               ? item.image.startsWith("http")
                                 ? item.image
-                                : `http://localhost:5000/uploads/${item.image}`
+                                : `${UPLOADS_URL}/${item.image}`
                               : "https://placehold.co/400x300?text=No+Image"
                           }
                           alt={item.name}
@@ -149,7 +150,7 @@ const Menu = () => {
                             ${item.price}
                           </span>
 
-                         
+
                         </div>
                       </div>
 

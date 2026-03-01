@@ -3,6 +3,7 @@ import { X, ShoppingBag, Truck, Store, UtensilsCrossed, ArrowLeft, Loader2, Aler
 import axios from 'axios';
 import { useCart } from '../context/CartContext.jsx';
 import StripeCheckout from './StripeCheckout.jsx';
+import { API_URL, UPLOADS_URL } from '../config';
 
 const OrderDrawer = ({ isOpen, onClose }) => {
     const [isLoading, setIsLoading] = useState(false);
@@ -61,7 +62,7 @@ const OrderDrawer = ({ isOpen, onClose }) => {
         setMenuLoading(true);
         setMenuError(null);
         try {
-            const res = await axios.get('http://localhost:5000/api/menu');
+            const res = await axios.get(`${API_URL}/menu`);
             setMenus(res.data.data);
             setMenuLoading(false);
         } catch (error) {
@@ -155,7 +156,7 @@ const OrderDrawer = ({ isOpen, onClose }) => {
 
         try {
             // Create order in backend
-            const orderResponse = await axios.post('http://localhost:5000/api/orders', {
+            const orderResponse = await axios.post(`${API_URL}/orders`, {
                 customerName: customerInfo.name,
                 customerPhone: customerInfo.phone,
                 customerEmail: customerInfo.email,
@@ -546,7 +547,7 @@ const OrderDrawer = ({ isOpen, onClose }) => {
                                             <div key={item.menuItem._id} className="bg-white rounded-2xl p-3 shadow-sm flex gap-3">
                                                 <div className="w-20 h-20 flex-shrink-0 bg-gray-100 rounded-xl overflow-hidden shadow-sm">
                                                     <img
-                                                        src={item.menuItem.image ? (item.menuItem.image.startsWith('http') ? item.menuItem.image : `http://localhost:5000/uploads/${item.menuItem.image}`) : 'https://placehold.co/150x150?text=No+Img'}
+                                                        src={item.menuItem.image ? (item.menuItem.image.startsWith('http') ? item.menuItem.image : `${UPLOADS_URL}/${item.menuItem.image}`) : 'https://placehold.co/150x150?text=No+Img'}
                                                         alt={item.menuItem.name}
                                                         className="w-full h-full object-cover"
                                                         onError={(e) => { e.target.src = 'https://placehold.co/150x150?text=No+Img'; }}
@@ -799,7 +800,7 @@ const OrderDrawer = ({ isOpen, onClose }) => {
                                                                 {/* Image */}
                                                                 <div className="relative w-24 h-24 flex-shrink-0 bg-gradient-to-br from-gray-100 to-gray-50 rounded-xl overflow-hidden shadow-sm">
                                                                     <img
-                                                                        src={item.image ? (item.image.startsWith('http') ? item.image : `http://localhost:5000/uploads/${item.image}`) : 'https://placehold.co/200x200?text=No+Image'}
+                                                                        src={item.image ? (item.image.startsWith('http') ? item.image : `${UPLOADS_URL}/${item.image}`) : 'https://placehold.co/200x200?text=No+Image'}
                                                                         alt={item.name}
                                                                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                                                                         onError={(e) => { e.target.src = 'https://placehold.co/200x200?text=No+Image'; }}
