@@ -26,6 +26,7 @@ const OrderDrawer = ({ isOpen, onClose }) => {
         specialInstructions: ''
     });
     const [orderNumber, setOrderNumber] = useState('');
+    const [orderId, setOrderId] = useState('');
 
     // Prevent body scroll when drawer is open
     useEffect(() => {
@@ -138,7 +139,7 @@ const OrderDrawer = ({ isOpen, onClose }) => {
     // Order Placement with Stripe
     const handlePlaceOrder = async (e) => {
         e.preventDefault();
-        
+
         // Validate customer info
         if (!customerInfo.name.trim() || !customerInfo.phone.trim() || !customerInfo.email.trim()) {
             alert('Please fill in all required customer information');
@@ -178,10 +179,12 @@ const OrderDrawer = ({ isOpen, onClose }) => {
 
             const orderId = orderResponse.data.order._id;
             setOrderNumber(orderResponse.data.order.orderNumber);
+            setOrderId(orderId);
 
             // Show Stripe Payment Dialog
+            setIsLoading(false);
             setCurrentView('stripe-payment');
-            
+
         } catch (error) {
             console.error('Error creating order:', error);
             alert('Failed to create order. Please try again.');
@@ -276,9 +279,9 @@ const OrderDrawer = ({ isOpen, onClose }) => {
                         </div>
 
                         <div className="flex-1 overflow-y-auto p-6 bg-gray-50/50">
-                            <StripeCheckout 
+                            <StripeCheckout
                                 amount={finalTotal}
-                                orderNumber={orderNumber}
+                                orderId={orderId}
                                 customerInfo={customerInfo}
                                 onPaymentSuccess={() => {
                                     setTimeout(() => {
@@ -540,8 +543,8 @@ const OrderDrawer = ({ isOpen, onClose }) => {
                                 <div className="flex-1 overflow-y-auto p-6 bg-gray-50/50">
                                     <div className="space-y-4">
                                         {cart.map(item => (
-                                            <div key={item.menuItem._id} className="bg-white rounded-3xl p-4 shadow-sm flex gap-4">
-                                                <div className="w-24 h-24 flex-shrink-0 bg-gray-100 rounded-2xl overflow-hidden">
+                                            <div key={item.menuItem._id} className="bg-white rounded-2xl p-3 shadow-sm flex gap-3">
+                                                <div className="w-20 h-20 flex-shrink-0 bg-gray-100 rounded-xl overflow-hidden shadow-sm">
                                                     <img
                                                         src={item.menuItem.image ? (item.menuItem.image.startsWith('http') ? item.menuItem.image : `http://localhost:5000/uploads/${item.menuItem.image}`) : 'https://placehold.co/150x150?text=No+Img'}
                                                         alt={item.menuItem.name}
@@ -549,33 +552,35 @@ const OrderDrawer = ({ isOpen, onClose }) => {
                                                         onError={(e) => { e.target.src = 'https://placehold.co/150x150?text=No+Img'; }}
                                                     />
                                                 </div>
-                                                <div className="flex-1 min-w-0">
-                                                    <h4 className="font-bold text-gray-900 mb-1">{item.menuItem.name}</h4>
-                                                    <p className="text-orange-600 font-bold mb-3">${item.menuItem.price}</p>
-                                                    <div className="flex items-center gap-2">
+                                                <div className="flex-1 min-w-0 flex flex-col justify-between">
+                                                    <div>
+                                                        <h4 className="font-bold text-gray-900 text-sm mb-0.5 truncate">{item.menuItem.name}</h4>
+                                                        <p className="text-orange-600 font-bold text-sm">${item.menuItem.price}</p>
+                                                    </div>
+                                                    <div className="flex items-center gap-1.5">
                                                         <button
                                                             onClick={() => updateQuantity(item.menuItem._id, item.quantity - 1)}
-                                                            className="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center hover:bg-gray-200 transition-colors"
+                                                            className="w-7 h-7 bg-gray-50 rounded flex items-center justify-center hover:bg-gray-200 transition-colors border border-gray-100"
                                                         >
-                                                            <Minus className="w-4 h-4 text-gray-600" />
+                                                            <Minus className="w-3.5 h-3.5 text-gray-600" />
                                                         </button>
-                                                        <span className="w-8 text-center font-semibold">{item.quantity}</span>
+                                                        <span className="w-6 text-center text-sm font-semibold">{item.quantity}</span>
                                                         <button
                                                             onClick={() => updateQuantity(item.menuItem._id, item.quantity + 1)}
-                                                            className="w-8 h-8 bg-orange-600 rounded-lg flex items-center justify-center hover:bg-orange-700 transition-colors"
+                                                            className="w-7 h-7 bg-orange-600 rounded flex items-center justify-center hover:bg-orange-700 transition-colors"
                                                         >
-                                                            <Plus className="w-4 h-4 text-white" />
+                                                            <Plus className="w-3.5 h-3.5 text-white" />
                                                         </button>
                                                     </div>
                                                 </div>
-                                                <div className="flex flex-col items-end justify-between">
+                                                <div className="flex flex-col items-end justify-between py-0.5">
                                                     <button
                                                         onClick={() => removeFromCart(item.menuItem._id)}
-                                                        className="p-2 hover:bg-red-50 rounded-lg transition-colors"
+                                                        className="p-1.5 hover:bg-red-50 rounded-lg transition-colors"
                                                     >
-                                                        <Trash2 className="w-5 h-5 text-red-500" />
+                                                        <Trash2 className="w-4 h-4 text-red-400 hover:text-red-600" />
                                                     </button>
-                                                    <p className="font-bold text-gray-900">${(item.menuItem.price * item.quantity).toFixed(2)}</p>
+                                                    <p className="font-bold text-gray-900 text-sm">${(item.menuItem.price * item.quantity).toFixed(2)}</p>
                                                 </div>
                                             </div>
                                         ))}
@@ -789,10 +794,10 @@ const OrderDrawer = ({ isOpen, onClose }) => {
                                                 {groupedMenus[category].map((item) => {
                                                     const quantityInCart = getItemQuantityInCart(item._id);
                                                     return (
-                                                        <div key={item._id} className="group bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100">
-                                                            <div className="flex gap-4 p-4">
+                                                        <div key={item._id} className="group bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden border border-gray-50">
+                                                            <div className="flex gap-4 p-3">
                                                                 {/* Image */}
-                                                                <div className="relative w-28 h-28 flex-shrink-0 bg-gradient-to-br from-gray-100 to-gray-50 rounded-xl overflow-hidden shadow-sm">
+                                                                <div className="relative w-24 h-24 flex-shrink-0 bg-gradient-to-br from-gray-100 to-gray-50 rounded-xl overflow-hidden shadow-sm">
                                                                     <img
                                                                         src={item.image ? (item.image.startsWith('http') ? item.image : `http://localhost:5000/uploads/${item.image}`) : 'https://placehold.co/200x200?text=No+Image'}
                                                                         alt={item.name}

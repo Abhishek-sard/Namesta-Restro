@@ -20,15 +20,19 @@ export const PaymentProvider = ({ children }) => {
     const getPublicKey = async () => {
         try {
             setLoading(true);
-            const { data } = await axios.get('http://localhost:5000/api/stripe/settings');
-            setPublicKey(data.data.publicKey);
+            const { data } = await axios.get('http://localhost:5000/api/stripe/config');
+            const pk = data?.data?.publicKey || import.meta.env.VITE_STRIPE_PUBLIC_KEY || null;
+            setPublicKey(pk);
             setError(null);
-            return data.data.publicKey;
+            return pk;
         } catch (err) {
             const errorMsg = err.response?.data?.message || 'Failed to load Stripe configuration';
             setError(errorMsg);
             console.error('Error fetching public key:', err);
-            return null;
+            // fallback to Vite env if backend not configured
+            const pkFallback = import.meta.env.VITE_STRIPE_PUBLIC_KEY || null;
+            setPublicKey(pkFallback);
+            return pkFallback;
         } finally {
             setLoading(false);
         }

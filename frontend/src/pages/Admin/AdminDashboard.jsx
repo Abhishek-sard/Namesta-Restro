@@ -184,10 +184,17 @@ const AdminDashboard = () => {
     const handleDelete = async (id) => {
         if (window.confirm('Are you sure you want to delete this item?')) {
             try {
-                await axios.delete(`http://localhost:5000/api/menu/${id}`);
+                const config = {
+                    headers: {
+                        Authorization: `Bearer ${user.token}`
+                    }
+                };
+                await axios.delete(`http://localhost:5000/api/menu/${id}`, config);
+                // refresh list after deletion
                 fetchMenu();
             } catch (error) {
                 console.error('Error deleting menu item:', error);
+                alert(error.response?.data?.error || 'Failed to delete menu item');
             }
         }
     };

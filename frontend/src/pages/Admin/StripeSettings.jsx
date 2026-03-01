@@ -257,7 +257,7 @@ const StripeSettings = () => {
                                     value={formData.publicKey}
                                     onChange={handleInputChange}
                                     placeholder="pk_test_51234567890abcdefghij"
-                                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-orange-500 focus:ring-2 focus:ring-orange-100 outline-none transition-all font-mono text-sm"
+                                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-orange-500 focus:ring-2 focus:ring-orange-100 outline-none transition-all font-mono text-sm text-black"
                                     disabled={saving}
                                 />
                                 <p className="text-xs text-gray-500 mt-2">
@@ -280,7 +280,7 @@ const StripeSettings = () => {
                                         value={formData.secretKey}
                                         onChange={handleInputChange}
                                         placeholder={formData.secretKey ? "••••••••••••••••••••" : "sk_test_51234567890abcdefghij"}
-                                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-orange-500 focus:ring-2 focus:ring-orange-100 outline-none transition-all font-mono text-sm"
+                                        className="w-full px-4 text-black py-3 rounded-lg border border-gray-300 focus:border-orange-500 focus:ring-2 focus:ring-orange-100 outline-none transition-all font-mono text-sm"
                                         disabled={saving}
                                     />
                                     <button
@@ -315,7 +315,7 @@ const StripeSettings = () => {
                                         value={formData.webhookSecret}
                                         onChange={handleInputChange}
                                         placeholder={formData.webhookSecret ? "••••••••••••••••••••" : "whsec_1234567890abcdefghij"}
-                                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-orange-500 focus:ring-2 focus:ring-orange-100 outline-none transition-all font-mono text-sm"
+                                        className="w-full px-4 text-black py-3 rounded-lg border border-gray-300 focus:border-orange-500 focus:ring-2 focus:ring-orange-100 outline-none transition-all font-mono text-sm"
                                         disabled={saving}
                                     />
                                     <button

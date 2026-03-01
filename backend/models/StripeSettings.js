@@ -8,7 +8,7 @@ const stripeSettingsSchema = new mongoose.Schema(
             trim: true,
             // Store in plain text since it's publicly available
             validate: {
-                validator: function(v) {
+                validator: function (v) {
                     return v.startsWith('pk_test_') || v.startsWith('pk_live_');
                 },
                 message: 'Public key must start with pk_test_ or pk_live_'
@@ -18,18 +18,11 @@ const stripeSettingsSchema = new mongoose.Schema(
             type: String,
             required: [true, 'Secret key is required'],
             // Stored encrypted in database
-            validate: {
-                validator: function(v) {
-                    // Check format only before encryption
-                    return v.startsWith('sk_test_') || v.startsWith('sk_live_');
-                },
-                message: 'Secret key must start with sk_test_ or sk_live_'
-            }
         },
         webhookUrl: {
             type: String,
             // Auto-generated, can be set manually if needed
-            default: function() {
+            default: function () {
                 const domain = process.env.DOMAIN || 'http://localhost:5000';
                 return `${domain}/api/stripe/webhook`;
             }
@@ -38,13 +31,6 @@ const stripeSettingsSchema = new mongoose.Schema(
             type: String,
             required: [true, 'Webhook secret is required'],
             // Stored encrypted in database
-            validate: {
-                validator: function(v) {
-                    // Check format only before encryption
-                    return v.startsWith('whsec_');
-                },
-                message: 'Webhook secret must start with whsec_'
-            }
         },
         isLive: {
             type: Boolean,
@@ -74,7 +60,7 @@ const stripeSettingsSchema = new mongoose.Schema(
 );
 
 // Only allow one document in this collection (singleton pattern)
-stripeSettingsSchema.statics.findOrCreateSettings = async function() {
+stripeSettingsSchema.statics.findOrCreateSettings = async function () {
     let settings = await this.findOne();
     if (!settings) {
         settings = await this.create({

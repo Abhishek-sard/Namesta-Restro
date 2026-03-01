@@ -17,12 +17,12 @@ const getStripe = (publicKey) => {
 /**
  * Inner checkout form component (requires Stripe Elements context)
  */
-const StripeCheckoutForm = ({ 
-    orderId, 
-    amount, 
-    customerInfo = {}, 
-    onSuccess, 
-    onError 
+const StripeCheckoutForm = ({
+    orderId,
+    amount,
+    customerInfo = {},
+    onSuccess,
+    onError
 }) => {
     const stripe = useStripe();
     const elements = useElements();
@@ -162,6 +162,7 @@ const StripeCheckoutForm = ({
                                 iconColor: '#fa755a',
                             },
                         },
+                        hidePostalCode: true,
                     }}
                     className="w-full"
                 />
@@ -204,12 +205,12 @@ const StripeCheckoutForm = ({
  * Main Stripe Checkout Component (Wrapper)
  * Usage: <StripeCheckout orderId="123" amount={29.99} customerInfo={...} onSuccess={...} />
  */
-const StripeCheckout = ({ 
-    orderId, 
-    amount, 
-    customerInfo = {}, 
-    onSuccess, 
-    onError 
+const StripeCheckout = ({
+    orderId,
+    amount,
+    customerInfo = {},
+    onSuccess,
+    onError
 }) => {
     const { publicKey, getPublicKey, loading, error: paymentError } = usePayment();
     const [initialized, setInitialized] = useState(false);

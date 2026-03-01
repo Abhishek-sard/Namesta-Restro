@@ -1,10 +1,8 @@
-
-import dns from "node:dns/promises";  
-
+import './loadEnv.js';
+import dns from "node:dns/promises";
 dns.setServers(["8.8.8.8", "1.1.1.1"]);
 
 import express from 'express';
-import dotenv from 'dotenv';
 import cors from 'cors';
 import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
@@ -12,10 +10,9 @@ import authRoutes from './routes/authRoutes.js';
 import menuRoutes from './routes/menuRoutes.js';
 import blogRoutes from './routes/blogRoutes.js';
 import stripeRoutes from './routes/stripeRoutes.js';
+import orderRoutes from './routes/orderRoutes.js';
+import paymentRoutes from './routes/paymentRoutes.js';
 import connectDB from './config/db.js';
-
-// Load environment variables
-dotenv.config();
 
 // Connect to MongoDB
 connectDB();
@@ -41,6 +38,8 @@ app.use('/api/auth', authRoutes);
 app.use('/api/menu', menuRoutes);
 app.use('/api/blogs', blogRoutes);
 app.use('/api/stripe', stripeRoutes);
+app.use('/api/orders', orderRoutes);
+app.use('/api/payments', paymentRoutes);
 
 // Root Route
 app.get('/', (req, res) => {

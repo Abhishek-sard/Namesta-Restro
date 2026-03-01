@@ -11,7 +11,6 @@ const CareerNavbar = () => {
         { name: 'Our Story', path: '/restaurants/about?experience=career' },
         { name: 'Our Impact', path: '/community/sustainability?experience=career' },
         { name: 'Career Journey', path: '/community/careers#journey' },
-        { name: 'Our Roles', path: '/community/careers#roles' },
         { name: 'Our Community', path: '/community/local-matters?experience=career' },
     ];
 
@@ -57,8 +56,8 @@ const CareerNavbar = () => {
                             </Link>
                         ))}
                         <Link
-                            to="/community/careers#roles"
-                            onClick={(e) => handleScroll(e, '/community/careers#roles')}
+                            to="/community/careers#journey"
+                            onClick={(e) => handleScroll(e, '/community/careers#journey')}
                             className="bg-neutral-900 hover:bg-red-600 text-white px-7 py-3 rounded-none text-[12px] font-black tracking-[0.15em] transition-all transform hover:-translate-y-1 shadow-lg"
                         >
                             JOIN OUR TEAM
@@ -95,9 +94,9 @@ const CareerNavbar = () => {
                     ))}
                     <div className="pt-6">
                         <Link
-                            to="/community/careers#roles"
+                            to="/community/careers#journey"
                             onClick={(e) => {
-                                handleScroll(e, '/community/careers#roles');
+                                handleScroll(e, '/community/careers#journey');
                                 setIsOpen(false);
                             }}
                             className="inline-block w-full bg-red-600 text-white px-8 py-5 text-lg font-black tracking-widest shadow-2xl"

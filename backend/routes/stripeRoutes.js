@@ -10,6 +10,16 @@ import {
 const router = express.Router();
 
 /**
+ * PUBLIC ROUTES
+ */
+
+/**
+ * GET /api/stripe/config
+ * Get Stripe public key (no secrets)
+ */
+router.get('/config', getStripeSettings);
+
+/**
  * ADMIN ONLY ROUTES
  * Protected by JWT and Admin role
  */
