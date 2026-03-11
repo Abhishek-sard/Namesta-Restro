@@ -255,7 +255,7 @@ const OrderDrawer = ({ isOpen, onClose }) => {
                             <h2 className="text-3xl font-cursive text-white mb-4">Welcome to</h2>
                             <h1
                                 className="text-5xl font-cursive text-white overflow-hidden whitespace-nowrap border-r-4 border-white pr-2 inline-block"
-                                style={{ animation: 'write-cursive 8s linear forwards, blink 0.25s step-end infinite' }}
+                                style={{ animation: 'write-cursive 3s linear forwards, blink 5.6s step-end infinite' }}
                             >
                                 Subhakamana Restaurant
                             </h1>
