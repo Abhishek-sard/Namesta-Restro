@@ -34,10 +34,10 @@ const CareerNavbar = () => {
                     {/* Logo/Brand */}
                     <div className="flex items-center">
                         <Link to="/" className="flex items-center group">
-                            <img src="/namesta.jpg" alt="Namesta Logo" className="h-14 w-auto transition-transform group-hover:scale-110" />
+                            <img src="/logo.png" alt="Subhakamana Logo" className="h-14 w-auto transition-transform group-hover:scale-110" />
                             <div className="ml-3 flex flex-col">
-                                <span className="text-xl font-black text-gray-900 leading-none tracking-tighter">NAMASTE</span>
-                                <span className="text-xs font-bold text-red-600 tracking-[0.2em] uppercase">Careers</span>
+                                <span className="text-xl font-black text-gray-900 leading-none tracking-tighter">SUBHAKAMANA</span>
+                                <span className="text-xs font-bold text-red-600 tracking-[0.2em] uppercase">RESTAURANT</span>
                             </div>
                         </Link>
                     </div>
